@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">gagarin</string>
+    <string name="app_name">Gagarin</string>
+
+    <!--  HOME  -->
+    <string name="H_ultNoticias">Últimas Noticias</string>
+    <string name="H_procLanzamientos">Próximos Lanzamientos</string>
+    <string name="H_aprendeMas">Aprende Más</string>
+    <string name="H_marte3d">Marte en 3D</string>
+    <string name="H_satelites">Satélites de la Tierra</string>
+    <string name="H_pruebalo">Pruebalo Ahora →</string>
+    <string name="H_verMas">Ver Todo</string>
 </resources>

@@ -3,9 +3,12 @@
     <string name="app_name">gagarin</string>
     <string name="email">Email</string>
     <string name="pass">Password</string>
+    <string name="confirm_pass">Confirm Password</string>
     <string name="forgot">Forgot Password?</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
     <string name="account">Don\'t have an account?</string>
     <string name="Sign">Sign up</string>
     <string name="Show">Show</string>
+    <string name="promo">I would like to receive your newsletter and other promotional information.</string>
 </resources>

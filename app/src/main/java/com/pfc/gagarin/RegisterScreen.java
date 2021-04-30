@@ -1,74 +1,70 @@
 package com.pfc.gagarin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.SingleLineTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import eightbitlab.com.blurview.BlurView;
 
 
-public class LoginScreen extends AppCompatActivity {
+public class RegisterScreen extends AppCompatActivity {
     private ViewGroup root;
-    private BlurView card;
-    private BlurView view_title;
-    private TextView tv_show;
-    private TextInputEditText et_pass;
-    private TextView tv_sign;
+    private BlurView register_card;
+    private BlurView register_view_title;
+    private TextView register_tv_show,register_tv_show2;
+    private TextInputEditText et_pass,et_confirm_pass;
     private boolean condicion_toggle = false;
+    private boolean condicion_toggle2 = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_screen);
-
+        setContentView(R.layout.activity_register_screen);
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        root= findViewById(R.id.root);
-        card = findViewById(R.id.blur_card);
-        view_title= findViewById(R.id.blur_tv);
-        et_pass = findViewById(R.id.ed_pass);
-        tv_show = findViewById(R.id.Show);
-        tv_sign = findViewById(R.id.sign);
-
-        //Go to RegisterScreen
-
-        tv_sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginScreen.this, RegisterScreen.class);
-                startActivity(intent);
-            }
-        });
+        root= findViewById(R.id.root2);
+        register_card = findViewById(R.id.register_blur_card);
+        register_view_title= findViewById(R.id.register_blur_tv);
+        et_pass = findViewById(R.id.register_ed_pass);
+        et_confirm_pass = findViewById(R.id.register_ed_confirm_pass);
+        register_tv_show = findViewById(R.id.register_Show);
+        register_tv_show2 = findViewById(R.id.register_Show2);
 
         //Toggle Password Show/Hide
-        tv_show.setOnClickListener(new View.OnClickListener() {
+        register_tv_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(condicion_toggle==false){
                     et_pass.setTransformationMethod(new SingleLineTransformationMethod().getInstance());
-                    tv_show.setText("Hide");
+                    register_tv_show.setText("Hide");
                     condicion_toggle=true;
                 }else{
-                    tv_show.setText("Show");
+                    register_tv_show.setText("Show");
                     et_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     condicion_toggle=false;
+                }
+            }
+        });
+        register_tv_show2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(condicion_toggle2==false){
+                    et_confirm_pass.setTransformationMethod(new SingleLineTransformationMethod().getInstance());
+                    register_tv_show2.setText("Hide");
+                    condicion_toggle2=true;
+                }else{
+                    register_tv_show2.setText("Show");
+                    et_confirm_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    condicion_toggle2=false;
                 }
             }
         });
@@ -78,12 +74,12 @@ public class LoginScreen extends AppCompatActivity {
         final float radius = 3f;
         final Drawable windowBackground = getWindow().getDecorView().getBackground();
 
-        card.setupWith(root)
+        register_card.setupWith(root)
                 .setFrameClearDrawable(windowBackground)
                 .setBlurAlgorithm(new SupportRenderScriptBlur(this))
                 .setBlurRadius(radius)
                 .setHasFixedTransformationMatrix(true);
-        view_title.setupWith(root)
+        register_view_title.setupWith(root)
                 .setFrameClearDrawable(windowBackground)
                 .setBlurAlgorithm(new SupportRenderScriptBlur(this))
                 .setBlurRadius(radius)

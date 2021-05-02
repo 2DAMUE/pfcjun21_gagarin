@@ -1,4 +1,4 @@
-package com.pfc.gagarin;
+package com.pfc.gagarin.ws_noticias;
 
 import android.util.Log;
 

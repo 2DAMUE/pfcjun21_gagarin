@@ -17,16 +17,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.pfc.gagarin.HomeScreen;
-import com.pfc.gagarin.entidad.Noticia;
+import com.pfc.gagarin.entidad.Lanzamiento;
 import com.pfc.gagarin.R;
 
 import java.util.List;
 
-public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRecyclerNoticias.ContenedorDeVistas> {
-    private List<Noticia> lista_contactos;
+public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<AdaptadorRecyclerLanzamientos.ContenedorDeVistas> {
+    private List<Lanzamiento> lista_contactos;
     private Context context;
 
-    public AdaptadorRecyclerNoticias(List<Noticia> lista_contactos, HomeScreen homeScreen) {
+    public AdaptadorRecyclerLanzamientos(List<Lanzamiento> lista_contactos, HomeScreen homeScreen) {
         this.lista_contactos = lista_contactos;
         this.context = homeScreen;
     }
@@ -34,11 +34,11 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
     @NonNull
     @Override
     public ContenedorDeVistas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_card_noticias, parent, false);
+        final View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_card_lanzamientos, parent, false);
 
         TextView tv_titular = vista.findViewById(R.id.TV_nombrecohete);
-        TextView tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
-        ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
+        //TextView tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
+        ImageView img_pfp = vista.findViewById(R.id.IV_fotolanzamiento);
         ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);
         Log.d("Contenedor","Creando contenedor de vistas");
         return contenedor;
@@ -46,9 +46,9 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
 
     @Override
     public void onBindViewHolder(@NonNull ContenedorDeVistas holder, int position) {
-        Noticia c = lista_contactos.get(position);
-        holder.tv_titular.setText(c.getTitular());
-        holder.tv_fecha.setText(c.getFecha());
+        Lanzamiento c = lista_contactos.get(position);
+        holder.tv_titular.setText(c.getRocket());
+        //holder.tv_fecha.setText(c.getHora());
 
 
 
@@ -80,8 +80,8 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         public ContenedorDeVistas(View vista) {
             super(vista);
             this.tv_titular = vista.findViewById(R.id.TV_nombrecohete);
-            this.tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
-            this.img_noticia = vista.findViewById(R.id.IV_fotonoticia);
+            //this.tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
+            this.img_noticia = vista.findViewById(R.id.IV_fotolanzamiento);
 
         }
     }

@@ -1,9 +1,7 @@
-package com.pfc.gagarin;
+package com.pfc.gagarin.ws_noticias;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
-import android.util.Log;
+import com.pfc.gagarin.HomeScreen;
+import com.pfc.gagarin.entidad.Noticia;
 
 import java.util.ArrayList;
 import java.util.List;

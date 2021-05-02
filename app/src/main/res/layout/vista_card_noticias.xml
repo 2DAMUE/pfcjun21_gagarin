@@ -9,7 +9,7 @@
         android:id="@+id/CV_Satelites"
         style="@style/Base.CardView"
         android:layout_width="220dp"
-        android:layout_height="307dp"
+        android:layout_height="290dp"
         android:backgroundTint="#001B36"
         app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,8 +37,8 @@
 
             <TextView
                 android:id="@+id/TV_titularnoticia"
-                android:layout_width="207dp"
-                android:layout_height="127dp"
+                android:layout_width="205dp"
+                android:layout_height="111dp"
                 android:fontFamily="@font/sfprodisplaybold"
                 android:gravity="start|left"
                 android:textColor="@color/white"

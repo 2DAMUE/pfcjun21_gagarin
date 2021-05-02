@@ -5,11 +5,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.pfc.gagarin.adapter.AdaptadorRecyclerNoticias;
-import com.pfc.gagarin.traductor.Traductor;
 
 import java.util.List;
 
@@ -37,11 +38,19 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         cardSatelites = findViewById(R.id.CV_Satelites);
 
 
-
+        // Hilo que llama al webscrapping
         HiloPeticionNoticias r = new HiloPeticionNoticias(HomeScreen.this);
         Thread t1 = new Thread(r);
         t1.start();
 
+        /* Cambia al Activity de Marte
+        findViewById(R.id.CV_Marte).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });*/
 
 
 

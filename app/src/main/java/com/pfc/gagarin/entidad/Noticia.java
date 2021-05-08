@@ -7,12 +7,8 @@ public class Noticia {
     private String fecha;
     private String imagen;
     private String cuerpo;
+    private String link;
 
-    public Noticia(String titular, String fecha, String imagen) {
-        this.titular = titular;
-        this.fecha = fecha;
-        this.imagen = imagen;
-    }
 
     public String getTitular() {
         return titular;
@@ -52,5 +48,13 @@ public class Noticia {
 
     public void setCuerpo(String cuerpo) {
         this.cuerpo = cuerpo;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

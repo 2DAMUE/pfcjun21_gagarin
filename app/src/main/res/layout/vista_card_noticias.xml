@@ -6,7 +6,7 @@
     android:layout_height="320dp">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/CV_Satelites"
+            android:id="@+id/CV_Noticia"
             style="@style/Base.CardView"
             android:layout_width="220dp"
             android:layout_height="290dp"

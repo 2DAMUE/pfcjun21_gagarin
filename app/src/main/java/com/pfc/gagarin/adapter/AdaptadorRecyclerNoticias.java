@@ -1,6 +1,7 @@
 package com.pfc.gagarin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -11,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.pfc.gagarin.HomeScreen;
+import com.pfc.gagarin.NoticiaScreen;
 import com.pfc.gagarin.entidad.Noticia;
 import com.pfc.gagarin.R;
 
@@ -39,8 +42,19 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         TextView tv_titular = vista.findViewById(R.id.TV_nombrecohete);
         TextView tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
         ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
+        CardView card = vista.findViewById(R.id.CV_Noticia);
+
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, NoticiaScreen.class);
+                context.startActivity(intent);
+            }
+        });
+
         ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);
         Log.d("Contenedor","Creando contenedor de vistas");
+
         return contenedor;
     }
 
@@ -49,8 +63,6 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         Noticia c = lista_contactos.get(position);
         holder.tv_titular.setText(c.getTitular());
         holder.tv_fecha.setText(c.getFecha());
-
-
 
         Glide.with(context)
                 .load(c.getImagen())
@@ -62,9 +74,8 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
                         }
                     }
                 });
-
-
         Log.d("Contenedor","Cvinculando la posicion" + position);
+
     }
 
     @Override

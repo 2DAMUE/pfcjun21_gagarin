@@ -74,4 +74,23 @@ public class PeticionNoticias {
 
         return urlfoto;
     }
+
+    public static String pedirLink(int i) {
+        int contador = 0;
+        String url = "";
+
+        Elements newsHeadlines = doc.getElementsByClass("entry-title mh-loop-title");
+        for (Element headline : newsHeadlines) {
+            if (contador == i){
+                url = headline.child(0).attr("href");
+
+            }
+            contador++;
+
+        }
+
+        return url;
+
+
+    }
 }

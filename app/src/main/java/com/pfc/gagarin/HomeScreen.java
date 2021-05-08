@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
@@ -59,14 +61,14 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
 
 
 
-        /* Cambia al Activity de Marte
+        // Cambia al Activity de Marte
         findViewById(R.id.CV_Marte).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, MapaMarte.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
     }
 

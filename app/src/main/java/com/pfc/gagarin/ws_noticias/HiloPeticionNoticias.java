@@ -1,5 +1,7 @@
 package com.pfc.gagarin.ws_noticias;
 
+import android.util.Log;
+
 import com.pfc.gagarin.HomeScreen;
 import com.pfc.gagarin.entidad.Noticia;
 
@@ -26,8 +28,15 @@ public class HiloPeticionNoticias implements Runnable {
            String titular = PeticionNoticias.pedirTitular(i);
            String foto = PeticionNoticias.pedirFoto(i);
            String fecha = PeticionNoticias.pedirFecha(i);
+           String link = PeticionNoticias.pedirLink(i);
 
-           Noticia n = new Noticia(titular,fecha,foto);
+           Noticia n = new Noticia();
+           n.setTitular(titular);
+           n.setImagen(foto);
+           n.setFecha(fecha);
+           n.setLink(link);
+           Log.d("abobole", "run: " + link);
+
            noticias5.add(n);
 
        }

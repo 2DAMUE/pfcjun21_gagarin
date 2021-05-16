@@ -52,6 +52,7 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
             }
         });
 
+
         ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);
         Log.d("Contenedor","Creando contenedor de vistas");
 
@@ -74,6 +75,9 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
                         }
                     }
                 });
+
+
+
         Log.d("Contenedor","Cvinculando la posicion" + position);
 
     }

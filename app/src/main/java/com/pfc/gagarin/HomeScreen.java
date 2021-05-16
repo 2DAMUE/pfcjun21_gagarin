@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -69,6 +70,8 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
                 startActivity(intent);
             }
         });
+
+
 
     }
 

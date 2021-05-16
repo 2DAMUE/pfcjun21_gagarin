@@ -24,15 +24,18 @@ public class HiloPeticionLanzamientos implements Runnable {
        PeticionLanzamientos.conectar();
         List<Lanzamiento> lanzamientos = new ArrayList<Lanzamiento>();
 
-       for (int i = 0; i < 5; i++){
+       for (int i = 0; i < 6; i++){
 
            String nombreCohete = PeticionLanzamientos.pedirNombreCohete(i);
            String foto = PeticionLanzamientos.pedirFoto(i);
            String fecha = PeticionLanzamientos.pedirFecha(i);
+           String lugar = PeticionLanzamientos.pedirLugar(i);
+           String link = PeticionLanzamientos.pedirLink(i);
 
-           Log.d("oppo", "run: " + nombreCohete + " " + foto + " " + fecha);
+           Log.d("oppo", "run: " + nombreCohete + " " + foto + " " + fecha + " " + lugar);
 
-           Lanzamiento n = new Lanzamiento(nombreCohete,fecha,foto);
+           Lanzamiento n = new Lanzamiento(nombreCohete,fecha,foto,lugar);
+           n.setLink(link);
            lanzamientos.add(n);
 
        }

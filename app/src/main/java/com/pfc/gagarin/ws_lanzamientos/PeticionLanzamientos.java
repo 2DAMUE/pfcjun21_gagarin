@@ -54,6 +54,23 @@ public class PeticionLanzamientos {
 
         return fecha;
     }
+    public static String pedirLugar(int i) {
+
+        int contador = 0;
+        String lugar = "";
+
+        Elements newsHeadlines = doc.getElementsByClass("col h6 mb-0 pt-2");
+        for (Element headline : newsHeadlines) {
+            if (contador == i){
+                lugar = headline.text();
+
+            }
+            contador++;
+
+        }
+
+        return lugar;
+    }
     public static String pedirFoto(int i) {
 
         int contador = 0;
@@ -70,5 +87,20 @@ public class PeticionLanzamientos {
         urlfoto = urlfoto.substring(21,urlfoto.length()-2);
 
         return urlfoto;
+    }
+    public static String pedirLink(int i) {
+
+        int contador = 0;
+        String urldatos = "";
+
+        Elements newsHeadlines = doc.getElementsByClass("d-none d-md-block col-3 col-md-3 launch-list-thumbnail");
+        for (Element headline : newsHeadlines) {
+            if (contador == i){
+                urldatos = headline.attr("href");
+
+            }
+            contador++;
+        }
+        return urldatos;
     }
 }

@@ -10,4 +10,12 @@
     <string name="H_pruebalo">Pruebalo Ahora →</string>
     <string name="H_verMas">Ver Todo</string>
     <string name="title_activity_mapa_marte">Map</string>
+    <string name="busca">Busca aquí</string>
+
+    <!-- Rovers Marte -->
+    <string name="opportunity_name">Opportunity</string>
+    <string name="curiosity_name">Curiosity</string>
+    <string name="perseverance_name">Perseverance</string>
+    <string name="spirit_name">Spirit</string>
+
 </resources>

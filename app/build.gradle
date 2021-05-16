@@ -10,6 +10,8 @@ android {
         applicationId "com.pfc.gagarin"
         minSdkVersion 21
         targetSdkVersion 30
+        renderscriptTargetApi 30 //must match target sdk and build tools
+        renderscriptSupportModeEnabled true
         versionCode 1
         versionName "1.0"
 

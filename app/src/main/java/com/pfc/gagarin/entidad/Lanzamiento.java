@@ -1,15 +1,18 @@
 package com.pfc.gagarin.entidad;
 
 public class Lanzamiento {
+
     private String rocket;
     private String hora;
     private String imagen;
     private String lugar;
+    private String link;
 
-    public Lanzamiento(String rocket, String hora, String imagen) {
+    public Lanzamiento(String rocket, String hora, String imagen,String lugar) {
         this.rocket = rocket;
         this.hora = hora;
         this.imagen = imagen;
+        this.lugar = lugar;
     }
 
     public String getRocket() {
@@ -42,5 +45,13 @@ public class Lanzamiento {
 
     public void setLugar(String lugar) {
         this.lugar = lugar;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

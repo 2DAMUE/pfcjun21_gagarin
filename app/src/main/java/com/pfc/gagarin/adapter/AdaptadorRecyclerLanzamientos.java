@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,8 +38,10 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
         final View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_card_lanzamientos, parent, false);
 
         TextView tv_titular = vista.findViewById(R.id.TV_nombrecohete);
-        //TextView tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
-        ImageView img_pfp = vista.findViewById(R.id.IV_fotolanzamiento);
+        TextView tv_fecha = vista.findViewById(R.id.TV_fechacohete);
+        TextView tv_lugar = vista.findViewById(R.id.TV_lugarcohete);
+        ImageView img_cohete = vista.findViewById(R.id.IV_cohete);
+        CardView cv_cohete = vista.findViewById(R.id.CV_Cohete);
         ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);
         Log.d("Contenedor","Creando contenedor de vistas");
         return contenedor;
@@ -47,10 +50,18 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
     @Override
     public void onBindViewHolder(@NonNull ContenedorDeVistas holder, int position) {
         Lanzamiento c = lista_contactos.get(position);
-        holder.tv_titular.setText(c.getRocket());
-        //holder.tv_fecha.setText(c.getHora());
 
-
+        holder.tv_nombreCohete.setText(c.getRocket());
+        holder.tv_fecha.setText(c.getHora());
+        holder.tv_lugar.setText(c.getLugar());
+        holder.cv_cohete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Cambio de ventana para ver mas informacion de dicho cohete
+                //dicha informacion se saca de ese link
+                //c.getLink();
+            }
+        });
 
         Glide.with(context)
                 .load(c.getImagen())
@@ -58,7 +69,7 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
                     @Override
                     public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            holder.img_noticia.setBackground(resource);
+                            holder.img_cohete.setBackground(resource);
                         }
                     }
                 });
@@ -73,15 +84,19 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
     }
 
     public static class ContenedorDeVistas extends RecyclerView.ViewHolder {
-        public TextView tv_titular,tv_fecha;
-        public ImageView img_noticia;
+        public CardView cv_cohete;
+        public TextView tv_nombreCohete,tv_fecha,tv_lugar;
+        public ImageView img_cohete;
 
 
         public ContenedorDeVistas(View vista) {
             super(vista);
-            this.tv_titular = vista.findViewById(R.id.TV_nombrecohete);
-            //this.tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
-            this.img_noticia = vista.findViewById(R.id.IV_fotolanzamiento);
+            this.tv_nombreCohete = vista.findViewById(R.id.TV_nombrecohete);
+            this.tv_fecha = vista.findViewById(R.id.TV_fechacohete);
+            this.tv_lugar = vista.findViewById(R.id.TV_lugarcohete);
+            this.img_cohete = vista.findViewById(R.id.IV_cohete);
+            this.cv_cohete = vista.findViewById(R.id.CV_Cohete);
+
 
         }
     }

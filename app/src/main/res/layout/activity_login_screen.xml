@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen"
-    android:id="@+id/root">
+    tools:context=".LoginScreen">
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,8 +19,8 @@
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blur_card"
         android:layout_width="311dp"
-        android:layout_height="315dp"
-        android:layout_marginBottom="175dp"
+        android:layout_height="395dp"
+        android:layout_marginBottom="95dp"
         android:background="@drawable/text_style_2"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
             android:id="@+id/card_content_login"
             style="@style/CardViewStyle"
             android:layout_width="311dp"
-            android:layout_height="315dp"
+            android:layout_height="395dp"
             android:layout_marginTop="0dp"
             android:fontFamily="@font/raleway_semibold"
             android:gravity="center_horizontal"
@@ -49,25 +49,26 @@
                 android:layout_marginTop="32dp"
                 android:elevation="8dp"
                 android:ems="10"
-                app:hintEnabled="false"
                 android:inputType="textEmailAddress"
                 app:boxBackgroundColor="@color/opacity2"
-                app:boxStrokeColor="@color/super_white"
                 app:boxCornerRadiusBottomEnd="20dp"
                 app:boxCornerRadiusBottomStart="20dp"
                 app:boxCornerRadiusTopEnd="20dp"
                 app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/super_white"
                 app:boxStrokeWidth="0px"
+                app:hintEnabled="false"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="Email"
+                    android:paddingRight="50dp"
                     android:textColor="@color/super_white"
-                    android:textColorHint="@color/super_white"
-                    android:fontFamily="@font/raleway_medium" />
+                    android:textColorHint="@color/super_white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -76,29 +77,29 @@
                 android:layout_width="265dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
-                app:passwordToggleTint="@color/white"
                 android:layout_marginTop="112dp"
                 android:elevation="8dp"
                 android:ems="10"
-                app:hintEnabled="false"
-                app:boxStrokeColor="@color/super_white"
                 app:boxBackgroundColor="@color/opacity2"
                 app:boxCornerRadiusBottomEnd="20dp"
                 app:boxCornerRadiusBottomStart="20dp"
                 app:boxCornerRadiusTopEnd="20dp"
                 app:boxCornerRadiusTopStart="20dp"
+                app:boxStrokeColor="@color/super_white"
                 app:boxStrokeWidth="0px"
-                app:layout_constraintTop_toTopOf="parent">
+                app:hintEnabled="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:passwordToggleTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ed_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/raleway_medium"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:textColor="@color/super_white"
-                    android:textColorHint="@color/super_white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/raleway_medium" />
+                    android:textColorHint="@color/super_white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -126,25 +127,44 @@
                 app:layout_constraintTop_toBottomOf="@+id/forgot"
                 app:layout_constraintVertical_bias="0.058" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sign_google"
+                style="@style/ButtonStraight2"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="272dp"
+                android:drawableLeft="@drawable/google"
+                android:elevation="8dp"
+                android:fontFamily="@font/raleway_medium"
+                android:text="@string/login_with_google"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forgot"
+                app:layout_constraintVertical_bias="0.058" />
+
             <TextView
                 android:id="@+id/account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="55dp"
-                android:layout_marginTop="275dp"
+                android:layout_marginTop="350dp"
                 android:elevation="8dp"
                 android:text="@string/account"
                 android:textColor="@color/gray" />
+
             <TextView
                 android:id="@+id/sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="205dp"
-                android:layout_marginTop="275dp"
+                android:layout_marginTop="350dp"
+                android:cursorVisible="true"
                 android:elevation="8dp"
                 android:text="@string/Sign"
-                android:cursorVisible="true"
                 android:textColor="@color/super_white" />
+
             <TextView
                 android:id="@+id/Show"
                 android:layout_width="wrap_content"
@@ -181,10 +201,9 @@
             android:text="Gagarin"
             android:textColor="#FFFFFF"
             android:textSize="48dp"
-            app:layout_constraintTop_toTopOf='@id/blur_tv'/>
+            app:layout_constraintTop_toTopOf='@id/blur_tv' />
 
     </eightbitlab.com.blurview.BlurView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

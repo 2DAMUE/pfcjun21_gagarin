@@ -13,4 +13,6 @@
     <color name="gray">#E2B1B1B1</color>
     <color name="super_white">#E2E2E2</color>
     <color name="blue">#314D68</color>
+    <color name="red">#771111</color>
+    <color name="black_opacity">#80000000</color>
 </resources>

@@ -33,4 +33,9 @@
         <item name="android:textColor">@color/blue</item>
         <item name="cornerRadius">20dp</item>
     </style>
+    <style name="ButtonStraight2" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/black_opacity</item>
+        <item name="android:textColor">@color/super_white</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
 </resources>

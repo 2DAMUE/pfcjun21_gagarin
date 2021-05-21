@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "48833691050",
+    "project_id": "gagarin-59ed5",
+    "storage_bucket": "gagarin-59ed5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48833691050:android:675fc1c9beb262d201ffd3",
+        "android_client_info": {
+          "package_name": "com.pfc.gagarin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48833691050-9iuub7d29eufco9necrdk2pba5b8jlnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4ESm4kjvJ8ZF-gKhx_GKeizbKJ-87TJA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48833691050-9iuub7d29eufco9necrdk2pba5b8jlnu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -96,7 +96,7 @@ public class RegisterScreen extends AppCompatActivity {
                 String email = et_email_register.getEditableText().toString();
                 String pass = et_pass_register.getEditableText().toString();
                 String confirm_pass = et_confirm_pass.getEditableText().toString();
-                boolean validado = comprobarCampos(email,pass,confirm_pass);
+                boolean validado = checkFields(email,pass,confirm_pass);
                 if(validado){
                     Usuario user = new Usuario(email,pass);
                     AccesoFirebase.registrarUsuario(firebaseAuth,user);
@@ -137,7 +137,7 @@ public class RegisterScreen extends AppCompatActivity {
 
         toast.show();
     }
-    private boolean comprobarCampos(String email, String pass, String confirm_pass) {
+    private boolean checkFields(String email, String pass, String confirm_pass) {
         if (email.isEmpty() && pass.isEmpty() && confirm_pass.isEmpty()) {
             showToast("Some of the fields are empty");
             return false;

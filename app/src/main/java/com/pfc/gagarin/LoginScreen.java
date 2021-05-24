@@ -113,7 +113,7 @@ public class LoginScreen extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if(task.isSuccessful()){
                                             if(firebaseAuth.getCurrentUser().isEmailVerified()){
-                                                Intent intent = new Intent(LoginScreen.this, MainActivity.class);
+                                                Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
@@ -307,7 +307,7 @@ public class LoginScreen extends AppCompatActivity {
     private void loadMain() {
         Log.e("he","se ha metido en el metodo");
 
-            Intent intent = new Intent(LoginScreen.this, MainActivity.class);
+            Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

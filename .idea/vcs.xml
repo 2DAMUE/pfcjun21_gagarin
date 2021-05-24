@@ -2,10 +2,13 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <mapping directory="$PROJECT_DIR$/../../" vcs="Git" />
 =======
     <mapping directory="$USER_HOME$/" vcs="Git" />
 >>>>>>> origin/Splash
+=======
+>>>>>>> origin/HomeScreen
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
 </project>

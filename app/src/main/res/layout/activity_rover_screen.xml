@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/IMG_background_rovers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/mars_surface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blur_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blur_bg_rovers"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_divi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <View
+            android:id="@+id/VW_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_divi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </eightbitlab.com.blurview.BlurView>
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="317dp"
+        android:layout_height="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="102dp"
+        android:elevation="2dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/busca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/IMG_sliderMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_divi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_menu_on_surface_24dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_divi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.23" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_divi">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blur_card_curiosity"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:background="@drawable/blur_bg_rovers_cards"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
+                app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CV_curiosity"
+                    style="@style/CardViewStyle_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_curiosity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="172dp"
+                            android:layout_height="27dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="32dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_curiosity"
+                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_curiosity"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_curiosity"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/IV_fotorover_curiosity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="155dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/curiosity_rover"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/TV_nombrerover_curiosity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="201dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:text="@string/curiosity_name"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_curiosity"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_curiosity"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline2_curiosity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="11dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </eightbitlab.com.blurview.BlurView>
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blur_card_opportunity"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/blur_bg_rovers"
+                app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
+                app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
+                app:layout_constraintTop_toBottomOf="@id/blur_card_curiosity">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CV_opportunity"
+                    style="@style/CardViewStyle_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_opportunity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="172dp"
+                            android:layout_height="27dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="32dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_opportunity"
+                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_opportunity"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_opportunity"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/IV_fotorover_opportunity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="150dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/opportunity_rover"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/TV_nombrerover_opportunity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="201dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:text="@string/opportunity_name"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_opportunity"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_opportunity"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline2_opportunity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="11dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </eightbitlab.com.blurview.BlurView>
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blur_card_spirit"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:background="@drawable/blur_bg_rovers"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
+                app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
+                app:layout_constraintTop_toBottomOf="@id/blur_card_opportunity">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CV_spirit"
+                    style="@style/CardViewStyle_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_spirit"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="172dp"
+                            android:layout_height="27dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="32dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_spirit"
+                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_spirit"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_spirit"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/IV_fotorover_spirit"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="150dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/spirit_rover"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/TV_nombrerover_spirit"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="201dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:text="@string/spirit_name"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_spirit"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_spirit"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline2_spirit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="11dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </eightbitlab.com.blurview.BlurView>
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blur_card_perseverance"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/blur_bg_rovers"
+                app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
+                app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
+                app:layout_constraintTop_toBottomOf="@id/blur_card_spirit">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/CV_perseverance"
+                    style="@style/CardViewStyle_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_perseverance"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="172dp"
+                            android:layout_height="27dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="32dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_perseverance"
+                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_perseverance"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_perseverance"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/IV_fotorover_perseverance"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="150dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/perseverance_rover"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/TV_nombrerover_perseverance"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="201dp"
+                            android:layout_height="31dp"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/sfprodisplaybold"
+                            android:text="@string/spirit_name"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_perseverance"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_perseverance"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline2_perseverance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="11dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </eightbitlab.com.blurview.BlurView>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_lateral1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_lateral2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

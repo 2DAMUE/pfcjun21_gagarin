@@ -141,6 +141,7 @@
                 android:layout_marginTop="272dp"
                 android:elevation="8dp"
                 android:fontFamily="@font/raleway_semibold"
+                android:paddingTop="1dp"
                 android:text="@string/register"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"

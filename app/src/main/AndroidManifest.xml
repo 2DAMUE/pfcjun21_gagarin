@@ -12,23 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gagarin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RoverScreen" android:theme="@style/Theme.Gagarin.noBar">
+        <activity android:name=".RoverDetailScreen" android:theme="@style/Theme.Gagarin.noBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RoverScreen"
+            android:theme="@style/Theme.Gagarin.noBar">
 
         </activity>
-
-        <activity
-            android:name=".NoticiaScreen"
-            android:theme="@style/Theme.Gagarin.noBar" />
         <activity
             android:name=".MapaMarte"
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity
             android:name=".HomeScreen"
             android:theme="@style/Theme.Gagarin.noBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".MainActivity" />
     </application>

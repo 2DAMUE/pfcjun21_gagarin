@@ -20,7 +20,7 @@ import org.rajawali3d.view.SurfaceView;
 public class MapaMarte extends AppCompatActivity {
 
     private SimpleRenderer renderer;
-    SurfaceView surface;
+    private SurfaceView surface;
 
 
     @Override

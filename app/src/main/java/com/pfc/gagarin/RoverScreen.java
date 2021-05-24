@@ -1,7 +1,9 @@
 package com.pfc.gagarin;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
+import com.pfc.gagarin.adapter.AdaptadorRecyclerNoticias;
 import com.pfc.gagarin.comunicacionNasa.PedirJson;
 import com.pfc.gagarin.entidad.Photos;
 import com.pfc.gagarin.entidad.Rover;
@@ -25,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RoverScreen extends AppCompatActivity {
+public class RoverScreen extends AppCompatActivity implements PedirJson.recogerFotosRover {
     private ViewGroup root;
     private BlurView card, card_curiosity_blur, card_opportunity_blur, card_perseverance_blur, card_spirit_blur;
     private CardView card_spirit, card_perseverance, card_opportunity, card_curiosity;
@@ -52,23 +55,8 @@ public class RoverScreen extends AppCompatActivity {
         card_spirit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Photos> llamada=  PedirJson.pedirRtf("spirit");
-                llamada.enqueue(new Callback<Photos>() {
+                PedirJson.pedirRtf("spirit",RoverScreen.this);
 
-                    @Override
-                    public void onResponse(Call<Photos> call, Response<Photos> response) {
-                        Photos d = response.body();
-                        List<Rover> datos = d.getDatosRover();
-
-
-
-                    }
-                    @Override
-                    public void onFailure(Call<Photos> call, Throwable t) {
-                        // TODO Auto-generated method stub
-
-                    }
-                });
             }
         });
 
@@ -82,7 +70,7 @@ public class RoverScreen extends AppCompatActivity {
         card.setupWith(root)
                 .setFrameClearDrawable(windowBackground)
                 .setBlurAlgorithm(new SupportRenderScriptBlur(this))
-                .setBlurRadius(radius)
+                .setBlurRadius(2f)
                 .setHasFixedTransformationMatrix(true);
         card_curiosity_blur.setupWith(root)
                 .setFrameClearDrawable(windowBackground)
@@ -105,6 +93,21 @@ public class RoverScreen extends AppCompatActivity {
                 .setBlurRadius(radius)
                 .setHasFixedTransformationMatrix(false);
 
+
+    }
+
+    @Override
+    public void mostrarFotos(List<Rover> r) {
+        Glide.with(RoverScreen.this)
+                .load(r.get(1).getImg_src())
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            card_spirit.setBackground(resource);
+                        }
+                    }
+                });
 
     }
 }

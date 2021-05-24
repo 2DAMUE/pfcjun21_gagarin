@@ -3,7 +3,7 @@ package com.pfc.gagarin.entidad;
 import java.util.List;
 
 public class Photos {
-    List<Rover> datosRover;
+    private List<Rover> datosRover;
 
     public List<Rover> getDatosRover() {
         return datosRover;

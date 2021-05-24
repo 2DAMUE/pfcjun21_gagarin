@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.pfc.gagarin.HomeScreen;
-import com.pfc.gagarin.NoticiaScreen;
 import com.pfc.gagarin.entidad.Noticia;
 import com.pfc.gagarin.R;
 
@@ -43,14 +42,14 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         TextView tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
         ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
         CardView card = vista.findViewById(R.id.CV_Noticia);
-
+/*
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, NoticiaScreen.class);
                 context.startActivity(intent);
             }
-        });
+        });*/
 
 
         ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);

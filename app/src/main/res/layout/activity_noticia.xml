@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/IV_fotonoticiaAmpli"
+        android:id="@+id/IV_fotonoticiaAmplia"
         android:layout_width="0dp"
         android:layout_height="270dp"
         android:background="@drawable/background_cardmarte"

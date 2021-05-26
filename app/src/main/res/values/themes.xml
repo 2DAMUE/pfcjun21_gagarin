@@ -33,11 +33,18 @@
         <item name="android:shape">rectangle</item>
         <item name="cardBackgroundColor">@color/opacity</item>
     </style>
+
     <style name="CardViewStyle_2" parent="CardView">
         <item name="cardCornerRadius">20dp</item>
         <item name="cardElevation">4dp</item>
         <item name="android:shape">rectangle</item>
         <item name="cardBackgroundColor">@color/glass</item>
+    </style>
+    <style name="CardViewStyle_3" parent="CardView">
+        <item name="cardCornerRadius">35dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:shape">rectangle</item>
+        <item name="cardBackgroundColor">#B2000000</item>
     </style>
     <style name="ButtonStraight" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/super_white</item>
@@ -49,7 +56,6 @@
         <item name="android:textColor">@color/super_white</item>
         <item name="cornerRadius">20dp</item>
     </style>
-=======
     <style name="CardViewStyle_9" parent="CardView">
         <item name="cardCornerRadius">20dp</item>
         <item name="cardElevation">0dp</item>

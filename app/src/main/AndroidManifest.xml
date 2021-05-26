@@ -17,7 +17,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".RegisterScreen"></activity>
         <activity android:name=".LoginScreen"/>
-        <activity android:name=".SplashScreen"
+        <activity android:name=".NoticiaScreen"
             android:theme="@style/Theme.Gagarin"
             android:usesCleartextTraffic="true">
             <intent-filter>
@@ -32,7 +32,7 @@
         </activity>
 
         <activity
-            android:name=".NoticiaScreen"
+            android:name=".SplashScreen"
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity
             android:name=".MapaMarte"

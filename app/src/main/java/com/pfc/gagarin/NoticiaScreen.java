@@ -1,24 +1,39 @@
 package com.pfc.gagarin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
+import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
+import com.pfc.gagarin.ws_body_noticias.HiloPeticionBodyNoticias;
 
 import eightbitlab.com.blurview.BlurView;
 
-public class NoticiaScreen extends AppCompatActivity {
+public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBodyNoticias.InterfazBodyNoticias {
     private ViewGroup root_story;
     private BlurView blur_scroll_story;
     private BlurView blur_blu_story;
     private ImageView iv_arrow_back;
+    private TextView tv_title_story;
+    private ImageView iv_image_story;
+    private TextView tv_body_story;
+    private ProgressBar pg_progress_story;
+    private TextView tv_source_story_link;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +44,32 @@ public class NoticiaScreen extends AppCompatActivity {
         blur_scroll_story = findViewById(R.id.blur_scroll_story);
         blur_blu_story = findViewById(R.id.blur_blu_story);
         iv_arrow_back = findViewById(R.id.iv_arrow_back);
+        tv_title_story = findViewById(R.id.tv_title_story);
+        tv_body_story = findViewById(R.id.tv_body_story);
+        tv_source_story_link = findViewById(R.id.tv_source_story_link);
+        iv_image_story = findViewById(R.id.iv_image_story);
+        pg_progress_story = findViewById(R.id.pg_progress_story);
+
+        tv_title_story.setText(getIntent().getStringExtra("Home"));
+        //Set image story
+        Glide.with(getApplicationContext())
+                .load(getIntent().getStringExtra("Image"))
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            iv_image_story.setBackground(resource);
+                        }
+                    }
+                });
+        //Get url story
+        String url_story = getIntent().getStringExtra("URL");
+        tv_source_story_link.setText(url_story);
+        // Hilo que llama al webscrapping
+        pg_progress_story.setVisibility(View.VISIBLE);
+        HiloPeticionBodyNoticias r = new HiloPeticionBodyNoticias(NoticiaScreen.this,url_story);
+        Thread t1 = new Thread(r);
+        t1.start();
 
         blurBackground();
 
@@ -62,4 +103,15 @@ public class NoticiaScreen extends AppCompatActivity {
     }
 
 
+    @Override
+    public void devolverBodyNoticias(String cuerpoNoticia) {
+        //Set Body Story
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                tv_body_story.setText(cuerpoNoticia);
+                pg_progress_story.setVisibility(View.GONE);
+            }
+        });
+    }
 }

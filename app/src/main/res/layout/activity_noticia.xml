@@ -133,6 +133,78 @@
                             android:textSize="15sp"
                             app:layout_constraintStart_toEndOf="@+id/tv_source_story"
                             app:layout_constraintTop_toBottomOf="@+id/tv_body_story" />
+                        <View
+                            android:id="@+id/v_line1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_source_story_link" />
+                        <TextView
+                            android:id="@+id/tv_story_comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoLink="web"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginLeft="25dp"
+                            android:paddingBottom="10dp"
+                            android:text="Comments"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:textColor="@color/super_white"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+                        <View
+                            android:id="@+id/v_line2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@color/gray"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_story_comments"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/iv_comment_user"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginBottom="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line2"
+                            app:srcCompat="@mipmap/ic_launcher" />
+                        <View
+                            android:id="@+id/v_line3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/gray"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_comment_user"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <EditText
+                            android:id="@+id/editTextTextPersonName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:background="@android:color/transparent"
+                            android:hint="Leave a comment..."
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginStart="90dp"
+                            style="@style/EditTextHint"
+                            android:backgroundTint="@color/super_white"
+                            android:textColor="@color/gray"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

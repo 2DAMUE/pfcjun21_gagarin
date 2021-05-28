@@ -40,8 +40,6 @@ public class SimpleRendererRover extends Renderer {
             rover = objParser.getParsedObject();
             getCurrentScene().addChild(rover);
 
-
-
         } catch (ParsingException e) {
             e.printStackTrace();
         }
@@ -50,7 +48,7 @@ public class SimpleRendererRover extends Renderer {
         ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
         arcball.setTarget(rover); //your 3D Object
 
-        arcball.setPosition(2,1,5); //optional
+        arcball.setPosition(-3,3,4); //optional
 
         getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
 

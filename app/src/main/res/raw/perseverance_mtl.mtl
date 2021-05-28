@@ -91,7 +91,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump -bm 2.000000 foil_n.jpg
+map_Bump foil_n.jpg
 
 newmtl blades
 Ns 0.000000
@@ -154,7 +154,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Bump -bm 2.000000 foil_n.jpg
+map_Bump foil_n.jpg
 
 newmtl glass_2
 Ns 812.249999
@@ -197,7 +197,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Bump -bm 2.000000 foil_n.jpg
+map_Bump foil_n.jpg
 
 newmtl grey_brushed
 Ns 2.677681
@@ -238,7 +238,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Bump -bm 0.600000 mars_2020_hub_n.jpg
+map_Bump mars_2020_hub_n.jpg
 map_Kd mars_2020_hub.jpg
 
 newmtl iron
@@ -383,7 +383,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Bump -bm 2.000000 mars_2020_05_n.png
+map_Bump mars_2020_05_n.png
 map_Kd mars_2020_05.jpg
 
 newmtl mars_2020_05_cooling_lines
@@ -406,7 +406,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Bump -bm 3.000000 mars_2020_05_n.png
+map_Bump mars_2020_05_n.png
 map_Kd mars_2020_05.jpg
 
 newmtl mars_2020_06
@@ -439,7 +439,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Bump -bm 1.500000 mars_2020_06_n.jpg
+map_Bump mars_2020_06_n.jpg
 map_Kd mars_2020_06.jpg
 
 newmtl mars_2020_07
@@ -475,8 +475,18 @@ d 1.000000
 illum 2
 map_Kd nameplate.jpg
 
-newmtl Material
-Ns 323.999994
+newmtl paint_white_base
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.652543 0.652543 0.692071
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl sample_handling_door
+Ns 225.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
@@ -484,3 +494,27 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
+map_Kd sample_handling_door.jpg
+
+newmtl spring
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.522522 0.522522 0.522522
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump mars_2020_spring_n.jpg
+
+newmtl transparent
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd clear.png
+map_d clear.png

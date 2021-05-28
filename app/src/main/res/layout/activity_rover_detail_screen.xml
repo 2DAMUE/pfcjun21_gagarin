@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mars_surface2"
@@ -32,6 +33,7 @@
         android:id="@+id/blur_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/blur_bg_rovers_cards"
         app:layout_constraintBottom_toTopOf="@+id/guideline_rovers_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.44"
@@ -40,7 +42,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CV_Noticia"
-            style="@style/Base.CardView"
+            style="@style/CardViewStyle_9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#C90C0C0C"
@@ -88,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_begin="20dp" />
+
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline_vertical_rover_detail2"
                     android:layout_width="wrap_content"

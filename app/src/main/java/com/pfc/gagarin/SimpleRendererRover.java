@@ -50,7 +50,7 @@ public class SimpleRendererRover extends Renderer {
         ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
         arcball.setTarget(rover); //your 3D Object
 
-        arcball.setPosition(2,1,2); //optional
+        arcball.setPosition(2,1,5); //optional
 
         getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
 

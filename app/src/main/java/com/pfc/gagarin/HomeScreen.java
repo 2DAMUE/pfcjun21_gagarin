@@ -59,6 +59,9 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         Thread t2 = new Thread(a);
         t2.start();
 
+         //TODO: 27/05/2021 Añadir funcionalidad de los progress bar
+
+
 
 
 

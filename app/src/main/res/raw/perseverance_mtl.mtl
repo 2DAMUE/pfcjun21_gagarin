@@ -1,7 +1,7 @@
 # Blender MTL File: 'None'
 # Material Count: 48
 
-newmtl Material.001
+newmtl Material_001
 Ns 201.123989
 Ka 1.000000 1.000000 1.000000
 Kd 0.453452 0.182931 0.080002
@@ -21,7 +21,7 @@ Ni 1.450000
 d 1.000000
 illum 3
 
-newmtl aluminum.001
+newmtl aluminum_001
 Ns 272.250012
 Ka 1.000000 1.000000 1.000000
 Kd 0.964686 0.964686 0.964686
@@ -31,7 +31,7 @@ Ni 1.450000
 d 1.000000
 illum 3
 
-newmtl aluminum.003
+newmtl aluminum_003
 Ns 470.101274
 Ka 1.000000 1.000000 1.000000
 Kd 0.964686 0.964686 0.964686
@@ -51,7 +51,7 @@ Ni 1.450000
 d 1.000000
 illum 3
 
-newmtl aluminum_black.001
+newmtl aluminum_black_001
 Ns 440.999985
 Ka 1.000000 1.000000 1.000000
 Kd 0.077739 0.073838 0.073838
@@ -308,7 +308,7 @@ d 1.000000
 illum 2
 map_Kd mars_2020_03.jpg
 
-newmtl mars_2020_03.002
+newmtl mars_2020_03_002
 Ns 225.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
@@ -330,7 +330,7 @@ d 1.000000
 illum 2
 map_Kd mars_2020_04.jpg
 
-newmtl mars_2020_04.001
+newmtl mars_2020_04_001
 Ns 225.000000
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000

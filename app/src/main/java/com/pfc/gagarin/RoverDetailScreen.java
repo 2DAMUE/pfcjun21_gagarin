@@ -23,5 +23,9 @@ public class RoverDetailScreen extends AppCompatActivity {
         renderer = new SimpleRendererRover(this,"oppo");
         surface.getHolder().setFormat(PixelFormat.TRANSPARENT);
         surface.setSurfaceRenderer(renderer);
+
+        /**
+         * // TODO: 27/05/2021 Hacer cargar los diferentes modelos e informacion dependiendo del rover elegido 
+         */
     }
 }

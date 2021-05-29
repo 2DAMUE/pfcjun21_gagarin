@@ -13,9 +13,34 @@
     <string name="busca">Busca aquí</string>
 
     <!-- Rovers Marte -->
+    <!-- Datos Opportunity -->
     <string name="opportunity_name">Opportunity</string>
+    <string name="opportunity_title"></string>
+    <string name="opportunity_body"></string>
+
+    <!-- Datos Curiosity -->
     <string name="curiosity_name">Curiosity</string>
+    <string name="curiosity_title">Examinando el cráter Gale</string>
+    <string name="curiosity_body">Curiosity explora el cráter Gale y adquiere muestras de roca,
+        suelo y aire para análisis a bordo. El rover del tamaño de un automóvil es tan alto como un jugador
+        de baloncesto y usa un brazo de 7 pies de largo para colocar herramientas cerca de las rocas
+        seleccionadas para su estudio. El gran tamaño de Curiosity le permite llevar un kit avanzado
+        de 10 instrumentos científicos. Tiene herramientas que incluyen 17 cámaras, un láser para
+        vaporizar y estudiar pequeños puntos puntuales de rocas a distancia y un taladro para recolectar
+        muestras de roca en polvo. Busca rocas especiales que se formaron en el agua y/o tienen signos
+        de orgánicos.</string>
+    <!-- Datos Perseverance -->
     <string name="perseverance_name">Perseverance</string>
+    <string name="perseverance_title">Tecnologías para operaciones de superficie</string>
+    <string name="perseverance_body">El Perseverance prueba una tecnología para extraer oxígeno de la atmósfera marciana,
+        que es 96% de dióxido de carbono. Esta demostración ayuda a los planificadores de misiones a probar formas de utilizar
+        los recursos naturales de Marte para apoyar a los exploradores humanos y mejorar los diseños de soporte vital,
+        transporte y otros sistemas importantes para vivir y trabajar en Marte. El rover también monitorea el clima
+        y el polvo en la atmósfera marciana. Dichos estudios son importantes para comprender los cambios diarios y estacionales en Marte,
+        y ayudarán a los futuros exploradores humanos a predecir mejor el clima marciano.</string>
+    <!-- Datos Spirit -->
     <string name="spirit_name">Spirit</string>
+    <string name="spirit_title"></string>
+    <string name="spirit_body"></string>
 
 </resources>

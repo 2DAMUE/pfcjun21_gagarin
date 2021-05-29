@@ -1,34 +1,20 @@
 package com.pfc.gagarin;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
-import com.pfc.gagarin.adapter.AdaptadorRecyclerNoticias;
-import com.pfc.gagarin.comunicacionNasa.PedirJson;
-import com.pfc.gagarin.entidad.Photos;
-import com.pfc.gagarin.entidad.Rover;
-
-import java.util.List;
 
 import eightbitlab.com.blurview.BlurView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class RoverScreen extends AppCompatActivity implements PedirJson.recogerFotosRover {
+public class RoverScreen extends AppCompatActivity {
     private ViewGroup root;
     private BlurView card, card_curiosity_blur, card_opportunity_blur, card_perseverance_blur, card_spirit_blur;
     private CardView card_spirit, card_perseverance, card_opportunity, card_curiosity;
@@ -37,32 +23,58 @@ public class RoverScreen extends AppCompatActivity implements PedirJson.recogerF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rover_screen);
-
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //API KEY FOTOS ROVERS vYqFoAd5xt4NAjJ0dznwAcynLDMba3AE4U7nD4kB
+        //Asignacion de componentes
         root= findViewById(R.id.root);
         card = findViewById(R.id.blur_card);
         card_curiosity_blur = findViewById(R.id.blur_card_curiosity);
         card_opportunity_blur = findViewById(R.id.blur_card_opportunity);
         card_perseverance_blur = findViewById(R.id.blur_card_perseverance);
         card_spirit_blur = findViewById(R.id.blur_card_spirit);
-
-        //API KEY FOTOS ROVERS vYqFoAd5xt4NAjJ0dznwAcynLDMba3AE4U7nD4kB
-        card_spirit = findViewById(R.id.CV_curiosity);
-        card_perseverance = findViewById(R.id.CV_curiosity);
-        card_opportunity = findViewById(R.id.CV_curiosity);
+        card_spirit = findViewById(R.id.CV_spirit);
+        card_perseverance = findViewById(R.id.CV_perseverance);
+        card_opportunity = findViewById(R.id.CV_opportunity);
         card_curiosity = findViewById(R.id.CV_curiosity) ;
 
+        //Cambian de Activity y les pasan nombre de Rover
         card_spirit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PedirJson.pedirRtf("spirit",RoverScreen.this);
-
+                //PedirJson.pedirRtf("spirit",RoverScreen.this);
+                Intent intent = new Intent(RoverScreen.this, RoverDetailScreen.class);
+                intent.putExtra("nombre_rover", "spirit");
+                startActivity(intent);
+            }
+        });
+        card_opportunity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //PedirJson.pedirRtf("spirit",RoverScreen.this);
+                Intent intent = new Intent(RoverScreen.this, RoverDetailScreen.class);
+                intent.putExtra("nombre_rover", "spirit");
+                startActivity(intent);
+            }
+        });
+        card_curiosity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //PedirJson.pedirRtf("spirit",RoverScreen.this);
+                Intent intent = new Intent(RoverScreen.this, RoverDetailScreen.class);
+                intent.putExtra("nombre_rover", "curiosity");
+                startActivity(intent);
             }
         });
 
-
-
-
+        card_perseverance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //PedirJson.pedirRtf("spirit",RoverScreen.this);
+                Intent intent = new Intent(RoverScreen.this, RoverDetailScreen.class);
+                intent.putExtra("nombre_rover", "perseverance");
+                startActivity(intent);
+            }
+        });
         //Para hacer Borrroso
         final float radius = 3f;
         final Drawable windowBackground = getWindow().getDecorView().getBackground();
@@ -70,7 +82,7 @@ public class RoverScreen extends AppCompatActivity implements PedirJson.recogerF
         card.setupWith(root)
                 .setFrameClearDrawable(windowBackground)
                 .setBlurAlgorithm(new SupportRenderScriptBlur(this))
-                .setBlurRadius(2f)
+                .setBlurRadius(radius)
                 .setHasFixedTransformationMatrix(true);
         card_curiosity_blur.setupWith(root)
                 .setFrameClearDrawable(windowBackground)
@@ -92,22 +104,5 @@ public class RoverScreen extends AppCompatActivity implements PedirJson.recogerF
                 .setBlurAlgorithm(new SupportRenderScriptBlur(this))
                 .setBlurRadius(radius)
                 .setHasFixedTransformationMatrix(false);
-
-
-    }
-
-    @Override
-    public void mostrarFotos(List<Rover> r) {
-        Glide.with(RoverScreen.this)
-                .load(r.get(1).getImg_src())
-                .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            card_spirit.setBackground(resource);
-                        }
-                    }
-                });
-
     }
 }

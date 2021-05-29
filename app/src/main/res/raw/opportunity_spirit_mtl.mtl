@@ -1,0 +1,104 @@
+# Blender MTL File: 'None'
+# Material Count: 9
+
+newmtl Silver
+Ns 440.999985
+Ka 1.000000 1.000000 1.000000
+Kd 0.964686 0.964686 0.964686
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl foil_silver
+Ns 440.999985
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 0.999999 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump foil_n_oppo_sprt.png
+
+newmtl tex_arm
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd tex_arm_oppo_sprt.png
+
+newmtl tex_body_n
+Ns 272.250012
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump tex_body_n_oppo_sprt.png
+map_Kd tex_body_oppo_sprt.png
+
+newmtl tex_instruments
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd tex_instruments_oppo_sprt.png
+
+newmtl tex_mast
+Ns 56.250000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd tex_mast_oppo_sprt.png
+
+newmtl tex_panels2_n
+Ns 728.999998
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump tex_panels2_n_oppo_sprt.png
+map_Kd tex_panels2_oppo_sprt.png
+
+newmtl tex_panels_n
+Ns 728.999998
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump tex_panels_n_oppo_sprt.png
+map_Kd tex_panels.png
+
+newmtl tex_suspension_n
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump tex_suspension_n_oppo_sprt.png
+map_Kd tex_suspension_oppo_sprt.png

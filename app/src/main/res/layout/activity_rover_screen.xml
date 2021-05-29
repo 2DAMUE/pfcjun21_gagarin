@@ -73,13 +73,12 @@
         app:layout_constraintVertical_bias="0.0"
         android:src="@drawable/ic_menu_on_surface_24dp" />
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_divi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.23" />
+        app:layout_constraintGuide_begin="160dp" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -94,14 +93,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_curiosity"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
-                android:background="@drawable/blur_bg_rovers_cards"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
-                app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
+                android:background="@drawable/blur_bg_rovers_cards"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_lateral2"
+                app:layout_constraintStart_toStartOf="@+id/guideline_lateral1"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.cardview.widget.CardView
@@ -182,12 +183,13 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_opportunity"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/blur_bg_rovers_cards"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O2"
                 app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
                 app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
-                app:layout_constraintTop_toBottomOf="@id/blur_card_curiosity">
+                app:layout_constraintTop_toTopOf="@+id/guideline_C_O">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/CV_opportunity"
@@ -266,12 +268,13 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_spirit"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
-                android:background="@drawable/blur_bg_rovers_cards"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/blur_bg_rovers_cards"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O3"
                 app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
                 app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
-                app:layout_constraintTop_toBottomOf="@id/blur_card_opportunity">
+                app:layout_constraintTop_toTopOf="@+id/guideline_C_O2">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/CV_spirit"
@@ -350,13 +353,13 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_perseverance"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/blur_bg_rovers_cards"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O4"
                 app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
                 app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
-                app:layout_constraintTop_toBottomOf="@id/blur_card_spirit">
+                app:layout_constraintTop_toTopOf="@+id/guideline_C_O3">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/CV_perseverance"
@@ -445,6 +448,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="136dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="272dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="408dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="544dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

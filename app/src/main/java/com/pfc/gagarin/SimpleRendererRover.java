@@ -8,6 +8,7 @@ import androidx.loader.app.LoaderManager;
 
 import org.rajawali3d.Object3D;
 import org.rajawali3d.cameras.ArcballCamera;
+import org.rajawali3d.lights.DirectionalLight;
 import org.rajawali3d.loader.LoaderAWD;
 import org.rajawali3d.loader.LoaderGCode;
 import org.rajawali3d.loader.LoaderOBJ;
@@ -17,6 +18,7 @@ import org.rajawali3d.loader.fbx.LoaderFBX;
 import org.rajawali3d.materials.Material;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
+import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.renderer.Renderer;
 
 public class SimpleRendererRover extends Renderer {
@@ -32,31 +34,62 @@ public class SimpleRendererRover extends Renderer {
     }
     @Override
     protected void initScene() {
-        Material material = new Material();
-        LoaderOBJ objParser = new LoaderOBJ(mContext.getResources(), mTextureManager, R.raw.perseverance_obj);
+        LoaderOBJ objParser = null;
+        switch (nombreRover){
+            case "curiosity":
+                objParser = new LoaderOBJ(mContext.getResources(), mTextureManager, R.raw.cusiosity_obj);
+                try {
+                    objParser.parse();
+                    rover = objParser.getParsedObject();
+                    getCurrentScene().addChild(rover);
+                    getCurrentCamera().setZ(3.2f);
+                    ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
+                    arcball.setTarget(rover); //your 3D Object
+                    arcball.setPosition(-3,3,4); //optional
+                    getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
+                } catch (ParsingException e) {
+                    e.printStackTrace();
+                }
+                break;
 
-        try {
-            objParser.parse();
-            rover = objParser.getParsedObject();
-            getCurrentScene().addChild(rover);
+            case "perseverance":
+                objParser = new LoaderOBJ(mContext.getResources(), mTextureManager, R.raw.perseverance_obj);
+                try {
+                    objParser.parse();
+                    rover = objParser.getParsedObject();
+                    getCurrentScene().addChild(rover);
+                    getCurrentCamera().setZ(3.2f);
+                    ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
+                    arcball.setTarget(rover); //your 3D Object
+                    arcball.setPosition(-3,3,4); //optional
+                    getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
+                } catch (ParsingException e) {
+                    e.printStackTrace();
+                }
+                break;
 
-        } catch (ParsingException e) {
-            e.printStackTrace();
+            case "opportunity": case "spirit":
+                objParser = new LoaderOBJ(mContext.getResources(), mTextureManager, R.raw.opportunity_spirit_obj);
+                try {
+                    objParser.parse();
+                    rover = objParser.getParsedObject();
+                    getCurrentScene().addChild(rover);
+                    getCurrentCamera().setZ(3.2f);
+                    ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
+                    arcball.setTarget(rover); //your 3D Object
+                    arcball.setPosition(-1,2,2.5); //optional
+                    getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
+                } catch (ParsingException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
-        getCurrentCamera().setZ(3.2f);
-
-        ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
-        arcball.setTarget(rover); //your 3D Object
-
-        arcball.setPosition(-3,3,4); //optional
-
-        getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
 
     }
     @Override
     public void onRender(final long elapsedTime, final double deltaTime) {
         super.onRender(elapsedTime, deltaTime);
-
+        rover.rotate(Vector3.Axis.Y, 1.0);
     }
 
     @Override

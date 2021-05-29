@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
 import com.pfc.gagarin.ws_body_noticias.HiloPeticionBodyNoticias;
 
@@ -29,12 +32,14 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     private ViewGroup root_story;
     private BlurView blur_scroll_story;
     private BlurView blur_blu_story;
-    private ImageView iv_arrow_back;
+    private ImageView iv_arrow_back,iv_comment_user;
     private TextView tv_title_story;
     private ImageView iv_image_story;
     private TextView tv_body_story;
     private ProgressBar pg_progress_story;
     private TextView tv_source_story_link;
+
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +54,12 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         tv_body_story = findViewById(R.id.tv_body_story);
         tv_source_story_link = findViewById(R.id.tv_source_story_link);
         iv_image_story = findViewById(R.id.iv_image_story);
+        iv_comment_user = findViewById(R.id.iv_comment_user);
         pg_progress_story = findViewById(R.id.pg_progress_story);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        //get user photo
+        obtenerFotoPerfil();
 
         tv_title_story.setText(getIntent().getStringExtra("Home"));
         //Set image story
@@ -81,6 +91,37 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
                 startActivity(intent);
             }
         });
+
+    }
+
+    private void obtenerFotoPerfil() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user.getPhotoUrl() != null){
+            Glide.with(getApplicationContext())
+                    .load(user.getPhotoUrl())
+                    .circleCrop()
+                    .into(new SimpleTarget<Drawable>() {
+                        @Override
+                        public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                iv_comment_user.setBackground(resource);
+                            }
+                        }
+                    });
+        }else{
+            Glide.with(getApplicationContext())
+                    .load(R.drawable.astronauta)
+                    .circleCrop()
+                    .into(new SimpleTarget<Drawable>() {
+                        @Override
+                        public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                iv_comment_user.setBackground(resource);
+                            }
+                        }
+                    });
+        }
+
 
     }
 

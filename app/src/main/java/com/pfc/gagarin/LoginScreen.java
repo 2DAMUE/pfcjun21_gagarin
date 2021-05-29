@@ -118,7 +118,7 @@ public class LoginScreen extends AppCompatActivity {
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
                                             }else{
-                                                Toast.makeText(LoginScreen.this,"Por favor, verifica tu email",Toast.LENGTH_LONG).show();
+                                                showToast("Please, verify your email...");
                                             }
                                         }else{
                                             //showToast("Usuario o contraseña incorrectos");

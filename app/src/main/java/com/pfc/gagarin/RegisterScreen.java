@@ -32,7 +32,7 @@ public class RegisterScreen extends AppCompatActivity {
     private BlurView register_card;
     private BlurView register_view_title;
     private TextView register_tv_show,register_tv_show2;
-    private TextInputEditText et_pass_register,et_confirm_pass,et_email_register;
+    private TextInputEditText et_pass_register,et_confirm_pass,et_email_register,et_username_register;
     private CheckBox checkBox;
     private Button btn_register;
     private FirebaseAuth firebaseAuth;
@@ -51,6 +51,7 @@ public class RegisterScreen extends AppCompatActivity {
         register_view_title= findViewById(R.id.register_blur_tv);
         et_email_register = findViewById(R.id.register_ed_email);
         et_pass_register = findViewById(R.id.register_ed_pass);
+        et_username_register = findViewById(R.id.register_ed_username);
         et_confirm_pass = findViewById(R.id.register_ed_confirm_pass);
         register_tv_show = findViewById(R.id.register_Show);
         register_tv_show2 = findViewById(R.id.register_Show2);
@@ -93,11 +94,13 @@ public class RegisterScreen extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = et_email_register.getEditableText().toString();
-                String pass = et_pass_register.getEditableText().toString();
-                String confirm_pass = et_confirm_pass.getEditableText().toString();
-                boolean validado = checkFields(email,pass,confirm_pass);
+                String username = et_username_register.getEditableText().toString().trim();
+                String email = et_email_register.getEditableText().toString().trim();
+                String pass = et_pass_register.getEditableText().toString().trim();
+                String confirm_pass = et_confirm_pass.getEditableText().toString().trim();
+                boolean validado = checkFields(email,pass,confirm_pass,username);
                 if(validado){
+
                     Usuario user = new Usuario(email,pass);
                     AccesoFirebase.registrarUsuario(firebaseAuth,user);
                     Intent intent = new Intent(RegisterScreen.this,LoginScreen.class);
@@ -137,8 +140,8 @@ public class RegisterScreen extends AppCompatActivity {
 
         toast.show();
     }
-    private boolean checkFields(String email, String pass, String confirm_pass) {
-        if (email.isEmpty() && pass.isEmpty() && confirm_pass.isEmpty()) {
+    private boolean checkFields(String email, String pass, String confirm_pass, String username) {
+        if (email.isEmpty() && pass.isEmpty() && confirm_pass.isEmpty() && username.isEmpty()) {
             showToast("Some of the fields are empty");
             return false;
         } else if (email.isEmpty()) {
@@ -146,6 +149,9 @@ public class RegisterScreen extends AppCompatActivity {
             return false;
         } else if (pass.isEmpty()) {
             showToast("Password field cannot be empty");
+            return false;
+        } else if (username.isEmpty()) {
+            showToast("User Name field cannot be empty");
             return false;
         } else if (confirm_pass.isEmpty()) {
             showToast("Confirm Password field cannot be empty");

@@ -30,4 +30,23 @@
     <string name="perseverance_name">Perseverance</string>
     <string name="spirit_name">Spirit</string>
 
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account">Account Settings</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about_us">About us</string>
+    <string name="settings_github">Github</string>
+    <string name="settings_logout">Logout</string>
+    <string name="account_settings_title">Account settings</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="save_account_settings">Save</string>
+    <string name="launch_notification">Launch notifications</string>
+    <string name="news_notification">Latest news notifications</string>
+    <string name="aboutus_name_1">Ionut Alin</string>
+    <string name="aboutus_developer">Developer</string>
+    <string name="aboutus_name_2">Fran Ruiz</string>
+    <string name="aboutus_name_3">Fabiola Decena</string>
+    <string name="aboutus_ux">UX Designer</string>
+    <string name="aboutus_name_4">Pablo Benito</string>
 </resources>

@@ -62,9 +62,8 @@ public class RoverDetailScreen extends AppCompatActivity implements HiloCargaMod
         //Se prepara para llamar a la clase que carga el objeto 3D
         surface = findViewById(R.id.rajawali_surface_rover);
         HiloCargaModelo h1 = new HiloCargaModelo(this, surface, nombreRover);
-        h1.run();
-
-
+        Thread t1 = new Thread(h1);
+        t1.start();
 
         //Establece los textos correspondientes a cada rover
         switch (nombreRover){

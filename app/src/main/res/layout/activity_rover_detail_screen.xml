@@ -80,7 +80,7 @@
                     android:fontFamily="@font/ralewaylight"
                     android:gravity="start|left"
                     android:textColor="@color/white"
-                    android:textSize="19sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_rover_detail2"
                     app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
                     app:layout_constraintTop_toBottomOf="@+id/TV_lugarAterrizajeRover" />

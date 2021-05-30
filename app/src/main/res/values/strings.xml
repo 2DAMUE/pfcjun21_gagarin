@@ -9,10 +9,18 @@
     <string name="H_satelites">Satélites de la Tierra</string>
     <string name="H_pruebalo">Pruebalo Ahora →</string>
     <string name="H_verMas">Ver Todo</string>
-    <string name="title_activity_mapa_marte">Map</string>
-    <string name="busca">Busca aquí</string>
-
-    <!-- Rovers Marte -->
+    <string name="H_title_activity_mapa_marte">Map</string>
+    <string name="H_busca">Busca aquí</string>
+    <!--  LANZAMIENTOS  -->
+    <string name="L_tituloVentana">¡Echa un vistazo a los próximos lanzamientos!</string>
+    <string name="L_countdown">Cuenta atrás</string>
+    <string name="L_verDetalles">Leer más →</string>
+    <string name="L_fechaPrevista">Fecha prevista</string>
+    <string name="L_overview">Información General</string>
+    <string name="L_lugar">Lugar de Lanzamiento</string>
+    <string name="L_infoCohete">Informacion del Cohete</string>
+    <string name="L_lugar_mapa">Mapa</string>
+    <!-- ROVERS MARTE -->
     <!-- Datos Opportunity -->
     <string name="opportunity_name">Opportunity</string>
     <string name="opportunity_title"></string>
@@ -42,5 +50,6 @@
     <string name="spirit_name">Spirit</string>
     <string name="spirit_title"></string>
     <string name="spirit_body"></string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

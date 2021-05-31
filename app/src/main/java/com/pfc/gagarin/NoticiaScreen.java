@@ -1,7 +1,11 @@
 package com.pfc.gagarin;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.graphics.Paint;
@@ -10,12 +14,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -23,12 +30,28 @@ import com.bumptech.glide.request.transition.Transition;
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.pfc.gagarin.adapter.AdaptadorMensajes;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
+import com.pfc.gagarin.entidad.Mensaje;
+import com.pfc.gagarin.entidad.Noticia;
+import com.pfc.gagarin.persistencia.AccesoFirebase;
 import com.pfc.gagarin.ws_body_noticias.HiloPeticionBodyNoticias;
+
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import eightbitlab.com.blurview.BlurView;
 
-public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBodyNoticias.InterfazBodyNoticias {
+public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBodyNoticias.InterfazBodyNoticias{
     private ViewGroup root_story;
     private BlurView blur_scroll_story;
     private BlurView blur_blu_story;
@@ -38,8 +61,13 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     private TextView tv_body_story;
     private ProgressBar pg_progress_story;
     private TextView tv_source_story_link;
+    private EditText et_comment_story;
+    private RecyclerView rv_mensajes;
 
     private FirebaseAuth firebaseAuth;
+
+    private List<Mensaje> lista_mensajes;
+    private AdaptadorMensajes adaptadorMensajes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +84,33 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         iv_image_story = findViewById(R.id.iv_image_story);
         iv_comment_user = findViewById(R.id.iv_comment_user);
         pg_progress_story = findViewById(R.id.pg_progress_story);
+        et_comment_story = findViewById(R.id.et_comment_story);
+        rv_mensajes = findViewById(R.id.rv_comments);
 
         firebaseAuth=FirebaseAuth.getInstance();
+
+        //AccesoFirebase.devolverMensajes2(NoticiaScreen.this,tv_title_story.getText().toString());
+        lista_mensajes = new ArrayList<Mensaje>();
+        RecyclerView.LayoutManager gestor = new LinearLayoutManager(NoticiaScreen.this);
+        AdaptadorMensajes adaptador = new AdaptadorMensajes(lista_mensajes);
+        rv_mensajes.setLayoutManager(gestor);
+        rv_mensajes.setAdapter(adaptador);
+
+        FirebaseFirestore.getInstance().collection(getIntent().getStringExtra("Home").substring(0,15).replace(" ","").replace("'","").replace("-",""))
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        for (DocumentChange mDocumentChange : queryDocumentSnapshots.getDocumentChanges()){
+                            if(mDocumentChange.getType() == DocumentChange.Type.ADDED){
+                                lista_mensajes.add(mDocumentChange.getDocument().toObject(Mensaje.class));
+                                adaptador.notifyDataSetChanged();
+                                rv_mensajes.smoothScrollToPosition(lista_mensajes.size());
+                            }
+                        }
+                    }
+                });
+
+
         //get user photo
         obtenerFotoPerfil();
 
@@ -92,6 +145,43 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
             }
         });
 
+        et_comment_story.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    addMessageToChat();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+    }
+
+    private void addMessageToChat() {
+        String message = et_comment_story.getEditableText().toString();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        String username = "";
+        String time = DateFormat.getDateTimeInstance().format(new Date());
+        String message_id = tv_title_story.getText().toString();
+        if(user.getDisplayName() != null){
+            username = user.getDisplayName();
+        }else{
+            LoginScreen.getUsername();
+        }
+        if(!message.trim().isEmpty()){
+            Mensaje messageObj = new Mensaje(message,username,time,message_id);
+            if(user.getPhotoUrl()!=null){
+                messageObj.setPhoto(user.getPhotoUrl().toString());
+            }else{
+                messageObj.setPhoto("por defecto");
+            }
+
+            FirebaseFirestore.getInstance().collection(message_id.substring(0,15).replace(" ","").replace("'","").replace("-","")).add(messageObj);
+            et_comment_story.setText("");
+        }
     }
 
     private void obtenerFotoPerfil() {
@@ -155,5 +245,6 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
                 pg_progress_story.setVisibility(View.GONE);
             }
         });
+
     }
 }

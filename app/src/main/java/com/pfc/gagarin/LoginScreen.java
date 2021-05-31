@@ -47,6 +47,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.pfc.gagarin.entidad.Usuario;
+import com.pfc.gagarin.persistencia.AccesoFirebase;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,6 +71,12 @@ public class LoginScreen extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 100;
+
+    public static String username;
+
+    public static String getUsername() {
+        return username;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +121,11 @@ public class LoginScreen extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if(task.isSuccessful()){
                                             if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                                                Usuario user = new Usuario();
+                                                user.setEmail(et_email.getEditableText().toString());
+                                                username = getIntent().getStringExtra("USERNAME");
+                                                user.setUsername(username);
+                                                AccesoFirebase.altaUsuario(user);
                                                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -121,8 +134,7 @@ public class LoginScreen extends AppCompatActivity {
                                                 showToast("Please, verify your email...");
                                             }
                                         }else{
-                                            //showToast("Usuario o contraseña incorrectos");
-                                            Toast.makeText(LoginScreen.this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
+                                            showToast("wrong user or password");
                                             Log.e("error",task.getException().getLocalizedMessage());
                                         }
                                     }
@@ -311,6 +323,5 @@ public class LoginScreen extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-
     }
 }

@@ -50,7 +50,7 @@
     <style name="CardViewStyle_4" parent="CardView">
         <item name="cardElevation">0dp</item>
         <item name="android:shape">rectangle</item>
-        <item name="cardBackgroundColor">#CE050404</item>
+        <item name="cardBackgroundColor">#00000000</item>
     </style>
     <style name="ButtonStraight" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/super_white</item>

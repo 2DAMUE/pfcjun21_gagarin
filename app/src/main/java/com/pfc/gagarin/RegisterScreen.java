@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.SingleLineTransformationMethod;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +22,17 @@ import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.pfc.gagarin.entidad.Mensaje;
 import com.pfc.gagarin.entidad.Usuario;
 import com.pfc.gagarin.persistencia.AccesoFirebase;
+
+import java.util.ArrayList;
 
 import eightbitlab.com.blurview.BlurView;
 
 
-public class RegisterScreen extends AppCompatActivity {
+public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.InterfazFirebase {
     private ViewGroup root;
     private BlurView register_card;
     private BlurView register_view_title;
@@ -38,13 +43,16 @@ public class RegisterScreen extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private boolean condicion_toggle = false;
     private boolean condicion_toggle2 = false;
+    private ArrayList<String> lista_usernames= new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_screen);
         getSupportActionBar().hide();
+        //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         root= findViewById(R.id.root2);
         register_card = findViewById(R.id.register_blur_card);
@@ -59,6 +67,7 @@ public class RegisterScreen extends AppCompatActivity {
         btn_register = findViewById(R.id.BTN_register);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
 
         //Toggle Password Show/Hide
         register_tv_show.setOnClickListener(new View.OnClickListener() {
@@ -98,12 +107,12 @@ public class RegisterScreen extends AppCompatActivity {
                 String email = et_email_register.getEditableText().toString().trim();
                 String pass = et_pass_register.getEditableText().toString().trim();
                 String confirm_pass = et_confirm_pass.getEditableText().toString().trim();
-                boolean validado = checkFields(email,pass,confirm_pass,username);
+                boolean validado = checkFields(email,pass,confirm_pass,username,lista_usernames.contains(username));
                 if(validado){
-
                     Usuario user = new Usuario(email,pass);
                     AccesoFirebase.registrarUsuario(firebaseAuth,user);
                     Intent intent = new Intent(RegisterScreen.this,LoginScreen.class);
+                    intent.putExtra("USERNAME",et_username_register.getEditableText().toString());
                     startActivity(intent);
                 }
             }
@@ -126,6 +135,11 @@ public class RegisterScreen extends AppCompatActivity {
                 .setHasFixedTransformationMatrix(true);
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        AccesoFirebase.devolverUsuarios(RegisterScreen.this);
+    }
     private void showToast(String texto) {
 
         LayoutInflater inflater = getLayoutInflater();
@@ -140,7 +154,7 @@ public class RegisterScreen extends AppCompatActivity {
 
         toast.show();
     }
-    private boolean checkFields(String email, String pass, String confirm_pass, String username) {
+    private boolean checkFields(String email, String pass, String confirm_pass, String username,boolean username_exist) {
         if (email.isEmpty() && pass.isEmpty() && confirm_pass.isEmpty() && username.isEmpty()) {
             showToast("Some of the fields are empty");
             return false;
@@ -159,8 +173,16 @@ public class RegisterScreen extends AppCompatActivity {
         }else if(!confirm_pass.equals(pass)){
             showToast("Passwords don't match");
             return false;
+        }else if(username_exist){
+            showToast("The user name is already in use");
+            return false;
         }else {
             return true;
         }
+    }
+
+    @Override
+    public void devolverUsuarios(ArrayList<String> usuariosBBDD) {
+        lista_usernames = usuariosBBDD;
     }
 }

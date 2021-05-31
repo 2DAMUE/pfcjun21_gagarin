@@ -1,7 +1,7 @@
 package com.pfc.gagarin.entidad;
 
 public class Usuario {
-    private String email,password;
+    private String email,password,username;
 
     public Usuario() {
     }
@@ -25,5 +25,13 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

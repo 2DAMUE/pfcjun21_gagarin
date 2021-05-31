@@ -27,11 +27,12 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.MiContenedorDeVistas> {
+public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.MiContenedorDeVistas> implements View.OnClickListener {
     @NonNull
     private List<Mensaje> mensajes;
     private Context context;
     private NoticiaScreen noticiaScreen;
+    private View.OnClickListener listener;
 
     public AdaptadorMensajes(@NonNull List<Mensaje> mensajes, NoticiaScreen noticiaScreen) {
         this.mensajes = mensajes;
@@ -44,8 +45,10 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
         ImageView iv_comment=vista.findViewById(R.id.iv_comment);
         TextView tv_id_comment=vista.findViewById(R.id.tv_id_comment);
         TextView tv_body_comment=vista.findViewById(R.id.tv_body_comment);
+        TextView tv_like_count = vista.findViewById(R.id.tv_like_count);
         MiContenedorDeVistas contenedor = new MiContenedorDeVistas(vista);
         context = parent.getContext();
+        vista.setOnClickListener(this);
         Log.d("Contenedor","Creando contenedor de vistas");
         return contenedor;
     }
@@ -53,6 +56,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
     @Override
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Mensaje m=mensajes.get(position);
+        holder.tv_like_count.setText(m.getLike()+"");
         holder.tv_id_comment.setText(m.getUsername()+" · Now");
         holder.tv_body_comment.setText(m.getMessage());
         //Set photo
@@ -114,13 +118,23 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
     public int getItemCount() {
         return mensajes.size();
     }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+    @Override
+    public void onClick(View v) {
+        if(listener!=null){
+            listener.onClick(v);
+        }
+    }
 
     public static class MiContenedorDeVistas extends RecyclerView.ViewHolder{
-        public TextView tv_id_comment,tv_body_comment;
+        public TextView tv_id_comment,tv_body_comment,tv_like_count;
         public ImageView iv_comment;
 
         public MiContenedorDeVistas(View vista) {
             super(vista);
+            this.tv_like_count = vista.findViewById(R.id.tv_like_count);
             this.tv_id_comment = vista.findViewById(R.id.tv_id_comment);
             this.tv_body_comment = vista.findViewById(R.id.tv_body_comment);
             this.iv_comment = vista.findViewById(R.id.iv_comment);
@@ -128,4 +142,5 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
 
     }
 }
+
 

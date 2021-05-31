@@ -136,7 +136,7 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
     @Override
     public void onStart() {
         super.onStart();
-        AccesoFirebase.devolverUsuarios(RegisterScreen.this, null);
+        AccesoFirebase.devolverUsuarios(RegisterScreen.this, null,null);
     }
     private void showToast(String texto) {
 

@@ -50,6 +50,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.pfc.gagarin.entidad.Usuario;
 import com.pfc.gagarin.persistencia.AccesoFirebase;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,6 +72,7 @@ public class LoginScreen extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 100;
+    private HashMap<String, String> lista_usernames= new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,8 +119,13 @@ public class LoginScreen extends AppCompatActivity {
                                             if(firebaseAuth.getCurrentUser().isEmailVerified()){
                                                 Usuario user = new Usuario();
                                                 user.setEmail(et_email.getEditableText().toString());
-                                                user.setUsername(getIntent().getStringExtra("USERNAME"));
-                                                AccesoFirebase.altaUsuario(user);
+                                                if(getIntent().getStringExtra("USERNAME")!=null){
+                                                    user.setUsername(getIntent().getStringExtra("USERNAME"));
+                                                    AccesoFirebase.altaUsuario(user);
+                                                }else{
+                                                    user.setUsername(lista_usernames.get(user.getEmail()));
+                                                    Log.d("user",user.getUsername());
+                                                }
                                                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -189,6 +196,11 @@ public class LoginScreen extends AppCompatActivity {
                 .setBlurRadius(radius)
                 .setHasFixedTransformationMatrix(true);
 
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        AccesoFirebase.devolverUsuarios(null, null,LoginScreen.this);
     }
 
     private void createGoogleRequest() {
@@ -316,5 +328,8 @@ public class LoginScreen extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+    }
+    public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
+        lista_usernames = usuariosBBDD;
     }
 }

@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pfc.gagarin.LoginScreen;
 import com.pfc.gagarin.NoticiaScreen;
 import com.pfc.gagarin.RegisterScreen;
 import com.pfc.gagarin.entidad.Mensaje;
@@ -48,7 +49,7 @@ public class AccesoFirebase {
         DatabaseReference ref = conexionBBDD();
         ref.child(usuario.getEmail().replace(".","")).setValue(usuario);
     }
-    public static void devolverUsuarios(RegisterScreen llamante, NoticiaScreen llamante2) {
+    public static void devolverUsuarios(RegisterScreen llamante, NoticiaScreen llamante2, LoginScreen llamante3) {
         DatabaseReference ref = conexionBBDD();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -69,6 +70,8 @@ public class AccesoFirebase {
             llamante.devolverUsuarios(usuariosBBDD);
         }else if(llamante2!=null){
             llamante2.devolverUsuarios(usuariosBBDD);
+        }else if(llamante3!=null){
+            llamante3.devolverUsuarios(usuariosBBDD);
         }
 
     }

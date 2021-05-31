@@ -4,13 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -30,7 +25,6 @@ import com.bumptech.glide.request.transition.Transition;
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,16 +32,11 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pfc.gagarin.adapter.AdaptadorMensajes;
-import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
 import com.pfc.gagarin.entidad.Mensaje;
-import com.pfc.gagarin.entidad.Noticia;
-import com.pfc.gagarin.entidad.Usuario;
 import com.pfc.gagarin.persistencia.AccesoFirebase;
 import com.pfc.gagarin.ws_body_noticias.HiloPeticionBodyNoticias;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -71,6 +60,8 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     private List<Mensaje> lista_mensajes;
     private AdaptadorMensajes adaptadorMensajes;
     private String username;
+    private int contador=1;
+    private boolean is_liked=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,12 +82,39 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         rv_mensajes = findViewById(R.id.rv_comments);
 
         firebaseAuth=FirebaseAuth.getInstance();
+        onStart();
 
-        //AccesoFirebase.devolverMensajes2(NoticiaScreen.this,tv_title_story.getText().toString());
+
         lista_mensajes = new ArrayList<Mensaje>();
         RecyclerView.LayoutManager gestor = new LinearLayoutManager(NoticiaScreen.this);
         AdaptadorMensajes adaptador = new AdaptadorMensajes(lista_mensajes,NoticiaScreen.this);
         rv_mensajes.setLayoutManager(gestor);
+        adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView tv_like = (TextView)view.findViewById(R.id.tv_like);
+                TextView tv_like_count =(TextView)view.findViewById(R.id.tv_like_count);
+                tv_like.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Mensaje msj = lista_mensajes.get(rv_mensajes.getChildAdapterPosition(view));
+                        if(!msj.getUsers_who_like_list().contains(username)){
+                            tv_like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like2, 0, 0, 0);
+                            tv_like_count.setText(Integer.parseInt(tv_like_count.getText().toString())+contador+"");
+                            addLike(tv_like_count.getText().toString(),rv_mensajes.getChildAdapterPosition(view),is_liked);
+                            is_liked=false;
+                        }else{
+                            tv_like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
+                            tv_like_count.setText(Integer.parseInt(tv_like_count.getText().toString())-1+"");
+                            msj.getUsers_who_like_list().remove(username);
+                            FirebaseFirestore.getInstance().collection(tv_title_story.getText().toString().substring(0,15).replace(" ","").replace("'","").replace("-","")).document(msj.getTime()).set(msj);
+                            is_liked=true;
+                        }
+
+                    }
+                });
+            }
+        });
         rv_mensajes.setAdapter(adaptador);
 
         FirebaseFirestore.getInstance().collection(getIntent().getStringExtra("Home").substring(0,15).replace(" ","").replace("'","").replace("-","")).orderBy("time", Query.Direction.DESCENDING)
@@ -112,6 +130,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
                         }
                     }
                 });
+
 
 
         //get user photo
@@ -166,7 +185,19 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     @Override
     protected void onStart() {
         super.onStart();
-        AccesoFirebase.devolverUsuarios(null,NoticiaScreen.this);
+        AccesoFirebase.devolverUsuarios(null,NoticiaScreen.this,null);
+    }
+
+    private void addLike(String like, int childAdapterPosition,boolean condicion) {
+        Mensaje msj = lista_mensajes.get(childAdapterPosition);
+        if(condicion){
+            List lista=msj.getUsers_who_like_list();
+            lista.add(username);
+            msj.setUsers_who_like((ArrayList<String>) lista);
+        }
+        //msj.setUsers_who_like(userss);
+        msj.setLike(Integer.parseInt(like));
+        FirebaseFirestore.getInstance().collection(tv_title_story.getText().toString().substring(0,15).replace(" ","").replace("'","").replace("-","")).document(msj.getTime()).set(msj);
     }
 
     private void addMessageToChat() {
@@ -174,9 +205,6 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String time = String.valueOf(System.currentTimeMillis());
         String message_id = tv_title_story.getText().toString();
-        if(user.getDisplayName() != null){
-            username = user.getDisplayName();
-        }
         if(!message.trim().isEmpty()){
             Mensaje messageObj = new Mensaje(message,username,time,message_id);
             if(user.getPhotoUrl()!=null){
@@ -185,7 +213,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
                 messageObj.setPhoto("por defecto");
             }
 
-            FirebaseFirestore.getInstance().collection(message_id.substring(0,15).replace(" ","").replace("'","").replace("-","")).add(messageObj);
+            FirebaseFirestore.getInstance().collection(message_id.substring(0,15).replace(" ","").replace("'","").replace("-","")).document(messageObj.getTime()).set(messageObj);
             et_comment_story.setText("");
         }
     }
@@ -258,6 +286,12 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
         String email_usuario=firebaseAuth.getCurrentUser().getEmail();
         Log.d("emailes",usuariosBBDD.toString());
-        username = usuariosBBDD.get(email_usuario);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user.getDisplayName()==null){
+            username = usuariosBBDD.get(email_usuario);
+        }else{
+            username = user.getDisplayName();
+        }
+
     }
 }

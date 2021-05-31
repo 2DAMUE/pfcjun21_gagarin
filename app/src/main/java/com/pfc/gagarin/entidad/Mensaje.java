@@ -1,7 +1,11 @@
 package com.pfc.gagarin.entidad;
 
+import java.util.ArrayList;
+
 public class Mensaje {
     private String message,username,time,photo,message_id;
+    private int like,dislike;
+    private ArrayList<String> users_who_like_list= new ArrayList<>();
 
     public Mensaje() {
     }
@@ -12,6 +16,30 @@ public class Mensaje {
         this.time = time;
         this.photo = photo;
         this.message_id = message_id;
+    }
+
+    public ArrayList<String> getUsers_who_like_list() {
+        return users_who_like_list;
+    }
+
+    public void setUsers_who_like(ArrayList<String> users_who_like) {
+        this.users_who_like_list = users_who_like;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDislike() {
+        return dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
     }
 
     public String getMessage_id() {

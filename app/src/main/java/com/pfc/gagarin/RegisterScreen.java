@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.SingleLineTransformationMethod;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.pfc.gagarin.entidad.Mensaje;
 import com.pfc.gagarin.entidad.Usuario;
 import com.pfc.gagarin.persistencia.AccesoFirebase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import eightbitlab.com.blurview.BlurView;
 
@@ -43,7 +41,7 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
     private FirebaseAuth firebaseAuth;
     private boolean condicion_toggle = false;
     private boolean condicion_toggle2 = false;
-    private ArrayList<String> lista_usernames= new ArrayList<String>();
+    private HashMap<String, String> lista_usernames= new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +105,7 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
                 String email = et_email_register.getEditableText().toString().trim();
                 String pass = et_pass_register.getEditableText().toString().trim();
                 String confirm_pass = et_confirm_pass.getEditableText().toString().trim();
-                boolean validado = checkFields(email,pass,confirm_pass,username,lista_usernames.contains(username));
+                boolean validado = checkFields(email,pass,confirm_pass,username,lista_usernames.containsValue(username));
                 if(validado){
                     Usuario user = new Usuario(email,pass);
                     AccesoFirebase.registrarUsuario(firebaseAuth,user);
@@ -138,7 +136,7 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
     @Override
     public void onStart() {
         super.onStart();
-        AccesoFirebase.devolverUsuarios(RegisterScreen.this);
+        AccesoFirebase.devolverUsuarios(RegisterScreen.this, null);
     }
     private void showToast(String texto) {
 
@@ -182,7 +180,7 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
     }
 
     @Override
-    public void devolverUsuarios(ArrayList<String> usuariosBBDD) {
+    public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
         lista_usernames = usuariosBBDD;
     }
 }

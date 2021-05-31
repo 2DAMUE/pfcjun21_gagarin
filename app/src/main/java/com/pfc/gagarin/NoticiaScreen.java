@@ -35,11 +35,13 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pfc.gagarin.adapter.AdaptadorMensajes;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
 import com.pfc.gagarin.entidad.Mensaje;
 import com.pfc.gagarin.entidad.Noticia;
+import com.pfc.gagarin.entidad.Usuario;
 import com.pfc.gagarin.persistencia.AccesoFirebase;
 import com.pfc.gagarin.ws_body_noticias.HiloPeticionBodyNoticias;
 
@@ -51,7 +53,7 @@ import java.util.List;
 
 import eightbitlab.com.blurview.BlurView;
 
-public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBodyNoticias.InterfazBodyNoticias{
+public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBodyNoticias.InterfazBodyNoticias,AccesoFirebase.InterfazFirebase{
     private ViewGroup root_story;
     private BlurView blur_scroll_story;
     private BlurView blur_blu_story;
@@ -68,6 +70,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
 
     private List<Mensaje> lista_mensajes;
     private AdaptadorMensajes adaptadorMensajes;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,11 +95,11 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         //AccesoFirebase.devolverMensajes2(NoticiaScreen.this,tv_title_story.getText().toString());
         lista_mensajes = new ArrayList<Mensaje>();
         RecyclerView.LayoutManager gestor = new LinearLayoutManager(NoticiaScreen.this);
-        AdaptadorMensajes adaptador = new AdaptadorMensajes(lista_mensajes);
+        AdaptadorMensajes adaptador = new AdaptadorMensajes(lista_mensajes,NoticiaScreen.this);
         rv_mensajes.setLayoutManager(gestor);
         rv_mensajes.setAdapter(adaptador);
 
-        FirebaseFirestore.getInstance().collection(getIntent().getStringExtra("Home").substring(0,15).replace(" ","").replace("'","").replace("-",""))
+        FirebaseFirestore.getInstance().collection(getIntent().getStringExtra("Home").substring(0,15).replace(" ","").replace("'","").replace("-","")).orderBy("time", Query.Direction.DESCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -160,16 +163,19 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        AccesoFirebase.devolverUsuarios(null,NoticiaScreen.this);
+    }
+
     private void addMessageToChat() {
         String message = et_comment_story.getEditableText().toString();
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        String username = "";
-        String time = DateFormat.getDateTimeInstance().format(new Date());
+        String time = String.valueOf(System.currentTimeMillis());
         String message_id = tv_title_story.getText().toString();
         if(user.getDisplayName() != null){
             username = user.getDisplayName();
-        }else{
-            LoginScreen.getUsername();
         }
         if(!message.trim().isEmpty()){
             Mensaje messageObj = new Mensaje(message,username,time,message_id);
@@ -246,5 +252,12 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
             }
         });
 
+    }
+
+    @Override
+    public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
+        String email_usuario=firebaseAuth.getCurrentUser().getEmail();
+        Log.d("emailes",usuariosBBDD.toString());
+        username = usuariosBBDD.get(email_usuario);
     }
 }

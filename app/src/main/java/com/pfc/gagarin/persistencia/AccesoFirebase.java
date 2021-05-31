@@ -3,13 +3,11 @@ package com.pfc.gagarin.persistencia;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,13 +20,11 @@ import com.pfc.gagarin.entidad.Usuario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class AccesoFirebase {
     private static FirebaseDatabase bd;
     private static DatabaseReference ref;
-    public static ArrayList<String> usuariosBBDD= new ArrayList<String>();
-    public static ArrayList<Mensaje> mensajesBBDD= new ArrayList<Mensaje>();
+    public static HashMap<String,String> usuariosBBDD= new HashMap<>();
 
     public static void registrarUsuario(FirebaseAuth firebaseAuth, Usuario user) {
         firebaseAuth.createUserWithEmailAndPassword(user.getEmail(),user.getPassword())
@@ -52,7 +48,7 @@ public class AccesoFirebase {
         DatabaseReference ref = conexionBBDD();
         ref.child(usuario.getEmail().replace(".","")).setValue(usuario);
     }
-    public static void devolverUsuarios(RegisterScreen llamante) {
+    public static void devolverUsuarios(RegisterScreen llamante, NoticiaScreen llamante2) {
         DatabaseReference ref = conexionBBDD();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -60,7 +56,7 @@ public class AccesoFirebase {
                 Iterable<DataSnapshot> datos = snapshot.getChildren();
                 for (DataSnapshot d : datos) {
                     Usuario userBBDD = d.getValue(Usuario.class);
-                    usuariosBBDD.add(userBBDD.getUsername());
+                    usuariosBBDD.put(userBBDD.getEmail(),userBBDD.getUsername());
                 }
             }
 
@@ -69,7 +65,12 @@ public class AccesoFirebase {
                 Log.e("ERROR", error.getMessage());
             }
         });
-        llamante.devolverUsuarios(usuariosBBDD);
+        if(llamante!=null){
+            llamante.devolverUsuarios(usuariosBBDD);
+        }else if(llamante2!=null){
+            llamante2.devolverUsuarios(usuariosBBDD);
+        }
+
     }
 
     public static void grabarMensaje(Mensaje messageObj) {
@@ -80,6 +81,6 @@ public class AccesoFirebase {
 
 
     public interface InterfazFirebase{
-        public void devolverUsuarios(ArrayList<String> usuariosBBDD);
+        public void devolverUsuarios(HashMap<String,String> usuariosBBDD);
     }
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,18 +19,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.pfc.gagarin.NoticiaScreen;
 import com.pfc.gagarin.R;
 import com.pfc.gagarin.entidad.Mensaje;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.MiContenedorDeVistas> {
     @NonNull
     private List<Mensaje> mensajes;
     private Context context;
+    private NoticiaScreen noticiaScreen;
 
-    public AdaptadorMensajes(@NonNull List<Mensaje> mensajes) {
+    public AdaptadorMensajes(@NonNull List<Mensaje> mensajes, NoticiaScreen noticiaScreen) {
         this.mensajes = mensajes;
+        this.noticiaScreen = noticiaScreen;
     }
 
     @Override
@@ -46,7 +53,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
     @Override
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Mensaje m=mensajes.get(position);
-        holder.tv_id_comment.setText(m.getUsername());
+        holder.tv_id_comment.setText(m.getUsername()+" · Now");
         holder.tv_body_comment.setText(m.getMessage());
         //Set photo
         if(!m.getPhoto().equals("por defecto")){
@@ -74,7 +81,32 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
                         }
                     });
         }
-        //---------------------
+
+        Timer timer = new Timer();
+        TimerTask timerTask;
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                noticiaScreen.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Long time =System.currentTimeMillis() - Long.valueOf(m.getTime());
+                        Log.d("time",time.toString());
+                        if (time > 0) {
+                            int minutes = (int) ((time / (1000 * 60)) % 60);
+                            int hours = (int) ((time / (1000 * 60 * 60)) % 24);
+                            String texto = holder.tv_id_comment.getText().toString().split("·")[0];
+                            if(minutes>=1 && minutes <= 60){
+                                holder.tv_id_comment.setText(texto+" · "+ minutes +" minutes ago");
+                            }if(hours>=1 && hours<=60){
+                                holder.tv_id_comment.setText(texto+" · "+ hours +" hours ago");
+                            }
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(timerTask, 0, 60000);
         Log.d("Contenedor","vinculando contenedor de vistas");
     }
 

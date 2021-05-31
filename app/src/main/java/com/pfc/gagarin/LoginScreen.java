@@ -72,12 +72,6 @@ public class LoginScreen extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 100;
 
-    public static String username;
-
-    public static String getUsername() {
-        return username;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,8 +117,7 @@ public class LoginScreen extends AppCompatActivity {
                                             if(firebaseAuth.getCurrentUser().isEmailVerified()){
                                                 Usuario user = new Usuario();
                                                 user.setEmail(et_email.getEditableText().toString());
-                                                username = getIntent().getStringExtra("USERNAME");
-                                                user.setUsername(username);
+                                                user.setUsername(getIntent().getStringExtra("USERNAME"));
                                                 AccesoFirebase.altaUsuario(user);
                                                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

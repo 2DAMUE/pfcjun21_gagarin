@@ -46,6 +46,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
         TextView tv_id_comment=vista.findViewById(R.id.tv_id_comment);
         TextView tv_body_comment=vista.findViewById(R.id.tv_body_comment);
         TextView tv_like_count = vista.findViewById(R.id.tv_like_count);
+        TextView tv_dislike_count = vista.findViewById(R.id.tv_dislike_count);
         MiContenedorDeVistas contenedor = new MiContenedorDeVistas(vista);
         context = parent.getContext();
         vista.setOnClickListener(this);
@@ -57,6 +58,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
     public void onBindViewHolder(@NonNull MiContenedorDeVistas holder, int position) {
         Mensaje m=mensajes.get(position);
         holder.tv_like_count.setText(m.getLike()+"");
+        holder.tv_dislike_count.setText(m.getDislike()+"");
         holder.tv_id_comment.setText(m.getUsername()+" · Now");
         holder.tv_body_comment.setText(m.getMessage());
         //Set photo
@@ -99,7 +101,7 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
                         if (time > 0) {
                             int minutes = (int) ((time / (1000 * 60)) % 60);
                             int hours = (int) ((time / (1000 * 60 * 60)) % 24);
-                            String texto = holder.tv_id_comment.getText().toString().split("·")[0];
+                            String texto = holder.tv_id_comment.getText().toString().split(" · ")[0];
                             if(minutes>=1 && minutes <= 60){
                                 holder.tv_id_comment.setText(texto+" · "+ minutes +" minutes ago");
                             }if(hours>=1 && hours<=60){
@@ -129,11 +131,12 @@ public class AdaptadorMensajes extends RecyclerView.Adapter<AdaptadorMensajes.Mi
     }
 
     public static class MiContenedorDeVistas extends RecyclerView.ViewHolder{
-        public TextView tv_id_comment,tv_body_comment,tv_like_count;
+        public TextView tv_id_comment,tv_body_comment,tv_like_count,tv_dislike_count;
         public ImageView iv_comment;
 
         public MiContenedorDeVistas(View vista) {
             super(vista);
+            this.tv_dislike_count = vista.findViewById(R.id.tv_dislike_count);
             this.tv_like_count = vista.findViewById(R.id.tv_like_count);
             this.tv_id_comment = vista.findViewById(R.id.tv_id_comment);
             this.tv_body_comment = vista.findViewById(R.id.tv_body_comment);

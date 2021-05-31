@@ -6,6 +6,7 @@ public class Mensaje {
     private String message,username,time,photo,message_id;
     private int like,dislike;
     private ArrayList<String> users_who_like_list= new ArrayList<>();
+    private ArrayList<String> users_who_dislike_list= new ArrayList<>();
 
     public Mensaje() {
     }
@@ -16,6 +17,14 @@ public class Mensaje {
         this.time = time;
         this.photo = photo;
         this.message_id = message_id;
+    }
+
+    public ArrayList<String> getUsers_who_dislike_list() {
+        return users_who_dislike_list;
+    }
+
+    public void setUsers_who_dislike_list(ArrayList<String> users_who_dislike_list) {
+        this.users_who_dislike_list = users_who_dislike_list;
     }
 
     public ArrayList<String> getUsers_who_like_list() {

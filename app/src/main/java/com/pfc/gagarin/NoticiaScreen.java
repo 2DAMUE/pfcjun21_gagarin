@@ -62,6 +62,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     private String username;
     private int contador=1;
     private boolean is_liked=true;
+    private boolean is_disliked=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,9 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
             @Override
             public void onClick(View view) {
                 TextView tv_like = (TextView)view.findViewById(R.id.tv_like);
+                TextView tv_dislike = (TextView)view.findViewById(R.id.tv_dislike);
                 TextView tv_like_count =(TextView)view.findViewById(R.id.tv_like_count);
+                TextView tv_dislike_count=(TextView)view.findViewById(R.id.tv_dislike_count);
                 tv_like.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -110,7 +113,24 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
                             FirebaseFirestore.getInstance().collection(tv_title_story.getText().toString().substring(0,15).replace(" ","").replace("'","").replace("-","")).document(msj.getTime()).set(msj);
                             is_liked=true;
                         }
-
+                    }
+                });
+                tv_dislike.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Mensaje msj = lista_mensajes.get(rv_mensajes.getChildAdapterPosition(view));
+                        if(!msj.getUsers_who_dislike_list().contains(username)){
+                            tv_dislike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dislike2, 0, 0, 0);
+                            tv_dislike_count.setText(Integer.parseInt(tv_dislike_count.getText().toString())+contador+"");
+                            addDislike(tv_dislike_count.getText().toString(),rv_mensajes.getChildAdapterPosition(view),is_disliked);
+                            is_disliked=false;
+                        }else{
+                            tv_dislike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.dislike, 0, 0, 0);
+                            tv_dislike_count.setText(Integer.parseInt(tv_dislike_count.getText().toString())-1+"");
+                            msj.getUsers_who_dislike_list().remove(username);
+                            FirebaseFirestore.getInstance().collection(tv_title_story.getText().toString().substring(0,15).replace(" ","").replace("'","").replace("-","")).document(msj.getTime()).set(msj);
+                            is_disliked=true;
+                        }
                     }
                 });
             }
@@ -197,6 +217,17 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         }
         //msj.setUsers_who_like(userss);
         msj.setLike(Integer.parseInt(like));
+        FirebaseFirestore.getInstance().collection(tv_title_story.getText().toString().substring(0,15).replace(" ","").replace("'","").replace("-","")).document(msj.getTime()).set(msj);
+    }
+    private void addDislike(String dislike, int childAdapterPosition,boolean condicion) {
+        Mensaje msj = lista_mensajes.get(childAdapterPosition);
+        if(condicion){
+            List lista=msj.getUsers_who_dislike_list();
+            lista.add(username);
+            msj.setUsers_who_dislike_list((ArrayList<String>) lista);
+        }
+        //msj.setUsers_who_like(userss);
+        msj.setDislike(Integer.parseInt(dislike));
         FirebaseFirestore.getInstance().collection(tv_title_story.getText().toString().substring(0,15).replace(" ","").replace("'","").replace("-","")).document(msj.getTime()).set(msj);
     }
 

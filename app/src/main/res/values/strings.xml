@@ -30,4 +30,9 @@
     <string name="perseverance_name">Perseverance</string>
     <string name="spirit_name">Spirit</string>
 
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">242835757644573</string>
+    <string name="fb_login_protocol_scheme">fb242835757644573</string>
+
+
 </resources>

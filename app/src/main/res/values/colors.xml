@@ -14,6 +14,7 @@
     <color name="super_white">#E2E2E2</color>
     <color name="blue">#314D68</color>
     <color name="red">#771111</color>
+    <color name="facebook_blue">#803B5998</color>
     <color name="black_opacity">#80000000</color>
     <color name="black_opacity2">#D0000000</color>
 </resources>

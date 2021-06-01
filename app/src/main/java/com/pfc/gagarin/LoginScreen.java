@@ -31,6 +31,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -50,11 +58,19 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.pfc.gagarin.entidad.Usuario;
 import com.pfc.gagarin.persistencia.AccesoFirebase;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import eightbitlab.com.blurview.BlurView;
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class LoginScreen extends AppCompatActivity {
@@ -66,18 +82,29 @@ public class LoginScreen extends AppCompatActivity {
     private TextView tv_sign;
     private Button btn_login;
     private Button btn_google;
+    private LoginButton login_facebook;
     private SpannableStringBuilder spanSB;
     private boolean condicion_toggle = false;
+    public static boolean condicion_facebook = false;
 
     private FirebaseAuth firebaseAuth;
+    private CallbackManager callbackManager;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 100;
     private HashMap<String, String> lista_usernames= new HashMap<>();
+    public static String username_facebook;
+    public static URL profileImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+
+        com.facebook.login.LoginManager.getInstance().logOut();
 
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -90,6 +117,7 @@ public class LoginScreen extends AppCompatActivity {
         tv_sign = findViewById(R.id.sign);
         btn_login = findViewById(R.id.BTN_login);
         btn_google = findViewById(R.id.sign_google);
+        login_facebook =(LoginButton) findViewById(R.id.login_button);
 
 
         createGoogleRequest();
@@ -101,6 +129,33 @@ public class LoginScreen extends AppCompatActivity {
         ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(errorColor);
         spanSB = new SpannableStringBuilder(errorString);
         spanSB.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+        //Login with Facebook
+        login_facebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                try {
+                    profileImg = new URL("http://graph.facebook.com/"+loginResult.getAccessToken().getUserId()+"/picture?type=small");
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                GraphLoginRequest(loginResult.getAccessToken());
+                condicion_facebook = true;
+                Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancel() {
+                showToast("Login attempt canceled.");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                showToast("Login attempt failed.");
+            }
+        });
 
         //Function button login
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +252,30 @@ public class LoginScreen extends AppCompatActivity {
                 .setHasFixedTransformationMatrix(true);
 
     }
+
+    private void GraphLoginRequest(AccessToken accessToken) {
+        GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken,
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            username_facebook = object.getString("name");
+                            Log.d("USS",profileImg+"");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+        Bundle bundle = new Bundle();
+        bundle.putString(
+                "fields",
+                "name"
+        );
+        graphRequest.setParameters(bundle);
+        graphRequest.executeAsync();
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -278,6 +357,8 @@ public class LoginScreen extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {

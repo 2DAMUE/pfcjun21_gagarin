@@ -247,13 +247,14 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
 
     private void addMessageToChat() {
         String message = et_comment_story.getEditableText().toString();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
         String time = String.valueOf(System.currentTimeMillis());
         String message_id = tv_title_story.getText().toString();
         if(!message.trim().isEmpty()){
             Mensaje messageObj = new Mensaje(message,username,time,message_id);
-            if(user.getPhotoUrl()!=null){
-                messageObj.setPhoto(user.getPhotoUrl().toString());
+            if(firebaseAuth.getCurrentUser()!=null){
+                messageObj.setPhoto(firebaseAuth.getCurrentUser().getPhotoUrl().toString());
+            }else if(LoginScreen.condicion_facebook){
+                messageObj.setPhoto(LoginScreen.profileImg.toString());
             }else{
                 messageObj.setPhoto("por defecto");
             }
@@ -264,10 +265,21 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     }
 
     private void obtenerFotoPerfil() {
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user.getPhotoUrl() != null){
+        if(firebaseAuth.getCurrentUser() != null){
             Glide.with(getApplicationContext())
-                    .load(user.getPhotoUrl())
+                    .load(firebaseAuth.getCurrentUser().getPhotoUrl())
+                    .circleCrop()
+                    .into(new SimpleTarget<Drawable>() {
+                        @Override
+                        public void onResourceReady(Drawable resource, Transition<? super Drawable> transition) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                iv_comment_user.setBackground(resource);
+                            }
+                        }
+                    });
+        }else if(LoginScreen.condicion_facebook){
+            Glide.with(getApplicationContext())
+                    .load(LoginScreen.profileImg)
                     .circleCrop()
                     .into(new SimpleTarget<Drawable>() {
                         @Override
@@ -329,14 +341,16 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
 
     @Override
     public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
-        String email_usuario=firebaseAuth.getCurrentUser().getEmail();
-        Log.d("emailes",usuariosBBDD.toString());
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user.getDisplayName()==null){
-            username = usuariosBBDD.get(email_usuario);
-        }else{
+        String email_usuario = "";
+        if(firebaseAuth.getCurrentUser()!=null){
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            email_usuario=firebaseAuth.getCurrentUser().getEmail();
             username = user.getDisplayName();
+        }if(LoginScreen.condicion_facebook){
+            username = LoginScreen.username_facebook;
+        }else{
+            username = usuariosBBDD.get(email_usuario);
         }
-
+        Log.d("USS",username+"");
     }
 }

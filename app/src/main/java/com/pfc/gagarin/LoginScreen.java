@@ -127,6 +127,8 @@ public class LoginScreen extends AppCompatActivity {
         createGoogleRequest();
         firebaseAuth=FirebaseAuth.getInstance();
 
+        login_facebook.setVisibility(View.INVISIBLE);
+
         //et_pass.addTextChangedListener(validarCampos);
         int errorColor =getResources().getColor(R.color.super_white);
         String errorString = "This field cannot be empty";  // Your custom error message.

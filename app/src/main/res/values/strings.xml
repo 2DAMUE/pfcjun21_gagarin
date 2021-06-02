@@ -6,6 +6,7 @@
     <string name="forgot">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="login_with_google">Sign in with Google</string>
+    <string name="login_with_facebook">Sign in with Facebook</string>
     <string name="register">Register</string>
     <string name="account">Don\'t have an account?</string>
     <string name="Sign">Sign up</string>
@@ -33,6 +34,8 @@
     <!-- Login Facebook -->
     <string name="facebook_app_id">242835757644573</string>
     <string name="fb_login_protocol_scheme">fb242835757644573</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
 
 
 </resources>

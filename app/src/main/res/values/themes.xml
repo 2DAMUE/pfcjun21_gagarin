@@ -69,6 +69,11 @@
         <item name="android:textColor">@color/super_white</item>
         <item name="cornerRadius">20dp</item>
     </style>
+    <style name="ButtonStraight3" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/facebook_blue</item>
+        <item name="android:textColor">@color/super_white</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
     <style name="CardViewStyle_9" parent="CardView">
         <item name="cardCornerRadius">20dp</item>
         <item name="cardElevation">0dp</item>

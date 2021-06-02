@@ -83,6 +83,7 @@ public class LoginScreen extends AppCompatActivity {
     private TextView tv_forgot;
     private Button btn_login;
     private Button btn_google;
+    private Button btn_facebook;
     private LoginButton login_facebook;
     private SpannableStringBuilder spanSB;
     private boolean condicion_toggle = false;
@@ -119,6 +120,7 @@ public class LoginScreen extends AppCompatActivity {
         tv_sign = findViewById(R.id.sign);
         btn_login = findViewById(R.id.BTN_login);
         btn_google = findViewById(R.id.sign_google);
+        btn_facebook = findViewById(R.id.button_facebook);
         login_facebook =(LoginButton) findViewById(R.id.login_button);
 
 
@@ -176,6 +178,12 @@ public class LoginScreen extends AppCompatActivity {
                 }else{
                     showToast("Email field cannot be empty");
                 }
+            }
+        });
+        btn_facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_facebook.performClick();
             }
         });
 

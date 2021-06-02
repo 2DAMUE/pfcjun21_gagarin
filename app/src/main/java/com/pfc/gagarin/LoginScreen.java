@@ -80,6 +80,7 @@ public class LoginScreen extends AppCompatActivity {
     private TextView tv_show;
     private TextInputEditText et_pass,et_email;
     private TextView tv_sign;
+    private TextView tv_forgot;
     private Button btn_login;
     private Button btn_google;
     private LoginButton login_facebook;
@@ -114,6 +115,7 @@ public class LoginScreen extends AppCompatActivity {
         et_pass = findViewById(R.id.ed_pass);
         et_email= findViewById(R.id.ed_email);
         tv_show = findViewById(R.id.Show);
+        tv_forgot = findViewById(R.id.forgot);
         tv_sign = findViewById(R.id.sign);
         btn_login = findViewById(R.id.BTN_login);
         btn_google = findViewById(R.id.sign_google);
@@ -155,6 +157,25 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onError(FacebookException e) {
                 showToast("Login attempt failed.");
+            }
+        });
+        //Function tv reset password
+        tv_forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!et_email.getEditableText().toString().trim().isEmpty()){
+                    FirebaseAuth.getInstance().sendPasswordResetEmail(et_email.getEditableText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        showToast("Mail to reset password has been sent");
+                                    }
+                                }
+                            });
+                }else{
+                    showToast("Email field cannot be empty");
+                }
             }
         });
 

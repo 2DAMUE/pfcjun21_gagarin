@@ -50,7 +50,6 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
         getSupportActionBar().hide();
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         root= findViewById(R.id.root2);
         register_card = findViewById(R.id.register_blur_card);

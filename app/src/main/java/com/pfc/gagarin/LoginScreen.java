@@ -133,8 +133,9 @@ public class LoginScreen extends AppCompatActivity {
         login_facebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                https://graph.facebook.com/{profile_id}/picture?type=large&access_token={app_access_token}
                 try {
-                    profileImg = new URL("http://graph.facebook.com/"+loginResult.getAccessToken().getUserId()+"/picture?type=small");
+                    profileImg = new URL("https://graph.facebook.com/"+loginResult.getAccessToken().getUserId()+"/picture?type=square"+"&access_token="+loginResult.getAccessToken().getToken());
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }

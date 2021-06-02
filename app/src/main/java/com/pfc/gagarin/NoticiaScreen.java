@@ -251,7 +251,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         String message_id = tv_title_story.getText().toString();
         if(!message.trim().isEmpty()){
             Mensaje messageObj = new Mensaje(message,username,time,message_id);
-            if(firebaseAuth.getCurrentUser()!=null){
+            if(firebaseAuth.getCurrentUser().getPhotoUrl()!=null && LoginScreen.condicion_facebook == false){
                 messageObj.setPhoto(firebaseAuth.getCurrentUser().getPhotoUrl().toString());
             }else if(LoginScreen.condicion_facebook){
                 messageObj.setPhoto(LoginScreen.profileImg.toString());
@@ -265,7 +265,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
     }
 
     private void obtenerFotoPerfil() {
-        if(firebaseAuth.getCurrentUser() != null){
+        if(firebaseAuth.getCurrentUser().getPhotoUrl() != null && LoginScreen.condicion_facebook == false){
             Glide.with(getApplicationContext())
                     .load(firebaseAuth.getCurrentUser().getPhotoUrl())
                     .circleCrop()
@@ -341,14 +341,14 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
 
     @Override
     public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
-        String email_usuario = "";
-        if(firebaseAuth.getCurrentUser()!=null){
+        if(firebaseAuth.getCurrentUser()!=null && firebaseAuth.getCurrentUser().getPhotoUrl()!=null && LoginScreen.condicion_facebook == false){
             FirebaseUser user = firebaseAuth.getCurrentUser();
-            email_usuario=firebaseAuth.getCurrentUser().getEmail();
             username = user.getDisplayName();
-        }if(LoginScreen.condicion_facebook){
+        }else if(LoginScreen.condicion_facebook){
             username = LoginScreen.username_facebook;
+            Log.d("USS",username+"hola");
         }else{
+            String email_usuario=firebaseAuth.getCurrentUser().getEmail();
             username = usuariosBBDD.get(email_usuario);
         }
         Log.d("USS",username+"");

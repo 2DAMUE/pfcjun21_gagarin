@@ -42,14 +42,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="16dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
         android:rotationX="0"
-        android:rotationY=""
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -4,53 +4,258 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoticiaScreen">
-
-    <ProgressBar
-        android:id="@+id/PG_progress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/IV_fotonoticiaAmpli"
-        android:layout_width="0dp"
-        android:layout_height="270dp"
-        android:background="@drawable/background_cardmarte"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@android:color/transparent"
+    tools:context=".NoticiaScreen"
+    android:id="@+id/root_story">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="225dp" />
+        app:layout_constraintGuide_percent="0.31" />
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="422dp"
-        android:layout_height="835dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_card"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_scrollFlags="scroll">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/iv_background_story"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"/>
-    </androidx.core.widget.NestedScrollView>
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fondo_story" />
+
+    <ProgressBar
+        android:id="@+id/pg_progress_story"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="305dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_image_story"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_background_story"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blur_scroll_story"
+        android:layout_width="415dp"
+        android:layout_height="491dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_background_story"
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_story">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_card"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_scroll_story"
+                android:layout_width="match_parent"
+                android:layout_height="491dp"
+                android:background="@android:color/transparent"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/guideline_card"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_story"
+                    style="@style/CardViewStyle_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layout_card_story">
+
+                        <TextView
+                            android:id="@+id/tv_title_story"
+                            android:layout_width="345dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text=""
+                            android:textColor="#FFFFFF"
+                            android:textSize="24sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_body_story"
+                            android:layout_width="345dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="18dp"
+                            android:text=""
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_title_story" />
+
+                        <TextView
+                            android:id="@+id/tv_source_story"
+                            android:layout_width="93dp"
+                            android:layout_height="51dp"
+                            android:layout_marginTop="32dp"
+                            android:paddingBottom="32dp"
+                            android:text="Provided by: "
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_body_story"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_body_story" />
+
+                        <TextView
+                            android:id="@+id/tv_source_story_link"
+                            android:layout_width="250dp"
+                            android:layout_height="51dp"
+                            android:autoLink="web"
+                            android:layout_marginTop="34dp"
+                            android:paddingBottom="32dp"
+                            android:text=""
+                            android:textColor="#9EFFFFFF"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toEndOf="@+id/tv_source_story"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_body_story" />
+                        <View
+                            android:id="@+id/v_line1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_source_story_link" />
+                        <TextView
+                            android:id="@+id/tv_story_comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autoLink="web"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginLeft="25dp"
+                            android:paddingBottom="10dp"
+                            android:text="Comments"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:textColor="@color/super_white"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+                        <View
+                            android:id="@+id/v_line2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@color/gray"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_story_comments"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageView
+                            android:id="@+id/iv_comment_user"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line2"
+                            />
+
+                        <View
+                            android:id="@+id/v_line3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@color/gray"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_comment_user"
+                            app:layout_constraintVertical_bias="0.0" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_comments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <EditText
+                            android:id="@+id/et_comment_story"
+                            style="@style/EditTextHint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="90dp"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="@color/super_white"
+                            android:ems="10"
+                            android:hint="Leave a comment..."
+                            android:inputType="textPersonName"
+                            android:textColor="@color/gray"
+                            app:layout_constraintBottom_toTopOf="@+id/v_line3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+
+
+
+    </eightbitlab.com.blurview.BlurView>
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blur_blu_story"
+        android:layout_width="411dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_blu_story"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </eightbitlab.com.blurview.BlurView>
+
+    <ImageView
+        android:id="@+id/iv_arrow_back"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:elevation="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_left_arrow" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

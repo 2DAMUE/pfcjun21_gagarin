@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">gagarin</string>
     <string name="email">Email</string>
     <string name="pass">Password</string>
     <string name="confirm_pass">Confirm Password</string>
@@ -12,4 +11,28 @@
     <string name="Sign">Sign up</string>
     <string name="Show">Show</string>
     <string name="promo">I would like to receive your newsletter and other promotional information.</string>
+    <string name="app_name">Gagarin</string>
+
+    <!--  HOME  -->
+    <string name="H_ultNoticias">Últimas Noticias</string>
+    <string name="H_procLanzamientos">Próximos Lanzamientos</string>
+    <string name="H_aprendeMas">Aprende Más</string>
+    <string name="H_marte3d">Marte en 3D</string>
+    <string name="H_satelites">Satélites de la Tierra</string>
+    <string name="H_pruebalo">Pruebalo Ahora →</string>
+    <string name="H_verMas">Ver Todo</string>
+    <string name="title_activity_mapa_marte">Map</string>
+    <string name="busca">Busca aquí</string>
+
+    <!-- Rovers Marte -->
+    <string name="opportunity_name">Opportunity</string>
+    <string name="curiosity_name">Curiosity</string>
+    <string name="perseverance_name">Perseverance</string>
+    <string name="spirit_name">Spirit</string>
+
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">242835757644573</string>
+    <string name="fb_login_protocol_scheme">fb242835757644573</string>
+
+
 </resources>

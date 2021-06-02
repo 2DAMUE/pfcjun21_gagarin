@@ -31,6 +31,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -47,11 +55,22 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.pfc.gagarin.entidad.Usuario;
+import com.pfc.gagarin.persistencia.AccesoFirebase;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import eightbitlab.com.blurview.BlurView;
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class LoginScreen extends AppCompatActivity {
@@ -61,19 +80,33 @@ public class LoginScreen extends AppCompatActivity {
     private TextView tv_show;
     private TextInputEditText et_pass,et_email;
     private TextView tv_sign;
+    private TextView tv_forgot;
     private Button btn_login;
     private Button btn_google;
+    private Button btn_facebook;
+    private LoginButton login_facebook;
     private SpannableStringBuilder spanSB;
     private boolean condicion_toggle = false;
+    public static boolean condicion_facebook = false;
 
     private FirebaseAuth firebaseAuth;
+    private CallbackManager callbackManager;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 100;
+    private HashMap<String, String> lista_usernames= new HashMap<>();
+    public static String username_facebook;
+    public static URL profileImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+
+        com.facebook.login.LoginManager.getInstance().logOut();
 
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -83,13 +116,18 @@ public class LoginScreen extends AppCompatActivity {
         et_pass = findViewById(R.id.ed_pass);
         et_email= findViewById(R.id.ed_email);
         tv_show = findViewById(R.id.Show);
+        tv_forgot = findViewById(R.id.forgot);
         tv_sign = findViewById(R.id.sign);
         btn_login = findViewById(R.id.BTN_login);
         btn_google = findViewById(R.id.sign_google);
+        btn_facebook = findViewById(R.id.button_facebook);
+        login_facebook =(LoginButton) findViewById(R.id.login_button);
 
 
         createGoogleRequest();
         firebaseAuth=FirebaseAuth.getInstance();
+
+        login_facebook.setVisibility(View.INVISIBLE);
 
         //et_pass.addTextChangedListener(validarCampos);
         int errorColor =getResources().getColor(R.color.super_white);
@@ -97,6 +135,59 @@ public class LoginScreen extends AppCompatActivity {
         ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(errorColor);
         spanSB = new SpannableStringBuilder(errorString);
         spanSB.setSpan(foregroundColorSpan, 0, errorString.length(), 0);
+        //Login with Facebook
+        login_facebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                https://graph.facebook.com/{profile_id}/picture?type=large&access_token={app_access_token}
+                try {
+                    profileImg = new URL("https://graph.facebook.com/"+loginResult.getAccessToken().getUserId()+"/picture?type=square"+"&access_token="+loginResult.getAccessToken().getToken());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                GraphLoginRequest(loginResult.getAccessToken());
+                condicion_facebook = true;
+                Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancel() {
+                showToast("Login attempt canceled.");
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                showToast("Login attempt failed.");
+            }
+        });
+        //Function tv reset password
+        tv_forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!et_email.getEditableText().toString().trim().isEmpty()){
+                    FirebaseAuth.getInstance().sendPasswordResetEmail(et_email.getEditableText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        showToast("Mail to reset password has been sent");
+                                    }
+                                }
+                            });
+                }else{
+                    showToast("Email field cannot be empty");
+                }
+            }
+        });
+        btn_facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_facebook.performClick();
+            }
+        });
 
         //Function button login
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -113,16 +204,24 @@ public class LoginScreen extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if(task.isSuccessful()){
                                             if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                                                Usuario user = new Usuario();
+                                                user.setEmail(et_email.getEditableText().toString());
+                                                if(getIntent().getStringExtra("USERNAME")!=null){
+                                                    user.setUsername(getIntent().getStringExtra("USERNAME"));
+                                                    AccesoFirebase.altaUsuario(user);
+                                                }else{
+                                                    user.setUsername(lista_usernames.get(user.getEmail()));
+                                                    Log.d("user",user.getUsername());
+                                                }
                                                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
                                             }else{
-                                                Toast.makeText(LoginScreen.this,"Por favor, verifica tu email",Toast.LENGTH_LONG).show();
+                                                showToast("Please, verify your email...");
                                             }
                                         }else{
-                                            //showToast("Usuario o contraseña incorrectos");
-                                            Toast.makeText(LoginScreen.this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
+                                            showToast("wrong user or password");
                                             Log.e("error",task.getException().getLocalizedMessage());
                                         }
                                     }
@@ -184,6 +283,35 @@ public class LoginScreen extends AppCompatActivity {
                 .setBlurRadius(radius)
                 .setHasFixedTransformationMatrix(true);
 
+    }
+
+    private void GraphLoginRequest(AccessToken accessToken) {
+        GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken,
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            username_facebook = object.getString("name");
+                            Log.d("USS",profileImg+"");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+        Bundle bundle = new Bundle();
+        bundle.putString(
+                "fields",
+                "name"
+        );
+        graphRequest.setParameters(bundle);
+        graphRequest.executeAsync();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        AccesoFirebase.devolverUsuarios(null, null,LoginScreen.this);
     }
 
     private void createGoogleRequest() {
@@ -262,6 +390,8 @@ public class LoginScreen extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -311,6 +441,8 @@ public class LoginScreen extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-
+    }
+    public void devolverUsuarios(HashMap<String,String> usuariosBBDD) {
+        lista_usernames = usuariosBBDD;
     }
 }

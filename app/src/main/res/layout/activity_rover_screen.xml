@@ -11,7 +11,7 @@
         android:id="@+id/IMG_background_rovers"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/mars_surface"
+        android:background="@drawable/mars_surface2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -33,9 +33,9 @@
 
         <View
             android:id="@+id/VW_top"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
             android:elevation="2dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_divi"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
         android:layout_marginTop="102dp"
         android:elevation="2dp"
         android:iconifiedByDefault="false"
-        android:queryHint="@string/busca"
+        android:queryHint="@string/H_busca"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,15 +71,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_menu_on_surface_24dp" />
-
+        android:src="@drawable/ic_menu_on_surface_24dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_divi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.23" />
+        app:layout_constraintGuide_begin="160dp" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -94,14 +93,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_curiosity"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/blur_bg_rovers_cards"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
-                app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_lateral2"
+                app:layout_constraintStart_toStartOf="@+id/guideline_lateral1"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.cardview.widget.CardView
@@ -128,7 +129,7 @@
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
                             android:textColor="@color/white"
                             android:textSize="16sp"
@@ -159,7 +160,7 @@
                             android:layout_height="31dp"
                             android:layout_marginStart="18dp"
                             android:layout_marginTop="16dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewaybold"
                             android:text="@string/curiosity_name"
                             android:textColor="@color/white"
                             android:textSize="20sp"
@@ -182,12 +183,13 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_opportunity"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/blur_bg_rovers"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blur_bg_rovers_cards"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O2"
                 app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
                 app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
-                app:layout_constraintTop_toBottomOf="@id/blur_card_curiosity">
+                app:layout_constraintTop_toTopOf="@+id/guideline_C_O">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/CV_opportunity"
@@ -213,7 +215,7 @@
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
                             android:textColor="@color/white"
                             android:textSize="16sp"
@@ -243,7 +245,7 @@
                             android:layout_height="31dp"
                             android:layout_marginStart="18dp"
                             android:layout_marginTop="16dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewaybold"
                             android:text="@string/opportunity_name"
                             android:textColor="@color/white"
                             android:textSize="20sp"
@@ -266,12 +268,13 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_spirit"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
-                android:background="@drawable/blur_bg_rovers"
-                android:layout_marginTop="16dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blur_bg_rovers_cards"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O3"
                 app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
                 app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
-                app:layout_constraintTop_toBottomOf="@id/blur_card_opportunity">
+                app:layout_constraintTop_toTopOf="@+id/guideline_C_O2">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/CV_spirit"
@@ -297,7 +300,7 @@
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
                             android:textColor="@color/white"
                             android:textSize="16sp"
@@ -327,7 +330,7 @@
                             android:layout_height="31dp"
                             android:layout_marginStart="18dp"
                             android:layout_marginTop="16dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewaybold"
                             android:text="@string/spirit_name"
                             android:textColor="@color/white"
                             android:textSize="20sp"
@@ -350,12 +353,13 @@
             <eightbitlab.com.blurview.BlurView
                 android:id="@+id/blur_card_perseverance"
                 android:layout_width="0dp"
-                android:layout_height="105dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/blur_bg_rovers"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/blur_bg_rovers_cards"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_C_O4"
                 app:layout_constraintEnd_toEndOf="@id/guideline_lateral2"
                 app:layout_constraintStart_toStartOf="@id/guideline_lateral1"
-                app:layout_constraintTop_toBottomOf="@id/blur_card_spirit">
+                app:layout_constraintTop_toTopOf="@+id/guideline_C_O3">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/CV_perseverance"
@@ -381,7 +385,7 @@
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
-                            android:fontFamily="@font/sfprodisplaybold"
+                            android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
                             android:textColor="@color/white"
                             android:textSize="16sp"
@@ -411,8 +415,8 @@
                             android:layout_height="31dp"
                             android:layout_marginStart="18dp"
                             android:layout_marginTop="16dp"
-                            android:fontFamily="@font/sfprodisplaybold"
-                            android:text="@string/spirit_name"
+                            android:fontFamily="@font/ralewaybold"
+                            android:text="@string/perseverance_name"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             app:layout_constraintEnd_toStartOf="@+id/guideline2_perseverance"
@@ -444,6 +448,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="136dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="272dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="408dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_C_O4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="544dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

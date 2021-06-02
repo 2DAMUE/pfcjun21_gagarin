@@ -6,6 +6,7 @@
     <string name="forgot">Forgot Password?</string>
     <string name="login">Login</string>
     <string name="login_with_google">Sign in with Google</string>
+    <string name="login_with_facebook">Sign in with Facebook</string>
     <string name="register">Register</string>
     <string name="account">Don\'t have an account?</string>
     <string name="Sign">Sign up</string>
@@ -21,13 +22,70 @@
     <string name="H_satelites">Satélites de la Tierra</string>
     <string name="H_pruebalo">Pruebalo Ahora →</string>
     <string name="H_verMas">Ver Todo</string>
-    <string name="title_activity_mapa_marte">Map</string>
-    <string name="busca">Busca aquí</string>
-
-    <!-- Rovers Marte -->
+    <string name="H_title_activity_mapa_marte">Map</string>
+    <string name="H_busca">Busca aquí</string>
+    <!--  LANZAMIENTOS  -->
+    <string name="L_tituloVentana">¡Echa un vistazo a los próximos lanzamientos!</string>
+    <string name="L_countdown">Cuenta atrás</string>
+    <string name="L_verDetalles">Leer más →</string>
+    <string name="L_fechaPrevista">Fecha prevista</string>
+    <string name="L_overview">Información General</string>
+    <string name="L_lugar">Lugar de Lanzamiento</string>
+    <string name="L_infoCohete">Informacion del Cohete</string>
+    <string name="L_lugar_mapa">Mapa</string>
+    <!-- ROVERS MARTE -->
+    <!-- Datos Opportunity -->
     <string name="opportunity_name">Opportunity</string>
-    <string name="curiosity_name">Curiosity</string>
-    <string name="perseverance_name">Perseverance</string>
-    <string name="spirit_name">Spirit</string>
+    <string name="opportunity_title"></string>
+    <string name="opportunity_body"></string>
 
+    <!-- Datos Curiosity -->
+    <string name="curiosity_name">Curiosity</string>
+    <string name="curiosity_title">Examinando el cráter Gale</string>
+    <string name="curiosity_body">Curiosity explora el cráter Gale y adquiere muestras de roca,
+        suelo y aire para análisis a bordo. El rover del tamaño de un automóvil es tan alto como un jugador
+        de baloncesto y usa un brazo de 7 pies de largo para colocar herramientas cerca de las rocas
+        seleccionadas para su estudio. El gran tamaño de Curiosity le permite llevar un kit avanzado
+        de 10 instrumentos científicos. Tiene herramientas que incluyen 17 cámaras, un láser para
+        vaporizar y estudiar pequeños puntos puntuales de rocas a distancia y un taladro para recolectar
+        muestras de roca en polvo. Busca rocas especiales que se formaron en el agua y/o tienen signos
+        de orgánicos.</string>
+    <!-- Datos Perseverance -->
+    <string name="perseverance_name">Perseverance</string>
+    <string name="perseverance_title">Tecnologías para operaciones de superficie</string>
+    <string name="perseverance_body">El Perseverance prueba una tecnología para extraer oxígeno de la atmósfera marciana,
+        que es 96% de dióxido de carbono. Esta demostración ayuda a los planificadores de misiones a probar formas de utilizar
+        los recursos naturales de Marte para apoyar a los exploradores humanos y mejorar los diseños de soporte vital,
+        transporte y otros sistemas importantes para vivir y trabajar en Marte. El rover también monitorea el clima
+        y el polvo en la atmósfera marciana. Dichos estudios son importantes para comprender los cambios diarios y estacionales en Marte,
+        y ayudarán a los futuros exploradores humanos a predecir mejor el clima marciano.</string>
+    <!-- Datos Spirit -->
+    <string name="spirit_name">Spirit</string>
+    <string name="spirit_title"></string>
+    <string name="spirit_body"></string>
+    <string name="title_activity_maps">Map</string>
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account">Account Settings</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about_us">About us</string>
+    <string name="settings_github">Github</string>
+    <string name="settings_logout">Logout</string>
+    <string name="account_settings_title">Account settings</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="save_account_settings">Save</string>
+    <string name="launch_notification">Launch notifications</string>
+    <string name="news_notification">Latest news notifications</string>
+    <string name="aboutus_name_1">Ionut Alin</string>
+    <string name="aboutus_developer">Developer</string>
+    <string name="aboutus_name_2">Fran Ruiz</string>
+    <string name="aboutus_name_3">Fabiola Decena</string>
+    <string name="aboutus_ux">UX Designer</string>
+    <string name="aboutus_name_4">Pablo Benito</string>
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">242835757644573</string>
+    <string name="fb_login_protocol_scheme">fb242835757644573</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
 </resources>

@@ -50,8 +50,13 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
         CardView card = vista.findViewById(R.id.CV_Noticia);
 
+
         //El lisener no va aqui
         /*card.setOnClickListener(new View.OnClickListener() {
+=======
+/*
+        card.setOnClickListener(new View.OnClickListener() {
+>>>>>>> HomeScreen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, NoticiaScreen.class);
@@ -59,9 +64,9 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
                 //send image
                 context.startActivity(intent);
             }
-        });
+        });*/
 
-         */
+
 
 
         ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);

@@ -1,6 +1,7 @@
 package com.pfc.gagarin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -18,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.pfc.gagarin.HomeScreen;
+import com.pfc.gagarin.LanzamientosDetailScreen;
+import com.pfc.gagarin.LanzamientosScreen;
 import com.pfc.gagarin.entidad.Lanzamiento;
 import com.pfc.gagarin.R;
 
@@ -27,7 +30,8 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
     private List<Lanzamiento> lista_contactos;
     private Context context;
 
-    public AdaptadorRecyclerLanzamientos(List<Lanzamiento> lista_contactos, HomeScreen homeScreen) {
+
+    public AdaptadorRecyclerLanzamientos(List<Lanzamiento> lista_contactos, Context homeScreen) {
         this.lista_contactos = lista_contactos;
         this.context = homeScreen;
     }
@@ -35,34 +39,34 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
     @NonNull
     @Override
     public ContenedorDeVistas onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_card_lanzamientos, parent, false);
-
-        TextView tv_titular = vista.findViewById(R.id.TV_nombrecohete);
-        TextView tv_fecha = vista.findViewById(R.id.TV_fechacohete);
-        TextView tv_lugar = vista.findViewById(R.id.TV_lugarcohete);
-        ImageView img_cohete = vista.findViewById(R.id.IV_cohete);
-        CardView cv_cohete = vista.findViewById(R.id.CV_Cohete);
-        ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);
-        Log.d("Contenedor","Creando contenedor de vistas");
-        return contenedor;
+            final View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_card_lanzamientos, parent, false);
+            TextView tv_titular = vista.findViewById(R.id.TV_nombrecohete);
+            TextView tv_fecha = vista.findViewById(R.id.TV_fechacohete);
+            TextView tv_lugar = vista.findViewById(R.id.TV_lugarcohete);
+            ImageView img_cohete = vista.findViewById(R.id.IV_cohete);
+            CardView cv_cohete = vista.findViewById(R.id.CV_Cohete);
+            ContenedorDeVistas contenedor = new ContenedorDeVistas(vista);
+            return contenedor;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ContenedorDeVistas holder, int position) {
         Lanzamiento c = lista_contactos.get(position);
-
-        holder.tv_nombreCohete.setText(c.getRocket());
+        holder.tv_nombreCohete.setText(c.getRocketModel());
         holder.tv_fecha.setText(c.getHora());
         holder.tv_lugar.setText(c.getLugar());
         holder.cv_cohete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Cambio de ventana para ver mas informacion de dicho cohete
-                //dicha informacion se saca de ese link
-                //c.getLink();
+                Intent intent = new Intent(context, LanzamientosDetailScreen.class);
+                intent.putExtra("nombre_cohete", c.getRocket());
+                intent.putExtra("modelo_cohete", c.getRocketModel());
+                intent.putExtra("lugar_cohete", c.getLugar());
+                intent.putExtra("imagen_cohete", c.getImagen());
+                intent.putExtra("link_cohete",c.getLink());
+                context.startActivity(intent);
             }
         });
-
         Glide.with(context)
                 .load(c.getImagen())
                 .into(new SimpleTarget<Drawable>() {
@@ -73,8 +77,6 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
                         }
                     }
                 });
-
-
         Log.d("Contenedor","Cvinculando la posicion" + position);
     }
 
@@ -87,8 +89,6 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
         public CardView cv_cohete;
         public TextView tv_nombreCohete,tv_fecha,tv_lugar;
         public ImageView img_cohete;
-
-
         public ContenedorDeVistas(View vista) {
             super(vista);
             this.tv_nombreCohete = vista.findViewById(R.id.TV_nombrecohete);
@@ -96,8 +96,6 @@ public class AdaptadorRecyclerLanzamientos extends RecyclerView.Adapter<Adaptado
             this.tv_lugar = vista.findViewById(R.id.TV_lugarcohete);
             this.img_cohete = vista.findViewById(R.id.IV_cohete);
             this.cv_cohete = vista.findViewById(R.id.CV_Cohete);
-
-
         }
     }
 

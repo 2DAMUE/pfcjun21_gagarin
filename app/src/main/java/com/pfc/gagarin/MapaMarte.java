@@ -20,14 +20,12 @@ import org.rajawali3d.view.SurfaceView;
 public class MapaMarte extends AppCompatActivity {
 
     private SimpleRenderer renderer;
-    SurfaceView surface;
-
+    private SurfaceView surface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_marte);
-
         findViewById(R.id.prueba).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,8 +33,6 @@ public class MapaMarte extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
         // Crea el modelo de Marte 3Dy genera la camara
         surface = findViewById(R.id.rajawali_surface);
         surface.setFrameRate(60.0);
@@ -44,14 +40,5 @@ public class MapaMarte extends AppCompatActivity {
         renderer = new SimpleRenderer(this);
         surface.getHolder().setFormat(PixelFormat.TRANSPARENT);
         surface.setSurfaceRenderer(renderer);
-
-
-
-
-
-
-
-
-
     }
 }

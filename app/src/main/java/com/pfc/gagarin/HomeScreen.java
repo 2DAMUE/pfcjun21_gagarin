@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
@@ -33,35 +34,36 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
     private RecyclerView recyclerNoticias;
     private RecyclerView.LayoutManager gestor2;
     private AdaptadorRecyclerNoticias adapt;
+    private ProgressBar PB_noticias;
 
     private RecyclerView recyclerLanzamientos;
     private RecyclerView.LayoutManager gestor3;
     private AdaptadorRecyclerLanzamientos adapt2;
-
+    private ProgressBar PB_lanzamientos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
         verMasNoticias = findViewById(R.id.TV_VerMasNoticias);
         verMasLanzamientos = findViewById(R.id.TV_VerMasLanzamientos);
-
         cardMarte = findViewById(R.id.CV_Marte);
         cardSatelites = findViewById(R.id.CV_Satelites);
+        PB_noticias = findViewById(R.id.progressBar_noticias);
+        PB_lanzamientos = findViewById(R.id.progressBar_lanzamientos);
 
 
         // Hilo que llama al webscrapping
         HiloPeticionNoticias r = new HiloPeticionNoticias(HomeScreen.this);
         Thread t1 = new Thread(r);
         t1.start();
-
         HiloPeticionLanzamientos a = new HiloPeticionLanzamientos(HomeScreen.this);
         Thread t2 = new Thread(a);
         t2.start();
 
-
-
+         //TODO: 27/05/2021 Añadir funcionalidad de los progress bar
+        PB_noticias.setVisibility(View.VISIBLE);
+        PB_lanzamientos.setVisibility(View.VISIBLE);
 
         // Cambia al Activity de Marte
         findViewById(R.id.CV_Marte).setOnClickListener(new View.OnClickListener() {
@@ -71,15 +73,15 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
                 startActivity(intent);
             }
         });
-
-
-
+        //Cambia el activity de lanzazmientos
+        verMasLanzamientos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, LanzamientosScreen.class);
+                startActivity(intent);
+            }
+        });
     }
-
-
-
-
-
     @Override
     public void devolverNoticias(List<Noticia> listaNoticias) {
         runOnUiThread(new Runnable() {
@@ -90,7 +92,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
                 adapt = new AdaptadorRecyclerNoticias(listaNoticias, HomeScreen.this);
                 recyclerNoticias.setAdapter(adapt);
                 recyclerNoticias.setLayoutManager(gestor2);
-
+                PB_noticias.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -106,7 +108,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
                 adapt2 = new AdaptadorRecyclerLanzamientos(listaLanzamientos, HomeScreen.this);
                 recyclerLanzamientos.setAdapter(adapt2);
                 recyclerLanzamientos.setLayoutManager(gestor3);
-
+                PB_lanzamientos.setVisibility(View.INVISIBLE);
             }
         });
     }

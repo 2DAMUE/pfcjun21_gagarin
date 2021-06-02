@@ -41,11 +41,18 @@
         <item name="android:shape">rectangle</item>
         <item name="cardBackgroundColor">@color/glass</item>
     </style>
-    <style name="CardViewStyle_3" parent="CardView">
-        <item name="cardCornerRadius">35dp</item>
+    <style name="CardViewStyle_3" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/black_opacity</item>
         <item name="cardElevation">0dp</item>
         <item name="android:shape">rectangle</item>
-        <item name="cardBackgroundColor">#B2000000</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+    </style>
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">25dp</item>
+        <item name="cornerSizeTopLeft">25dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
     <style name="CardViewStyle_4" parent="CardView">
         <item name="cardElevation">0dp</item>

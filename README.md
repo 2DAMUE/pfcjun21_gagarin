@@ -1,7 +1,7 @@
 # Gagarin
 *Splash Screen* | *Log In Activity* | *Sign Up Activity* | *Home* | *News* | *Mars Map* | *Rover Screen*
 --------------|-----------------|------------------|---------------|---------------|---------------|-----------------
-![Splash Screen](/img/SplashScreen.png) | ![Log In Activity](/img/Login.png) | ![Sign Up Activity](/img/SignUp.png) | ![Home](/img/Home.png) | ![News](/img/News.png) | ![Rover Sreen](/img/RoverScreen.png) 
+![Splash Screen](/img/SplashScreen.png) | ![Log In Activity](/img/Login.png) | ![Sign Up Activity](/img/SignUp.png) | ![Home](/img/Home.png) | ![News](/img/News.png) | ![Mars Map](/img/MarsMap.png) | ![Rover Sreen](/img/RoverScreen.png)
 
 
 *Launch* | *Settings* | *Account Settings* | *Notifications* | *About Us* | *Comments* | *Upcoming Launch* 

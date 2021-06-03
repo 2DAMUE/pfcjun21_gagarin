@@ -17,6 +17,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterScreen" />
         <activity android:name=".LoginScreen" />
+        <activity android:name=".AccountSettingsScreen" />
         <activity
             android:name=".SplashScreen2"
             android:theme="@style/Theme.Gagarin"

@@ -60,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="16dp"
+        app:hintEnabled="false"
         android:textColorHint="@color/super_white"
         app:layout_constraintTop_toBottomOf="@+id/divider3">
 
@@ -67,13 +68,13 @@
             android:id="@+id/first_name_txti"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="@string/first_name"
-            android:textColorHint="@color/super_white"
-            android:textColor="@color/white"
-            android:textSize="17sp"
             android:fontFamily="@font/raleway_medium"
+            android:hint="@string/account_username"
             android:inputType="textPassword"
-            android:password="false" />
+            android:password="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/super_white"
+            android:textSize="17sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -93,6 +94,7 @@
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        app:hintEnabled="false"
         android:layout_marginTop="8dp"
         android:textColorHint="@color/super_white"
         app:layout_constraintTop_toTopOf="@+id/divider4">
@@ -101,13 +103,12 @@
             android:id="@+id/last_name_txti"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="@string/last_name"
-            android:textColorHint="@color/super_white"
-            android:textColor="@color/white"
-            android:textSize="17sp"
             android:fontFamily="@font/raleway_medium"
+            android:hint="@string/account_password"
             android:inputType="textPassword"
-            android:password="false" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/super_white"
+            android:textSize="17sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>

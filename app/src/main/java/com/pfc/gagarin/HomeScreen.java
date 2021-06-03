@@ -6,11 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
@@ -26,9 +30,13 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
 
     private TextView verMasNoticias;
     private TextView verMasLanzamientos;
+    private TextView tv_settings_icon;
+    private ImageView iv_menu_home;
+    private ImageView iv_x_menu;
 
     private CardView cardMarte;
     private CardView cardSatelites;
+    private CardView menu_view_home;
 
     private RecyclerView recyclerNoticias;
     private RecyclerView.LayoutManager gestor2;
@@ -37,6 +45,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
     private RecyclerView recyclerLanzamientos;
     private RecyclerView.LayoutManager gestor3;
     private AdaptadorRecyclerLanzamientos adapt2;
+
 
 
     @Override
@@ -49,6 +58,37 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
 
         cardMarte = findViewById(R.id.CV_Marte);
         cardSatelites = findViewById(R.id.CV_Satelites);
+        iv_menu_home = findViewById(R.id.iv_menu_home);
+        menu_view_home = findViewById(R.id.menu_view_home);
+        iv_x_menu = findViewById(R.id.iv_x_menu);
+        tv_settings_icon = findViewById(R.id.tv_settings_icon);
+
+        tv_settings_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this,AccountSettingsScreen.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        iv_menu_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 0, 880);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+            }
+        });
+        iv_x_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 880, 0);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+            }
+        });
 
 
         // Hilo que llama al webscrapping

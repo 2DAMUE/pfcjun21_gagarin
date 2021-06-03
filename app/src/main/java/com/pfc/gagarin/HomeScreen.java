@@ -66,7 +66,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         tv_settings_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this,AccountSettingsScreen.class);
+                Intent intent = new Intent(HomeScreen.this,SettingsScreen.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

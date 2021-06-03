@@ -18,8 +18,11 @@
         <activity android:name=".RegisterScreen" />
         <activity android:name=".LoginScreen" />
         <activity android:name=".AccountSettingsScreen" />
+        <activity android:name=".SettingsScreen" />
+        <activity android:name=".NotificationsScreen" />
+        <activity android:name=".AboutusScreen" />
         <activity
-            android:name=".SplashScreen2"
+            android:name=".SplashScreen"
             android:theme="@style/Theme.Gagarin"
             android:usesCleartextTraffic="true">
             <intent-filter>
@@ -34,7 +37,7 @@
             android:name=".NoticiaScreen"
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashScreen2"
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity
             android:name=".MapaMarte"

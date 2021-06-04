@@ -7,10 +7,11 @@
         android:toXScale="1.0"
         android:fromYScale="0.1"
         android:toYScale="1.0"
+        android:duration="3800"
         android:pivotX="50%"
         android:pivotY="50%"
         android:fillAfter="false"
-        android:duration="3800" />
+        />
 </set>
     <!--
         <scale

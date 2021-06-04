@@ -145,7 +145,7 @@ public class LoginScreen extends AppCompatActivity {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                GraphLoginRequest(loginResult.getAccessToken());
+                graphLoginRequest(loginResult.getAccessToken());
                 condicion_facebook = true;
                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -285,14 +285,13 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
-    private void GraphLoginRequest(AccessToken accessToken) {
+    private void graphLoginRequest(AccessToken accessToken) {
         GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken,
                 new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         try {
                             username_facebook = object.getString("name");
-                            Log.d("USS",profileImg+"");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

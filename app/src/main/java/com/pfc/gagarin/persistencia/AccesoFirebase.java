@@ -60,7 +60,6 @@ public class AccesoFirebase {
                     usuariosBBDD.put(userBBDD.getEmail(),userBBDD.getUsername());
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("ERROR", error.getMessage());

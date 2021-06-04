@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class PeticionBodyNoticias {
     private static Document doc;
-
     public static void conectar(String url_noticia) {
         try {
             doc = Jsoup.connect(url_noticia).get();
@@ -18,7 +17,6 @@ public class PeticionBodyNoticias {
         }
     }
     public static String pedirCuerpo() {
-
         String cuerpoNoticia = "";
 
         Elements newsHeadlines = doc.getElementsByClass("entry-content");

@@ -127,6 +127,8 @@ public class LoginScreen extends AppCompatActivity {
 
         createGoogleRequest();
         firebaseAuth=FirebaseAuth.getInstance();
+        mGoogleSignInClient.signOut();
+
 
         login_facebook.setVisibility(View.INVISIBLE);
 

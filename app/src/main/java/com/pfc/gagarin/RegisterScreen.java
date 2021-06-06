@@ -47,7 +47,6 @@ public class RegisterScreen extends AppCompatActivity implements AccesoFirebase.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_screen);
-        getSupportActionBar().hide();
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 

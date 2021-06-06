@@ -108,7 +108,7 @@ public class LoginScreen extends AppCompatActivity {
 
         com.facebook.login.LoginManager.getInstance().logOut();
 
-        getSupportActionBar().hide();
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         root= findViewById(R.id.root);
         card = findViewById(R.id.blur_card);
@@ -126,7 +126,7 @@ public class LoginScreen extends AppCompatActivity {
 
         createGoogleRequest();
         firebaseAuth=FirebaseAuth.getInstance();
-
+        mGoogleSignInClient.signOut();
         login_facebook.setVisibility(View.INVISIBLE);
 
         //et_pass.addTextChangedListener(validarCampos);

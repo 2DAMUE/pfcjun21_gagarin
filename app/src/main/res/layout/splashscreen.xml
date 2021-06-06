@@ -7,10 +7,10 @@
     android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
-        android:layout_width="970dp"
-        android:layout_height="830dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gif_splash2"
         android:foregroundGravity="fill_horizontal"
-        android:src="@drawable/gif_splash2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

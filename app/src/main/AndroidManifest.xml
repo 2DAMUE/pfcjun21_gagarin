@@ -14,16 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gagarin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterScreen" />
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".AccountSettingsScreen" />
-        <activity android:name=".SettingsScreen" />
-        <activity android:name=".NotificationsScreen" />
-        <activity android:name=".AboutusScreen" />
+        <activity android:name=".MainActivity" android:theme="@style/Theme.Gagarin.noBar"/>
+        <activity android:name=".RegisterScreen" android:theme="@style/Theme.Gagarin.noBar"/>
+        <activity android:name=".LoginScreen" android:theme="@style/Theme.Gagarin.noBar" />
+        <activity android:name=".AccountSettingsScreen" android:theme="@style/Theme.Gagarin.noBar"/>
+        <activity android:name=".SettingsScreen" android:theme="@style/Theme.Gagarin.noBar" />
+        <activity android:name=".NotificationsScreen" android:theme="@style/Theme.Gagarin.noBar" />
+        <activity android:name=".AboutusScreen" android:theme="@style/Theme.Gagarin.noBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.Gagarin"
+            android:theme="@style/Theme.Gagarin.noBar"
             android:usesCleartextTraffic="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity
             android:name=".SplashScreen2"
-            android:theme="@style/Theme.Gagarin.noBar" />
+            android:theme="@style/Theme.Gagarin.noBar"/>
         <activity
             android:name=".MapaMarte"
             android:theme="@style/Theme.Gagarin.noBar" />

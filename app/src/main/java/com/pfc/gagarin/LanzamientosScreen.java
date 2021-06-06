@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -29,6 +31,62 @@ public class LanzamientosScreen extends AppCompatActivity implements HiloPeticio
         setContentView(R.layout.activity_lanzamientos_screen);
         PB_lanz = findViewById(R.id.PB_RC_Lanzamientos2);
         PB_lanz.setVisibility(View.VISIBLE);
+
+        //Menu slide
+        findViewById(R.id.IV_SlideMenuIcon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_lanz), "translationX", 0, 880);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+            }
+        });
+        findViewById(R.id.iv_x_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_lanz), "translationX", 880, 0);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+            }
+        });
+
+        //on clicks del menu
+        findViewById(R.id.tv_home_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this,HomeScreen.class);
+                startActivity(intent);
+            }
+        });
+        /*findViewById(R.id.tv_launches_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, LanzamientosScreen.class);
+                startActivity(intent);
+            }
+        });*/
+        findViewById(R.id.tv_mars_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_satellites_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, SatelitesScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_settings_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, SettingsScreen.class);
+                startActivity(intent);
+            }
+        });
 
         //Hilo que llama al webscrapping
         HiloPeticionLanzamientos a = new HiloPeticionLanzamientos(LanzamientosScreen.this);

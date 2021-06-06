@@ -3,6 +3,7 @@ package com.pfc.gagarin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -36,6 +37,62 @@ public class RoverScreen extends AppCompatActivity {
         card_perseverance = findViewById(R.id.CV_perseverance);
         card_opportunity = findViewById(R.id.CV_opportunity);
         card_curiosity = findViewById(R.id.CV_curiosity) ;
+        //Menu Slide
+        //Menu slide
+        findViewById(R.id.IMG_sliderMenu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_rovers), "translationX", 0, 880);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+            }
+        });
+        findViewById(R.id.iv_x_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_rovers), "translationX", 880, 0);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+            }
+        });
+
+        //on clicks del menu
+        findViewById(R.id.tv_home_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RoverScreen.this,HomeScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_launches_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RoverScreen.this, LanzamientosScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_mars_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RoverScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_satellites_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RoverScreen.this, SatelitesScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_settings_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RoverScreen.this, SettingsScreen.class);
+                startActivity(intent);
+            }
+        });
 
         //Cambian de Activity y les pasan nombre de Rover
         card_spirit.setOnClickListener(new View.OnClickListener() {

@@ -40,22 +40,22 @@
     <ImageView
         android:id="@+id/iv_image_story"
         android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_background_story"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintTop_toBottomOf="@+id/blur_blu_story" />
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blur_scroll_story"
-        android:layout_width="415dp"
-        android:layout_height="491dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_background_story"
-        app:layout_constraintEnd_toEndOf="@+id/iv_background_story">
+        app:layout_constraintEnd_toEndOf="@+id/iv_background_story"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_card">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -82,9 +82,9 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_card_story"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/layout_card_story">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:id="@+id/tv_title_story"
@@ -126,14 +126,15 @@
                             android:id="@+id/tv_source_story_link"
                             android:layout_width="250dp"
                             android:layout_height="51dp"
-                            android:autoLink="web"
                             android:layout_marginTop="34dp"
+                            android:autoLink="web"
                             android:paddingBottom="32dp"
                             android:text=""
                             android:textColor="#9EFFFFFF"
                             android:textSize="15sp"
                             app:layout_constraintStart_toEndOf="@+id/tv_source_story"
                             app:layout_constraintTop_toBottomOf="@+id/tv_body_story" />
+
                         <View
                             android:id="@+id/v_line1"
                             android:layout_width="match_parent"
@@ -141,16 +142,17 @@
                             android:background="@color/gray"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tv_source_story_link" />
+
                         <TextView
                             android:id="@+id/tv_story_comments"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:autoLink="web"
-                            android:layout_marginTop="14dp"
                             android:layout_marginLeft="25dp"
+                            android:layout_marginTop="14dp"
+                            android:autoLink="web"
+                            android:fontFamily="@font/raleway_semibold"
                             android:paddingBottom="10dp"
                             android:text="Comments"
-                            android:fontFamily="@font/raleway_semibold"
                             android:textColor="@color/super_white"
                             android:textSize="18sp"
                             app:layout_constraintStart_toEndOf="parent"
@@ -175,8 +177,7 @@
                             android:layout_marginStart="32dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/v_line2"
-                            />
+                            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
 
                         <View
                             android:id="@+id/v_line3"
@@ -189,13 +190,14 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/iv_comment_user"
                             app:layout_constraintVertical_bias="0.0" />
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_comments"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@+id/v_line3"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_line3" />
 
                         <EditText
                             android:id="@+id/et_comment_story"
@@ -222,8 +224,6 @@
         </ScrollView>
 
 
-
-
     </eightbitlab.com.blurview.BlurView>
 
     <eightbitlab.com.blurview.BlurView
@@ -241,21 +241,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
     </eightbitlab.com.blurview.BlurView>
-
-    <ImageView
-        android:id="@+id/iv_arrow_back"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:elevation="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_left_arrow" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

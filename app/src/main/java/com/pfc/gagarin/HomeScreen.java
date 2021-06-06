@@ -66,14 +66,6 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         iv_x_menu = findViewById(R.id.iv_x_menu);
         tv_settings_icon = findViewById(R.id.tv_settings_icon);
 
-        tv_settings_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this,SettingsScreen.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
 
         iv_menu_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +82,43 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
                 ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 880, 0);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
+            }
+        });
+
+        //on clicks del menu
+        /*indViewById(R.id.tv_home_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this,SettingsScreen.class);
+                startActivity(intent);
+            }
+        });*/
+        findViewById(R.id.tv_launches_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, LanzamientosScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_mars_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_satellites_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, SatelitesScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_settings_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, SettingsScreen.class);
+                startActivity(intent);
             }
         });
 

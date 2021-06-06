@@ -8,14 +8,17 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
     //Variables
-    ImageView logomars;
-    Animation marsAnimation;
+    private ImageView logomars;
+    private Animation marsAnimation;
+    private Animation marsAnimation2;
+    private TextView tv_splash_gagarin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,10 @@ public class SplashScreen extends AppCompatActivity {
         openApp(true);
 
         logomars = findViewById(R.id.homeis_logo);
+        tv_splash_gagarin = findViewById(R.id.tv_splash_gagarin);
         marsAnimation = AnimationUtils.loadAnimation(this, R.anim.hyperspace_jump);
+        marsAnimation2 = AnimationUtils.loadAnimation(this, R.anim.tv_animation_splash);
+        tv_splash_gagarin.startAnimation(marsAnimation2);
         logomars.startAnimation(marsAnimation);
     }
 
@@ -42,6 +48,6 @@ public class SplashScreen extends AppCompatActivity {
                         .this, LoginScreen.class);
                 startActivity(intent);
             }
-        }, 4000);
+        }, 5000);
     }
 }

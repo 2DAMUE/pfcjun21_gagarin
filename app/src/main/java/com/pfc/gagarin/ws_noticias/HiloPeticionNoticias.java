@@ -35,6 +35,7 @@ public class HiloPeticionNoticias implements Runnable {
            n.setImagen(foto);
            n.setFecha(fecha);
            n.setLink(link);
+
            Log.d("abobole", "run: " + link);
 
            noticias5.add(n);

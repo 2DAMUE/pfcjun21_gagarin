@@ -68,6 +68,186 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_begin="778dp" />
 
+            <ImageView
+                android:id="@+id/iv_menu_home"
+                android:layout_width="43dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/menu_icon" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/menu_view_home"
+                style="@style/CardViewStyle_5"
+                android:layout_width="338dp"
+                android:layout_height="1185dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="50dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.511"
+                    tools:layout_editor_absoluteX="-55dp">
+
+                    <ImageView
+                        android:id="@+id/iv_x_menu"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginRight="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/x_icon"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/iv_home_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/home_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_home_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="48dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/home_menu"
+                        android:textColor="@color/super_white"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_news_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_home_icon"
+                        app:srcCompat="@drawable/news_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_news_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/news_menu"
+                        android:textColor="@color/super_white"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_home_icon" />
+
+                    <ImageView
+                        android:id="@+id/iv_launches_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_news_icon"
+                        app:srcCompat="@drawable/launches_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_launches_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/launches_menu"
+                        android:textColor="@color/super_white"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_news_icon" />
+
+                    <ImageView
+                        android:id="@+id/iv_mars_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_launches_icon"
+                        app:srcCompat="@drawable/mars_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_mars_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/mars_menu"
+                        android:textColor="@color/super_white"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_launches_icon" />
+
+                    <ImageView
+                        android:id="@+id/iv_satellites_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_mars_icon"
+                        app:srcCompat="@drawable/satellites_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_satellites_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/satellites_menu"
+                        android:textColor="@color/super_white"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_mars_icon" />
+
+                    <ImageView
+                        android:id="@+id/iv_settings_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="60dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_satellites_icon"
+                        app:srcCompat="@drawable/settings_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_settings_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="36dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/settings_menu"
+                        android:textColor="@color/super_white"
+                        android:textSize="32sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_satellites_icon" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RC_Lanzamientos"
@@ -222,9 +402,10 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_LanzamientosHorizontal1"
                 app:layout_constraintEnd_toStartOf="@+id/Guideline_Right"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/Guideline_Left"
                 app:layout_constraintTop_toTopOf="@+id/Guideline_noticiasHorizontal"
-                app:layout_constraintVertical_bias="0.653" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/CV_Marte"

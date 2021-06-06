@@ -1,4 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="login_with_google">Sign in with Google</string>
+    <string name="login_with_facebook">Sign in with Facebook</string>
+    <string name="register">Register</string>
+    <string name="account">Don\'t have an account?</string>
+    <string name="Sign">Sign up</string>
+    <string name="Show">Show</string>
+    <string name="promo">I would like to receive your newsletter and other promotional information.</string>
     <string name="app_name">Gagarin</string>
 
     <!--  HOME  -->
@@ -68,6 +81,36 @@
         y ayudarán a los futuros exploradores humanos a predecir mejor el clima marciano.</string>
     <!-- Datos Spirit -->
     <string name="spirit_name">Spirit</string>
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account">Account Settings</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about_us">About us</string>
+    <string name="settings_github">Github</string>
+    <string name="settings_logout">Logout</string>
+    <string name="account_settings_title">Account settings</string>
+    <string name="account_username">Username</string>
+    <string name="account_password">Password</string>
+    <string name="save_account_settings">Save</string>
+    <string name="launch_notification">Launch notifications</string>
+    <string name="news_notification">Latest news notifications</string>
+    <string name="aboutus_name_1">Ionut Alin</string>
+    <string name="aboutus_developer">Developer</string>
+    <string name="aboutus_name_2">Fran Ruiz</string>
+    <string name="aboutus_name_3">Fabiola Decena</string>
+    <string name="aboutus_ux">UX Designer</string>
+    <string name="aboutus_name_4">Pablo Benito</string>
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">242835757644573</string>
+    <string name="fb_login_protocol_scheme">fb242835757644573</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
+    <string name="news_menu">News</string>
+    <string name="home_menu">Home</string>
+    <string name="launches_menu">Launches</string>
+    <string name="mars_menu">Mars</string>
+    <string name="satellites_menu">Satellites</string>
+    <string name="settings_menu">Settings</string>
     <string name="spirit_landing">Sleepy Hollow</string>
     <string name="spirit_date">3 de enero de 2004, 4:35 UTC</string>
     <string name="spirit_title">Exploración de la Superficie</string>

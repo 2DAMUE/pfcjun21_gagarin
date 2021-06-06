@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "76659769996",
+    "firebase_url": "https://friendly-block-302818-default-rtdb.firebaseio.com",
+    "project_id": "friendly-block-302818",
+    "storage_bucket": "friendly-block-302818.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76659769996:android:7fb9bc759a0e1915e0b1a9",
+        "android_client_info": {
+          "package_name": "com.pfc.gagarin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76659769996-b2a6nimj9fmul577jjoe0g300spnqt97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pfc.gagarin",
+            "certificate_hash": "38f4d79b26147a47ae98477d6d57a02309b4e9f3"
+          }
+        },
+        {
+          "client_id": "76659769996-5raj3ue1c13514fk170b6ac2qfp12n4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzwryvl42UYB8JWzkZa9Ytsd68vfu1cHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76659769996-5raj3ue1c13514fk170b6ac2qfp12n4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

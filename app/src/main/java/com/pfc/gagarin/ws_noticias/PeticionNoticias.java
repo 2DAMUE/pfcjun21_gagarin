@@ -74,6 +74,22 @@ public class PeticionNoticias {
 
         return urlfoto;
     }
+    public static String pedirCuerpo(int i) {
+
+        int contador = 0;
+        String cuerpoNoticia = "";
+
+        Elements newsHeadlines = doc.getElementsByClass("mh-loop-excerpt");
+        for (Element headline : newsHeadlines) {
+            if (contador == i){
+                cuerpoNoticia = headline.child(0).child(0).getElementsByTag("p").first().text();
+            }
+            contador++;
+
+        }
+
+        return cuerpoNoticia;
+    }
 
     public static String pedirLink(int i) {
         int contador = 0;

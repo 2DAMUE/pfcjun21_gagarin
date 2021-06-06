@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -38,7 +40,8 @@ public class RoverDetailScreen extends AppCompatActivity implements HiloCargaMod
     private SurfaceView surface;
     private BlurView card;
     private ProgressBar progressBar;
-    private TextView title,body;
+    private TextView title,body,fail;
+    private ImageView img_back;
 
     private RecyclerView recyclerView_fotosAPI;
     private RecyclerView.LayoutManager gestor;
@@ -48,6 +51,7 @@ public class RoverDetailScreen extends AppCompatActivity implements HiloCargaMod
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rover_detail_screen);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         root= findViewById(R.id.root);
         card = findViewById(R.id.blur_card);
         progressBar = findViewById(R.id.progressBar);
@@ -58,6 +62,14 @@ public class RoverDetailScreen extends AppCompatActivity implements HiloCargaMod
         //Recoge el nombre del Rover que ha seleccionado
         Intent intent = getIntent();
         String nombreRover = intent.getStringExtra("nombre_rover");
+
+        img_back = findViewById(R.id.IV_back2);
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //Se prepara para llamar a la clase que carga el objeto 3D
         surface = findViewById(R.id.rajawali_surface_rover);
@@ -121,10 +133,18 @@ public class RoverDetailScreen extends AppCompatActivity implements HiloCargaMod
             @Override
             public void run() {
                 recyclerView_fotosAPI = findViewById(R.id.RC_FotosRover);
-                adapt = new AdaptadorRecyclerFotosRoverApi(r, RoverDetailScreen.this);
-                gestor = new LinearLayoutManager(RoverDetailScreen.this, LinearLayoutManager.HORIZONTAL, false);
-                recyclerView_fotosAPI.setAdapter(adapt);
-                recyclerView_fotosAPI.setLayoutManager(gestor);
+                fail = findViewById(R.id.TV_infoRover3);
+                if (r != null){
+                    adapt = new AdaptadorRecyclerFotosRoverApi(r, RoverDetailScreen.this);
+                    gestor = new LinearLayoutManager(RoverDetailScreen.this, LinearLayoutManager.HORIZONTAL, false);
+                    recyclerView_fotosAPI.setAdapter(adapt);
+                    recyclerView_fotosAPI.setLayoutManager(gestor);
+                }else{
+                    recyclerView_fotosAPI.setVisibility(View.INVISIBLE);
+                    fail.setVisibility(View.VISIBLE);
+
+                }
+
             }
         });
     }

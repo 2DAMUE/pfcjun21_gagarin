@@ -7,9 +7,13 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -37,12 +41,14 @@ public class LanzamientosDetailScreen extends AppCompatActivity implements OnMap
     private ViewGroup root;
     private BlurView card;
     private TextView tv_nombreCohete, tv_nombreModeloCohete, tv_lugarCohete, tv_countdown, tv_body;
+    private ScrollView scroll;
     private ImageView img_cohete, img_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lanzamientos_detail_screen);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         root= findViewById(R.id.root);
         card = findViewById(R.id.blur_card);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -76,6 +82,19 @@ public class LanzamientosDetailScreen extends AppCompatActivity implements OnMap
         tv_nombreCohete.setText(nombreCohete);
         tv_lugarCohete.setText(lugarCohete);
 
+        new CountDownTimer(800000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long minutes = (millisUntilFinished / 1000)  / 60;
+                int seconds = (int)((millisUntilFinished / 1000) % 60);
+                tv_countdown.setText("00:" +  String.valueOf(minutes) + ":" + String.valueOf(seconds));
+            }
+            @Override
+            public void onFinish() {
+                tv_countdown.setText(R.string.L_countdowntimer);
+            }
+        }.start();
+
         img_cohete = findViewById(R.id.IV_fotoLanzamiento_3);
         Glide.with(this)
                 .load(imagenCohete)
@@ -94,7 +113,6 @@ public class LanzamientosDetailScreen extends AppCompatActivity implements OnMap
         L.setLugar(lugarCohete);
         L.setImagen(imagenCohete);
         L.setLink(linkinfo);
-
         HiloPeticionLanzamientosDetalle a = new HiloPeticionLanzamientosDetalle(LanzamientosDetailScreen.this, L);
         Thread t2 = new Thread(a);
         t2.start();
@@ -128,6 +146,34 @@ public class LanzamientosDetailScreen extends AppCompatActivity implements OnMap
                 LatLng loc = new LatLng(Double.valueOf(latlng[0]),Double.valueOf(latlng[1]));
                 mMap.addMarker(new MarkerOptions().position(loc));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                //deshabilita el scroll cuando se toca el mapa
+                scroll = findViewById(R.id.SC_scroll);
+                ImageView transparent = (ImageView)findViewById(R.id.imagetrans);
+                transparent.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        int action = event.getAction();
+                        switch (action) {
+                            case MotionEvent.ACTION_DOWN:
+                                // Disallow ScrollView to intercept touch events.
+                                scroll.requestDisallowInterceptTouchEvent(true);
+                                // Disable touch on transparent view
+                                return false;
+
+                            case MotionEvent.ACTION_UP:
+                                // Allow ScrollView to intercept touch events.
+                                scroll.requestDisallowInterceptTouchEvent(false);
+                                return true;
+
+                            case MotionEvent.ACTION_MOVE:
+                                scroll.requestDisallowInterceptTouchEvent(true);
+                                return false;
+
+                            default:
+                                return true;
+                        }
+                    }
+                });
             }
         });
 

@@ -20,14 +20,32 @@
     <string name="L_lugar">Lugar de Lanzamiento</string>
     <string name="L_infoCohete">Informacion del Cohete</string>
     <string name="L_lugar_mapa">Mapa</string>
+    <string name="L_countdowntimer">Lanzamiento Empezado</string>
+    <string name="H_satel">Provided By www.stuffin.space</string>
     <!-- ROVERS MARTE -->
+    <string name="RV_verRovers">Mira los Rovers de Marte →</string>
+    <string name="RV_VerFotos">Fotos</string>
+    <string name="RV_VerFotosFailure">Actualmente no hay fotos para este rover</string>
     <!-- Datos Opportunity -->
     <string name="opportunity_name">Opportunity</string>
-    <string name="opportunity_title"></string>
-    <string name="opportunity_body"></string>
+    <string name="opportunity_landing">Cráter Gale </string>
+    <string name="opportunity_date">6 de agosto de 2012, 05:31 UTC</string>
+    <string name="opportunity_title">Exploración de la Superficie</string>
+    <string name="opportunity_body">El Opportunity fue el segundo de los dos vehículos exploradores lanzados en 2003 para aterrizar en Marte y comenzar a atravesar
+        el Planeta Rojo en busca de señales de vida pasada. El rover todavía está explorando activamente el terreno marciano, habiendo sobrevivido con creces
+        a su misión planificada de 90 días.
+        Desde su aterrizaje en Marte en 2004, Opportunity ha realizado una serie de descubrimientos sobre el Planeta Rojo,
+        incluida la evidencia dramática de que hace mucho tiempo al menos un área de Marte permaneció húmeda durante un período prolongado
+        y que las condiciones podrían haber sido adecuadas para sustentar la vida microbiana.
+        El rover Opportunity dejó de comunicarse con la Tierra cuando una severa tormenta de polvo en todo Marte cubrió su ubicación en junio de 2018.
+        Después de más de mil comandos para restablecer el contacto, los ingenieros de la Instalación de Operaciones de Vuelo Espacial del Laboratorio de Propulsión a Chorro (JPL)
+        de la NASA hicieron su último intento revivir Opportunity el martes 13 de febrero de 2019, pero fue en vano. La comunicación final del rover con energía solar
+        se recibió el 10 de junio.</string>
 
     <!-- Datos Curiosity -->
     <string name="curiosity_name">Curiosity</string>
+    <string name="curiosity_landing">Meridiani Planum</string>
+    <string name="curiosity_date">25 de enero de 2004, 05:05 TUC</string>
     <string name="curiosity_title">Examinando el cráter Gale</string>
     <string name="curiosity_body">Curiosity explora el cráter Gale y adquiere muestras de roca,
         suelo y aire para análisis a bordo. El rover del tamaño de un automóvil es tan alto como un jugador
@@ -39,6 +57,8 @@
         de orgánicos.</string>
     <!-- Datos Perseverance -->
     <string name="perseverance_name">Perseverance</string>
+    <string name="perseverance_landing">Cráter Jezero</string>
+    <string name="perseverance_date">18 de febrero de 2021, 20:56 UTC</string>
     <string name="perseverance_title">Tecnologías para operaciones de superficie</string>
     <string name="perseverance_body">El Perseverance prueba una tecnología para extraer oxígeno de la atmósfera marciana,
         que es 96% de dióxido de carbono. Esta demostración ayuda a los planificadores de misiones a probar formas de utilizar
@@ -48,8 +68,17 @@
         y ayudarán a los futuros exploradores humanos a predecir mejor el clima marciano.</string>
     <!-- Datos Spirit -->
     <string name="spirit_name">Spirit</string>
-    <string name="spirit_title"></string>
-    <string name="spirit_body"></string>
+    <string name="spirit_landing">Sleepy Hollow</string>
+    <string name="spirit_date">3 de enero de 2004, 4:35 UTC</string>
+    <string name="spirit_title">Exploración de la Superficie</string>
+    <string name="spirit_body">Los rovers Spirit y Opportunity juntos representaron la misión Mars Exploration Rover Mission (MER) de la NASA,
+        parte del Programa de Exploración de Marte. Lanzados con un mes de diferencia en 2003, el principal objetivo científico de los rovers gemelos era buscar
+        una variedad de rocas y tipos de suelo y luego buscar pistas sobre la actividad pasada del agua en Marte.
+        Cada rover es aproximadamente del tamaño de un carrito de golf y siete veces más pesado (alrededor de 405 libras o 185 kilogramos)
+        que el rover Sojourner lanzado en la misión Mars Pathfinder to Mars en 1996.
+        Spirit y Opportunity fueron enviados a lados opuestos de Marte a lugares que se sospechaba que habían sido afectados por agua líquida en el pasado.
+        El plan era que los rovers se movieran de un lugar a otro, realizaran investigaciones geológicas y tomaran fotografías con cámaras montadas en el mástil
+        (a unos 5 pies o 1,5 metros del suelo) que proporcionaban vistas estereoscópicas de 360 grados del terreno.</string>
     <string name="title_activity_maps">Map</string>
 
 </resources>

@@ -7,6 +7,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_estrellas_marte"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TV_VerRovers"
+        android:layout_width="289dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/ralewayregular"
+        android:gravity="bottom|top|end"
+        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/RV_verRovers"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.614" />
+
     <org.rajawali3d.view.SurfaceView
         android:id="@+id/rajawali_surface"
         android:layout_width="0dp"
@@ -23,18 +53,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="111dp" />
-
-    <ImageView
-        android:id="@+id/prueba"
-        android:layout_width="92dp"
-        android:layout_height="69dp"
-        app:layout_constraintBottom_toTopOf="@+id/rajawali_surface"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642"
-        app:srcCompat="@drawable/shapecard4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,9 +20,9 @@
 
     <TextView
         android:id="@+id/TV_NombreCohete_3"
-        android:layout_width="220dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="148dp"
+        android:layout_width="286dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/ralewaybold"
         android:gravity="start|left"
         android:textColor="@color/white"
@@ -87,6 +87,7 @@
     </eightbitlab.com.blurview.BlurView>
 
     <ScrollView
+        android:id="@+id/SC_scroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,26 +99,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/TV_overview"
-                android:layout_width="233dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/ralewaybold"
-                android:gravity="start|left"
-                android:padding="5dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="5dp"
-                android:text="@string/L_overview"
-                android:textColor="@color/white"
-                android:textSize="22sp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline8"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline7"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/TV_overview6"
@@ -161,7 +142,6 @@
                 android:id="@+id/TV_txtCuenta_atras"
                 android:layout_width="139dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="6dp"
                 android:fontFamily="@font/ralewayregular"
                 android:gravity="start|left"
                 android:padding="5dp"
@@ -172,9 +152,8 @@
                 android:text="@string/L_countdown"
                 android:textColor="@color/white"
                 android:textSize="17sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline9"
                 app:layout_constraintStart_toStartOf="@+id/guideline7"
-                app:layout_constraintTop_toBottomOf="@+id/TV_overview" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/TV_txtLugarLanzamiento"
@@ -192,12 +171,12 @@
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline7"
-                app:layout_constraintTop_toTopOf="@+id/guideline9" />
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <TextView
                 android:id="@+id/TV_body"
                 android:layout_width="0dp"
-                android:layout_height="259dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/ralewayregular"
                 android:gravity="start|left"
@@ -220,7 +199,6 @@
                 android:layout_width="200dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="101dp"
-                android:layout_marginTop="4dp"
                 android:fontFamily="@font/ralewayregular"
                 android:gravity="bottom|end"
                 android:padding="5dp"
@@ -230,18 +208,16 @@
                 android:paddingBottom="5dp"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline9"
+                app:layout_constraintBottom_toTopOf="@+id/divider"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/TV_txtCuenta_atras"
-                app:layout_constraintTop_toBottomOf="@+id/TV_overview"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/TV_LugarLanzamiento"
-                android:layout_width="155dp"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="26dp"
                 android:fontFamily="@font/ralewayregular"
                 android:gravity="bottom|end"
                 android:padding="5dp"
@@ -254,8 +230,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline10"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
                 app:layout_constraintStart_toEndOf="@+id/TV_txtLugarLanzamiento"
-                app:layout_constraintTop_toTopOf="@+id/guideline9"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline7"
@@ -272,18 +247,11 @@
                 app:layout_constraintGuide_end="16dp" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="112dp" />
-
-            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="157dp" />
+                app:layout_constraintGuide_begin="89dp" />
 
             <View
                 android:id="@+id/divider"
@@ -316,6 +284,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/TV_overview8"
                 tools:context=".MapsActivity" />
 
+            <ImageView
+                android:id="@+id/imagetrans"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@color/glass"
+                app:layout_constraintBottom_toBottomOf="@+id/map"
+                app:layout_constraintEnd_toEndOf="@+id/map"
+                app:layout_constraintStart_toStartOf="@+id/map"
+                app:layout_constraintTop_toTopOf="@+id/map" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -338,6 +316,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="345dp" />
+        app:layout_constraintGuide_begin="314dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

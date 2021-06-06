@@ -23,7 +23,7 @@ public class RoverScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rover_screen);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //API KEY FOTOS ROVERS vYqFoAd5xt4NAjJ0dznwAcynLDMba3AE4U7nD4kB
         //Asignacion de componentes
         root= findViewById(R.id.root);

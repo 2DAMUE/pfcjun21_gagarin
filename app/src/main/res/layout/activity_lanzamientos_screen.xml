@@ -63,14 +63,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="215dp" />
+        app:layout_constraintGuide_begin="225dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_lanzamientos_div2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="166dp" />
+        app:layout_constraintGuide_end="86dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RC_Lanzaminetos_central"
@@ -78,8 +78,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_lanzamientos_div2"
         app:layout_constraintEnd_toStartOf="@+id/guideline_lanzamientos_lateral1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_lanzamientos_lateral2"
-        app:layout_constraintTop_toTopOf="@+id/guideline_lanzamientos_div1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_lanzamientos_div1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar
         android:id="@+id/PB_RC_Lanzamientos2"

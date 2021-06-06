@@ -121,23 +121,44 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/TV_mesAterrizaje_curiosity"
+                            android:id="@+id/TV_LugarAterrizaje_curiosity"
                             style="@style/LoginTextInputLayoutStyle"
                             android:layout_width="172dp"
                             android:layout_height="27dp"
                             android:layout_marginStart="5dp"
-                            android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
                             android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
+                            android:text="@string/curiosity_landing"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/guideline2_curiosity"
-                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintHorizontal_bias="0.351"
                             app:layout_constraintStart_toEndOf="@+id/IV_fotorover_curiosity"
                             app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_curiosity"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_curiosity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="176dp"
+                            android:layout_height="41dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="4dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/ralewayregular"
+                            android:gravity="start|left"
+                            android:text="@string/curiosity_date"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_curiosity"
+                            app:layout_constraintHorizontal_bias="0.393"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_curiosity"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_LugarAterrizaje_curiosity"
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
@@ -207,23 +228,44 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/TV_mesAterrizaje_opportunity"
+                            android:id="@+id/TV_LugarAterrizaje_opportunity"
                             style="@style/LoginTextInputLayoutStyle"
                             android:layout_width="172dp"
                             android:layout_height="27dp"
                             android:layout_marginStart="5dp"
-                            android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
                             android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
+                            android:text="@string/opportunity_landing"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/guideline2_opportunity"
-                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintHorizontal_bias="0.351"
                             app:layout_constraintStart_toEndOf="@+id/IV_fotorover_opportunity"
                             app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_opportunity"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_opportunity"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="176dp"
+                            android:layout_height="41dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="4dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/ralewayregular"
+                            android:gravity="start|left"
+                            android:text="@string/opportunity_date"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_opportunity"
+                            app:layout_constraintHorizontal_bias="0.393"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_opportunity"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_LugarAterrizaje_opportunity"
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
@@ -292,23 +334,44 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/TV_mesAterrizaje_spirit"
+                            android:id="@+id/TV_LugarAterrizaje_spirit"
                             style="@style/LoginTextInputLayoutStyle"
                             android:layout_width="172dp"
                             android:layout_height="27dp"
                             android:layout_marginStart="5dp"
-                            android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
                             android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
+                            android:text="@string/spirit_landing"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/guideline2_spirit"
-                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintHorizontal_bias="0.351"
                             app:layout_constraintStart_toEndOf="@+id/IV_fotorover_spirit"
                             app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_spirit"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_spirit"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="176dp"
+                            android:layout_height="41dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="4dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/ralewayregular"
+                            android:gravity="start|left"
+                            android:text="@string/spirit_date"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_spirit"
+                            app:layout_constraintHorizontal_bias="0.393"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_spirit"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_LugarAterrizaje_spirit"
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
@@ -375,25 +438,45 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
                         <TextView
-                            android:id="@+id/TV_mesAterrizaje_perseverance"
+                            android:id="@+id/TV_LugarAterrizaje_perseverance"
                             style="@style/LoginTextInputLayoutStyle"
                             android:layout_width="172dp"
                             android:layout_height="27dp"
                             android:layout_marginStart="5dp"
-                            android:layout_marginTop="18dp"
                             android:layout_marginBottom="32dp"
                             android:elevation="8dp"
                             android:fontFamily="@font/ralewayregular"
                             android:gravity="start|left"
+                            android:text="@string/perseverance_landing"
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/guideline2_perseverance"
-                            app:layout_constraintHorizontal_bias="0.309"
+                            app:layout_constraintHorizontal_bias="0.351"
                             app:layout_constraintStart_toEndOf="@+id/IV_fotorover_perseverance"
                             app:layout_constraintTop_toBottomOf="@+id/TV_nombrerover_perseverance"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/TV_mesAterrizaje_perseverance"
+                            style="@style/LoginTextInputLayoutStyle"
+                            android:layout_width="176dp"
+                            android:layout_height="41dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="4dp"
+                            android:elevation="8dp"
+                            android:fontFamily="@font/ralewayregular"
+                            android:gravity="start|left"
+                            android:text="@string/perseverance_date"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline2_perseverance"
+                            app:layout_constraintHorizontal_bias="0.393"
+                            app:layout_constraintStart_toEndOf="@+id/IV_fotorover_perseverance"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_LugarAterrizaje_perseverance"
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView

@@ -1,13 +1,11 @@
 package com.pfc.gagarin;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -27,9 +25,6 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
     private TextView verMasNoticias;
     private TextView verMasLanzamientos;
 
-    private CardView cardMarte;
-    private CardView cardSatelites;
-
     private RecyclerView recyclerNoticias;
     private RecyclerView.LayoutManager gestor2;
     private AdaptadorRecyclerNoticias adapt;
@@ -46,8 +41,6 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         setContentView(R.layout.activity_home_screen);
         verMasNoticias = findViewById(R.id.TV_VerMasNoticias);
         verMasLanzamientos = findViewById(R.id.TV_VerMasLanzamientos);
-        cardMarte = findViewById(R.id.CV_Marte);
-        cardSatelites = findViewById(R.id.CV_Satelites);
         PB_noticias = findViewById(R.id.progressBar_noticias);
         PB_lanzamientos = findViewById(R.id.progressBar_lanzamientos);
 
@@ -69,6 +62,13 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.CV_Satelites).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, SatelitesScreen.class);
                 startActivity(intent);
             }
         });

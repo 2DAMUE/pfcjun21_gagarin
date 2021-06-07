@@ -55,7 +55,8 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
         CardView card = vista.findViewById(R.id.CV_Noticia);
         BlurView blur_card = vista.findViewById(R.id.blur_card);
-
+        
+        //Blur Background
         final float radius = 3f;
         final Drawable windowBackground = parent.getBackground();
 

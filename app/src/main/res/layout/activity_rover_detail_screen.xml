@@ -18,24 +18,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/IV_back2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+
     <org.rajawali3d.view.SurfaceView
         android:id="@+id/rajawali_surface_rover"
         android:layout_width="0dp"
         android:layout_height="248dp"
-        android:layout_marginTop="60dp"
         android:backgroundTint="@color/glass"
         android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/blur_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/IV_back2" />
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blur_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/blur_bg_rover_detail"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_rovers_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,81 +69,105 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.511"
                 tools:layout_editor_absoluteX="-55dp">
-
-                <TextView
-                    android:id="@+id/TV_lugarAterrizajeRover"
-                    android:layout_width="293dp"
-                    android:layout_height="53dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/ralewaybold"
-                    android:gravity="start|left"
-                    android:textColor="@color/white"
-                    android:textSize="19sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/TV_infoRover"
+                <ScrollView
+                    android:id="@+id/SC_scroll"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
-                    android:layout_marginTop="21dp"
-                    android:fontFamily="@font/ralewaylight"
-                    android:gravity="start|left"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_rover_detail2"
-                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/TV_lugarAterrizajeRover" />
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline_vertical_rover_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_begin="20dp" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline_vertical_rover_detail2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_end="20dp" />
+                        <TextView
+                            android:id="@+id/TV_infoRover3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/ralewaylight"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:visibility="invisible"
+                            app:layout_constraintBottom_toBottomOf="@+id/RC_FotosRover"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_rover_detail2"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
+                            app:layout_constraintTop_toTopOf="@+id/RC_FotosRover" />
 
+                        <TextView
+                            android:id="@+id/TV_lugarAterrizajeRover"
+                            android:layout_width="286dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/ralewaybold"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
+                            app:layout_constraintTop_toTopOf="parent" />
 
+                        <TextView
+                            android:id="@+id/TV_infoRover"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/ralewaylight"
+                            android:gravity="start|left"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_rover_detail2"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_lugarAterrizajeRover" />
+
+                        <TextView
+                            android:id="@+id/TV_lugarAterrizajeRover2"
+                            android:layout_width="0dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/ralewaybold"
+                            android:gravity="start|left"
+                            android:text="@string/RV_VerFotos"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_rover_detail2"
+                            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_infoRover" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline_vertical_rover_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="20dp" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline_vertical_rover_detail2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="20dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/RC_FotosRover"
+                            android:layout_width="0dp"
+                            android:layout_height="145dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_rover_detail"
+                            app:layout_constraintTop_toBottomOf="@+id/TV_lugarAterrizajeRover2" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </ScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </eightbitlab.com.blurview.BlurView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_rovers_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="145dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="74dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/rajawali_surface_rover"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RC_FotosRover"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_rovers_bottom" />
 
     <ProgressBar
         android:id="@+id/progressBar"

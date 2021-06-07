@@ -2,7 +2,6 @@
     <!-- Base application theme. -->
     <style name="Theme.Gagarin" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="android:windowDisablePreview">true</item>
         <item name="colorPrimary">@color/super_white</item>
         <item name="colorPrimaryVariant">@color/super_white</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -17,10 +16,9 @@
 
     <style name="Theme.Gagarin.noBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:windowDisablePreview">true</item>
-        <item name="colorPrimary">@color/super_white</item>
+        <item name="colorPrimary">@color/black</item>
         <item name="android:textColorHint">@color/gray</item>
-        <item name="colorPrimaryVariant">@color/super_white</item>
+        <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/super_white</item>

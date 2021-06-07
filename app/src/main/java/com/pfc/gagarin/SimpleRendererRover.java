@@ -45,7 +45,7 @@ public class SimpleRendererRover extends Renderer {
                     getCurrentCamera().setZ(3.2f);
                     ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
                     arcball.setTarget(rover); //your 3D Object
-                    arcball.setPosition(-3,3,4); //optional
+                    arcball.setPosition(-3,3.5,4); //optional
                     getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
                 } catch (ParsingException e) {
                     e.printStackTrace();
@@ -61,7 +61,7 @@ public class SimpleRendererRover extends Renderer {
                     getCurrentCamera().setZ(3.2f);
                     ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
                     arcball.setTarget(rover); //your 3D Object
-                    arcball.setPosition(-3,3,4); //optional
+                    arcball.setPosition(-3,3.5,4); //optional
                     getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
                 } catch (ParsingException e) {
                     e.printStackTrace();
@@ -77,7 +77,7 @@ public class SimpleRendererRover extends Renderer {
                     getCurrentCamera().setZ(3.2f);
                     ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface_rover));
                     arcball.setTarget(rover); //your 3D Object
-                    arcball.setPosition(-1,2,2.5); //optional
+                    arcball.setPosition(-1,2.3,2.1); //optional
                     getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
                 } catch (ParsingException e) {
                     e.printStackTrace();
@@ -89,7 +89,20 @@ public class SimpleRendererRover extends Renderer {
     @Override
     public void onRender(final long elapsedTime, final double deltaTime) {
         super.onRender(elapsedTime, deltaTime);
-        rover.rotate(Vector3.Axis.Y, 1.0);
+        switch (nombreRover){
+            case "curiosity":
+                rover.rotate(Vector3.Axis.Y, 0.3);
+                break;
+
+            case "perseverance":
+                rover.rotate(Vector3.Axis.Y, 0.5);
+                break;
+
+            case "opportunity": case "spirit":
+                rover.rotate(Vector3.Axis.Y, 0.2);
+                break;
+        }
+
     }
 
     @Override

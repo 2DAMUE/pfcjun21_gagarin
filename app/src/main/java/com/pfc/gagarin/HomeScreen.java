@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.tv.TvContract;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +18,6 @@ import android.widget.ProgressBar;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
@@ -43,11 +40,9 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
     private ImageView iv_menu_home;
     private ImageView iv_x_menu;
 
-    private ViewGroup root_home;
-
-    private CardView cardMarte;
-    private CardView cardSatelites;
     private CardView menu_view_home;
+    private BlurView card;
+    private ViewGroup root;
 
     private RecyclerView recyclerNoticias;
     private RecyclerView.LayoutManager gestor2;
@@ -66,33 +61,21 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
 
         verMasNoticias = findViewById(R.id.TV_VerMasNoticias);
         verMasLanzamientos = findViewById(R.id.TV_VerMasLanzamientos);
-
-        cardMarte = findViewById(R.id.CV_Marte);
-        cardSatelites = findViewById(R.id.CV_Satelites);
         PB_noticias = findViewById(R.id.progressBar_noticias);
         PB_lanzamientos = findViewById(R.id.progressBar_lanzamientos);
+
+        root= findViewById(R.id.root);
+        card = findViewById(R.id.blur_card);
         iv_menu_home = findViewById(R.id.iv_menu_home);
         menu_view_home = findViewById(R.id.menu_view_home);
         iv_x_menu = findViewById(R.id.iv_x_menu);
         tv_settings_icon = findViewById(R.id.tv_settings_icon);
-        root_home = findViewById(R.id.root_home);
 
-        //blurHome();
-
-        tv_settings_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeScreen.this,SettingsScreen.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
 
         iv_menu_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 0, 880);
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 0, 890);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
             }
@@ -100,9 +83,46 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         iv_x_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 880, 0);
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 890, 0);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
+            }
+        });
+
+        //on clicks del menu
+        /*indViewById(R.id.tv_home_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this,SettingsScreen.class);
+                startActivity(intent);
+            }
+        });*/
+        findViewById(R.id.tv_launches_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, LanzamientosScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_mars_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_satellites_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, SatelitesScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_settings_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreen.this, SettingsScreen.class);
+                startActivity(intent);
             }
         });
 
@@ -116,6 +136,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         Thread t2 = new Thread(a);
         t2.start();
 
+
         PB_noticias.setVisibility(View.VISIBLE);
         PB_lanzamientos.setVisibility(View.VISIBLE);
 
@@ -124,6 +145,13 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.CV_Satelites).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, SatelitesScreen.class);
                 startActivity(intent);
             }
         });
@@ -136,7 +164,6 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
             }
         });
     }
-
     @Override
     public void devolverNoticias(List<Noticia> listaNoticias) {
         runOnUiThread(new Runnable() {
@@ -144,7 +171,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
             public void run() {
                 recyclerNoticias = findViewById(R.id.RC_Noticias);
                 gestor2 = new LinearLayoutManager(HomeScreen.this, LinearLayoutManager.HORIZONTAL, false);
-                adapt = new AdaptadorRecyclerNoticias(listaNoticias, HomeScreen.this,root_home);
+                adapt = new AdaptadorRecyclerNoticias(listaNoticias, HomeScreen.this);
                 recyclerNoticias.setAdapter(adapt);
                 recyclerNoticias.setLayoutManager(gestor2);
                 PB_noticias.setVisibility(View.INVISIBLE);

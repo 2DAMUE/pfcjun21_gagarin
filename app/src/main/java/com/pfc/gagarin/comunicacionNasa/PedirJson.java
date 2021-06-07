@@ -34,11 +34,10 @@ public class PedirJson {
                     c.mostrarFotos(listaFotos);
 
                 }else{
-                    try {
-                        Toast.makeText(c,response.errorBody().string(),Toast.LENGTH_SHORT).show(); // this will tell you why your api doesnt work most of time
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    List<Photo> listaFotos = null;
+                    c.mostrarFotos(listaFotos);
+
+
                 }
 
             }

@@ -55,17 +55,13 @@ public class SimpleRenderer extends Renderer {
 
         ArcballCamera arcball = new ArcballCamera(mContext, ((Activity)mContext).findViewById(R.id.rajawali_surface));
         arcball.setTarget(mMarsSphere); //your 3D Object
-
-        arcball.setPosition(0,0,4); //optional
-
+        arcball.setPosition(0,0,5); //optional
         getCurrentScene().replaceAndSwitchCamera(getCurrentCamera(), arcball);
-
-
     }
     @Override
     public void onRender(final long elapsedTime, final double deltaTime) {
         super.onRender(elapsedTime, deltaTime);
-
+        mMarsSphere.rotate(Vector3.Axis.Y, 0.2);
     }
 
     @Override

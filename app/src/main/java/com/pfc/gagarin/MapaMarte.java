@@ -9,6 +9,7 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.WebView;
 
 import org.rajawali3d.Object3D;
@@ -26,7 +27,8 @@ public class MapaMarte extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa_marte);
-        findViewById(R.id.prueba).setOnClickListener(new View.OnClickListener() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        findViewById(R.id.TV_VerRovers).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MapaMarte.this, RoverScreen.class);
@@ -38,7 +40,9 @@ public class MapaMarte extends AppCompatActivity {
         surface.setFrameRate(60.0);
         surface.setRenderMode(ISurface.RENDERMODE_WHEN_DIRTY);
         renderer = new SimpleRenderer(this);
+        surface.setTransparent(true);
         surface.getHolder().setFormat(PixelFormat.TRANSPARENT);
         surface.setSurfaceRenderer(renderer);
+
     }
 }

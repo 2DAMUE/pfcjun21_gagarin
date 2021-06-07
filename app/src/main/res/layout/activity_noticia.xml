@@ -40,15 +40,13 @@
     <ImageView
         android:id="@+id/iv_image_story"
         android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_background_story"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintTop_toBottomOf="@+id/blur_blu_story" />
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blur_scroll_story"
@@ -93,6 +91,7 @@
                             android:layout_width="345dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="18dp"
+                            android:fontFamily="@font/ralewaybold"
                             android:text=""
                             android:textColor="#FFFFFF"
                             android:textSize="24sp"
@@ -105,6 +104,7 @@
                             android:layout_width="345dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="18dp"
+                            android:fontFamily="@font/ralewayregular"
                             android:text=""
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
@@ -117,6 +117,7 @@
                             android:layout_width="93dp"
                             android:layout_height="51dp"
                             android:layout_marginTop="32dp"
+                            android:fontFamily="@font/ralewaylight"
                             android:paddingBottom="32dp"
                             android:text="Provided by: "
                             android:textColor="#FFFFFF"
@@ -130,6 +131,7 @@
                             android:layout_height="51dp"
                             android:layout_marginTop="34dp"
                             android:autoLink="web"
+                            android:fontFamily="@font/ralewaylight"
                             android:paddingBottom="32dp"
                             android:text=""
                             android:textColor="#9EFFFFFF"
@@ -210,6 +212,7 @@
                             android:background="@android:color/transparent"
                             android:backgroundTint="@color/super_white"
                             android:ems="10"
+                            android:fontFamily="@font/ralewayregular"
                             android:hint="Leave a comment..."
                             android:inputType="textPersonName"
                             android:textColor="@color/gray"
@@ -243,21 +246,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
     </eightbitlab.com.blurview.BlurView>
-
-    <ImageView
-        android:id="@+id/iv_arrow_back"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:elevation="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_left_arrow" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

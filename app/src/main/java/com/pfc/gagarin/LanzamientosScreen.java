@@ -5,10 +5,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos2;
 import com.pfc.gagarin.entidad.Lanzamiento;
@@ -16,12 +21,16 @@ import com.pfc.gagarin.ws_lanzamientos.HiloPeticionLanzamientos;
 
 import java.util.List;
 
+import eightbitlab.com.blurview.BlurView;
+
 public class LanzamientosScreen extends AppCompatActivity implements HiloPeticionLanzamientos.InterfazLanzamientos {
 
     private RecyclerView recicler_lanzamientos_central;
     private RecyclerView.LayoutManager gestor;
     private AdaptadorRecyclerLanzamientos2 adapt;
     private ProgressBar PB_lanz;
+    private BlurView card;
+    private ViewGroup root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,66 @@ public class LanzamientosScreen extends AppCompatActivity implements HiloPeticio
         setContentView(R.layout.activity_lanzamientos_screen);
         PB_lanz = findViewById(R.id.PB_RC_Lanzamientos2);
         PB_lanz.setVisibility(View.VISIBLE);
+        root= findViewById(R.id.root);
+        card = findViewById(R.id.blur_card);
+
+        //Menu slide
+        findViewById(R.id.IV_SlideMenuIcon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_lanz), "translationX", 0, 890);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+                //card.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.iv_x_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_lanz), "translationX", 890, 0);
+                objectAnimator.setDuration(1000);
+                objectAnimator.start();
+                //card.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        //on clicks del menu
+        findViewById(R.id.tv_home_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this,HomeScreen.class);
+                startActivity(intent);
+            }
+        });
+        /*findViewById(R.id.tv_launches_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, LanzamientosScreen.class);
+                startActivity(intent);
+            }
+        });*/
+        findViewById(R.id.tv_mars_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, MapaMarte.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_satellites_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, SatelitesScreen.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.tv_settings_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LanzamientosScreen.this, SettingsScreen.class);
+                startActivity(intent);
+            }
+        });
 
         //Hilo que llama al webscrapping
         HiloPeticionLanzamientos a = new HiloPeticionLanzamientos(LanzamientosScreen.this);

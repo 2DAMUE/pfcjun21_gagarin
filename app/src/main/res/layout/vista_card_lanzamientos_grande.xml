@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="260dp"
-    android:layout_height="340dp">
+    android:layout_height="370dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CV_LanzamientosGrande"
@@ -90,7 +90,7 @@
                 android:id="@+id/TV_txtFecha"
                 android:layout_width="122dp"
                 android:layout_height="31dp"
-                android:layout_marginTop="116dp"
+                android:layout_marginTop="140dp"
                 android:fontFamily="@font/ralewaybold"
                 android:gravity="start|left"
                 android:padding="5dp"
@@ -108,8 +108,8 @@
 
             <TextView
                 android:id="@+id/TV_verDetalles"
-                android:layout_width="126dp"
-                android:layout_height="0dp"
+                android:layout_width="125dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:fontFamily="@font/ralewaylight"
@@ -126,7 +126,8 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline5"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/TV_FechaPrevista" />
+                app:layout_constraintTop_toBottomOf="@+id/TV_FechaPrevista"
+                app:layout_constraintVertical_bias="0.842" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline4"

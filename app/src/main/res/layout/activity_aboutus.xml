@@ -73,7 +73,7 @@
             android:src="@drawable/char_1" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/iv_git_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -144,7 +144,7 @@
             android:src="@drawable/char_2" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/iv_git_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -215,7 +215,7 @@
             android:src="@drawable/char_3" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/iv_git_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -286,7 +286,7 @@
             android:src="@drawable/char_4" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/iv_git_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

@@ -3,6 +3,7 @@ package com.pfc.gagarin;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsScreen extends Activity {
+    private TextView tv_settings_github;
     private ConstraintLayout settings_content;
     private ImageView iv_more_settings,iv_more_notifications,iv_aboutus,iv_back;
     private FirebaseAuth firebaseAuth;
@@ -70,6 +72,14 @@ public class SettingsScreen extends Activity {
                 startActivity(intent);
             }
         });
+        tv_settings_github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://github.com/"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +111,7 @@ public class SettingsScreen extends Activity {
         iv_aboutus = findViewById(R.id.iv_more_about_us);
         iv_back = findViewById(R.id.iv_back);
         settings_logout = findViewById(R.id.settings_logout);
+        tv_settings_github = findViewById(R.id.tv_settings_github);
     }
     private void showToast(String texto) {
         LayoutInflater inflater = getLayoutInflater();

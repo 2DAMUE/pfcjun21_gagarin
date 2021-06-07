@@ -17,6 +17,10 @@ import android.widget.ProgressBar;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
@@ -55,13 +59,14 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
     private AdaptadorRecyclerLanzamientos adapt2;
     private ProgressBar PB_lanzamientos;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
         verMasNoticias = findViewById(R.id.TV_VerMasNoticias);
         verMasLanzamientos = findViewById(R.id.TV_VerMasLanzamientos);
+
         cardMarte = findViewById(R.id.CV_Marte);
         cardSatelites = findViewById(R.id.CV_Satelites);
         PB_noticias = findViewById(R.id.progressBar_noticias);
@@ -106,11 +111,11 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         HiloPeticionNoticias r = new HiloPeticionNoticias(HomeScreen.this);
         Thread t1 = new Thread(r);
         t1.start();
+
         HiloPeticionLanzamientos a = new HiloPeticionLanzamientos(HomeScreen.this);
         Thread t2 = new Thread(a);
         t2.start();
 
-         //TODO: 27/05/2021 Añadir funcionalidad de los progress bar
         PB_noticias.setVisibility(View.VISIBLE);
         PB_lanzamientos.setVisibility(View.VISIBLE);
 

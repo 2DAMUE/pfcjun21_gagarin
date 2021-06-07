@@ -37,12 +37,11 @@ import eightbitlab.com.blurview.BlurView;
 public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRecyclerNoticias.ContenedorDeVistas> {
     private List<Noticia> lista_contactos;
     private Context context;
-    private ViewGroup root_home;
 
-    public AdaptadorRecyclerNoticias(List<Noticia> lista_contactos, HomeScreen homeScreen, ViewGroup root_home) {
+
+    public AdaptadorRecyclerNoticias(List<Noticia> lista_contactos, HomeScreen homeScreen) {
         this.lista_contactos = lista_contactos;
         this.context = homeScreen;
-        this.root_home = root_home;
     }
 
     @NonNull
@@ -55,17 +54,6 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
         CardView card = vista.findViewById(R.id.CV_Noticia);
         BlurView blur_card = vista.findViewById(R.id.blur_card);
-
-        //Blur Background
-        final float radius = 3f;
-        final Drawable windowBackground = parent.getBackground();
-
-        blur_card.setupWith(root_home)
-                .setFrameClearDrawable(windowBackground)
-                .setBlurAlgorithm(new SupportRenderScriptBlur(context))
-                .setBlurRadius(radius)
-                .setHasFixedTransformationMatrix(true);
-
 
         //El lisener no va aqui
         /*card.setOnClickListener(new View.OnClickListener() {

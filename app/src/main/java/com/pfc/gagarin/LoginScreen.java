@@ -109,7 +109,6 @@ public class LoginScreen extends AppCompatActivity {
 
         com.facebook.login.LoginManager.getInstance().logOut();
 
-        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         root= findViewById(R.id.root);
         card = findViewById(R.id.blur_card);

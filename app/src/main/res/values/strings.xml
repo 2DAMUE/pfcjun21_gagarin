@@ -13,9 +13,9 @@
     <string name="Show">Show</string>
     <string name="promo">Me gustaría recibir su newsletter y otra información promocional.</string>
     <string name="app_name">Gagarin</string>
-    <string name="campos_vacios">Some of the fields are empty</string>
-    <string name="email_vacio">Email field cannot be empty</string>
-    <string name="pass_vacia">Password field cannot be empty</string>
+    <string name="campos_vacios">Algunos campos están vacios</string>
+    <string name="email_vacio">El campo Email no puede estar vacio</string>
+    <string name="pass_vacia">El campo contraseña no puede estar vacio</string>
 
     <!--  HOME  -->
     <string name="H_ultNoticias">Últimas Noticias</string>

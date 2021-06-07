@@ -46,6 +46,9 @@
             android:name=".RoverDetailScreen"
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity
+            android:name=".LanzamientosDetailScreen"
+            android:theme="@style/Theme.Gagarin.noBar" />
+        <activity
             android:name=".NoticiaScreen"
             android:theme="@style/Theme.Gagarin.noBar" />
         <activity

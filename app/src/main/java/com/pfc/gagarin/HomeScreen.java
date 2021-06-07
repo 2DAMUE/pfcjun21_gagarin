@@ -42,7 +42,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
 
     private CardView menu_view_home;
     private BlurView card;
-    private ViewGroup root;
+    private ViewGroup root_home;
 
     private RecyclerView recyclerNoticias;
     private RecyclerView.LayoutManager gestor2;
@@ -64,7 +64,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         PB_noticias = findViewById(R.id.progressBar_noticias);
         PB_lanzamientos = findViewById(R.id.progressBar_lanzamientos);
 
-        root= findViewById(R.id.root);
+        root_home = findViewById(R.id.root);
         card = findViewById(R.id.blur_card);
         iv_menu_home = findViewById(R.id.iv_menu_home);
         menu_view_home = findViewById(R.id.menu_view_home);

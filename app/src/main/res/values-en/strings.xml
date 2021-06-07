@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="confirm_pass">Confirm Password</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="login_with_google">Sign in with Google</string>
+    <string name="login_with_facebook">Sign in with Facebook</string>
+    <string name="register">Register</string>
+    <string name="account">Don\'t have an account?</string>
+    <string name="Sign">Sign up</string>
+    <string name="Show">Show</string>
+    <string name="promo">I would like to receive your newsletter and other promotional information.</string>
+    <string name="app_name">Gagarin</string>
+
+    <!--  HOME  -->
+    <string name="H_ultNoticias">Latest news</string>
+    <string name="H_procLanzamientos">Upcoming Launches</string>
+    <string name="H_aprendeMas">Learn more</string>
+    <string name="H_marte3d">Mars in 3D</string>
+    <string name="H_satelites">Earth Satellites</string>
+    <string name="H_pruebalo">Try it now →</string>
+    <string name="H_verMas">Show all</string>
+    <string name="H_title_activity_mapa_marte">Map</string>
+    <string name="H_busca">Search here</string>
+    <!--  LANZAMIENTOS  -->
+    <string name="L_tituloVentana">Check out the upcoming rocket launches!</string>
+    <string name="L_countdown">Countdown</string>
+    <string name="L_verDetalles">Read more →</string>
+    <string name="L_fechaPrevista">Expected date</string>
+    <string name="L_overview">General information</string>
+    <string name="L_lugar">Lugar de Lanzamiento</string>
+    <string name="L_infoCohete">Launching place</string>
+    <string name="L_lugar_mapa">Map</string>
+    <string name="L_countdowntimer">Launching</string>
+    <string name="L_lanz">Provided By www.spacelaunchschedule.com</string>
+    <string name="H_satel">Provided By www.stuffin.space</string>
+    <!-- ROVERS MARTE -->
+    <string name="RV_verRovers">Check the Mars Rovers →</string>
+    <string name="RV_VerFotos">Photos</string>
+    <string name="RV_VerFotosFailure">There are currently no photos for this rover</string>
+    <!-- Datos Opportunity -->
+    <string name="opportunity_name">Opportunity</string>
+    <string name="opportunity_landing">Meridiani Planum</string>
+    <string name="opportunity_date">August 6th, 2012</string>
+    <string name="opportunity_title">Surface Exploration</string>
+    <string name="opportunity_body">Opportunity was the second of two rover vehicles launched in 2003 to land on Mars and begin traversing
+        the Red Planet for signs of past life. The rover is still actively exploring Martian terrain, having more than survived
+        to your planned 90-day mission.
+        Since landing on Mars in 2004, Opportunity has made a series of discoveries about the Red Planet,
+        including dramatic evidence that long ago at least one area of Mars remained wet for an extended period
+        and that conditions may have been adequate to support microbial life.
+        The Opportunity rover stopped communicating with Earth when a severe dust storm across Mars covered its location in June 2018.
+        After more than a thousand commands to reestablish contact, engineers from the Jet Propulsion Laboratory (JPL) Space Flight Operations Facility
+        NASA made their last attempt to revive Opportunity on Tuesday, February 13, 2019, but to no avail. The final communication of the solar powered rover
+        was received on June 10.</string>
+
+    <!-- Datos Curiosity -->
+    <string name="curiosity_name">Curiosity</string>
+    <string name="curiosity_landing">Gale Crater</string>
+    <string name="curiosity_date">January 5th, 2004</string>
+    <string name="curiosity_title">Exploring Gale crater</string>
+    <string name="curiosity_body">Curiosity explores Gale crater and acquires rock samples,
+         soil and air for analysis on board. The car-sized rover is as tall as a gamer
+         basketball and uses a 7 foot long arm to place tools near rocks
+         selected for study. Curiosity\'s large size allows you to carry an advanced kit
+         of 10 scientific instruments. It has tools including 17 cameras, a laser for
+         vaporize and study small rock points from a distance and a drill to collect
+         powdered rock samples. Look for special rocks that formed in the water and / or have signs
+         organic.</string>
+    <!-- Datos Perseverance -->
+    <string name="perseverance_name">Perseverance</string>
+    <string name="perseverance_landing">Jezero Crater</string>
+    <string name="perseverance_date">February 18th, 2021</string>
+    <string name="perseverance_title">Technologies for surface operations</string>
+    <string name="perseverance_body">Perseverance tests a technology to extract oxygen from the Martian atmosphere,
+         which is 96% carbon dioxide. This demo helps mission planners test ways to use
+         the natural resources of Mars to support human explorers and improve life support designs,
+         transportation and other important systems for living and working on Mars. The rover also monitors the weather
+         and dust in the Martian atmosphere. Such studies are important to understand the daily and seasonal changes on Mars,
+         and they will help future human explorers better predict Martian weather.</string>
+    <!-- Datos Spirit -->
+    <string name="spirit_name">Spirit</string>
+    <string name="spirit_landing">Sleepy Hollow</string>
+    <string name="spirit_date">January 3th, 2004</string>
+    <string name="spirit_title">Surface Exploration</string>
+    <string name="spirit_body">The Spirit and Opportunity rovers together represented NASA\'s Mars Exploration Rover Mission (MER),
+        part of the Mars Exploration Program. Launched a month apart in 2003, the twin rovers\' primary scientific objective was to search
+        a variety of rocks and soil types and then look for clues about past water activity on Mars.
+        Each rover is about the size of a golf cart and seven times heavier (about 405 pounds or 185 kilograms)
+        than the Sojourner rover launched on the Mars Pathfinder to Mars mission in 1996.
+        Spirit and Opportunity were sent to opposite sides of Mars to locations suspected of having been affected by liquid water in the past.
+        The plan was for the rovers to move from place to place, conduct geological investigations and take pictures with mast-mounted cameras.
+        (about 5 feet or 1.5 meters from the ground) that provided 360-degree stereoscopic views of the terrain.</string>
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_account">Account Settings</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_about_us">About us</string>
+    <string name="settings_github">Github</string>
+    <string name="settings_logout">Logout</string>
+    <string name="account_settings_title">Account settings</string>
+    <string name="account_username">Username</string>
+    <string name="account_password">Password</string>
+    <string name="save_account_settings">Save</string>
+    <string name="launch_notification">Launch notifications</string>
+    <string name="news_notification">Latest news notifications</string>
+    <string name="aboutus_name_1">Ionut Alin</string>
+    <string name="aboutus_developer">Developer</string>
+    <string name="aboutus_name_2">Fran Ruiz</string>
+    <string name="aboutus_name_3">Fabiola Decena</string>
+    <string name="aboutus_ux">UX Designer</string>
+    <string name="aboutus_name_4">Pablo Benito</string>
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">242835757644573</string>
+    <string name="fb_login_protocol_scheme">fb242835757644573</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
+    <string name="news_menu">News</string>
+    <string name="home_menu">Home</string>
+    <string name="launches_menu">Launches</string>
+    <string name="mars_menu">Mars</string>
+    <string name="satellites_menu">Satellites</string>
+    <string name="settings_menu">Settings</string>
+
+    <string name="title_activity_maps">Map</string>
+
+</resources>

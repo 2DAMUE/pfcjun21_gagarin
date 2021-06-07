@@ -2,19 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeScreen">
-
-
-    <View
-        android:id="@+id/V_sesac"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/IMG_background_home"
@@ -600,6 +591,26 @@
                 app:layout_constraintEnd_toStartOf="@+id/Guideline_Right"
                 app:layout_constraintStart_toStartOf="@+id/Guideline_Left"
                 app:layout_constraintTop_toTopOf="@+id/RC_Lanzamientos" />
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/blur_card"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="@drawable/blur_bg_lanzamiento"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:id="@+id/V_sesac"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </eightbitlab.com.blurview.BlurView>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline11"

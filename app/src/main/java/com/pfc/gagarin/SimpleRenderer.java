@@ -61,7 +61,7 @@ public class SimpleRenderer extends Renderer {
     @Override
     public void onRender(final long elapsedTime, final double deltaTime) {
         super.onRender(elapsedTime, deltaTime);
-
+        mMarsSphere.rotate(Vector3.Axis.Y, 0.2);
     }
 
     @Override

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="email">Email</string>
-    <string name="pass">Password</string>
-    <string name="confirm_pass">Confirm Password</string>
-    <string name="forgot">Forgot Password?</string>
-    <string name="login">Login</string>
-    <string name="login_with_google">Sign in with Google</string>
-    <string name="login_with_facebook">Sign in with Facebook</string>
-    <string name="register">Register</string>
-    <string name="account">Don\'t have an account?</string>
-    <string name="Sign">Sign up</string>
+    <string name="pass">Contraseña</string>
+    <string name="confirm_pass">Confirmar contraseña</string>
+    <string name="forgot">¿Olvidaste la Contraseña?</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="login_with_google">Inicia sesión con Google</string>
+    <string name="login_with_facebook">Inicia sesión con Facebook</string>
+    <string name="register">Registrarse</string>
+    <string name="account">¿No tienes Cuenta?</string>
+    <string name="Sign">Registrarse</string>
     <string name="Show">Show</string>
-    <string name="promo">I would like to receive your newsletter and other promotional information.</string>
+    <string name="promo">Me gustaría recibir su newsletter y otra información promocional.</string>
     <string name="app_name">Gagarin</string>
 
     <!--  HOME  -->
@@ -34,6 +34,7 @@
     <string name="L_infoCohete">Informacion del Cohete</string>
     <string name="L_lugar_mapa">Mapa</string>
     <string name="L_countdowntimer">Lanzamiento Empezado</string>
+    <string name="L_lanz">Provided By www.spacelaunchschedule.com</string>
     <string name="H_satel">Provided By www.stuffin.space</string>
     <!-- ROVERS MARTE -->
     <string name="RV_verRovers">Mira los Rovers de Marte →</string>
@@ -42,7 +43,7 @@
     <!-- Datos Opportunity -->
     <string name="opportunity_name">Opportunity</string>
     <string name="opportunity_landing">Cráter Gale </string>
-    <string name="opportunity_date">6 de agosto de 2012, 05:31 UTC</string>
+    <string name="opportunity_date">6 de agosto de 2012</string>
     <string name="opportunity_title">Exploración de la Superficie</string>
     <string name="opportunity_body">El Opportunity fue el segundo de los dos vehículos exploradores lanzados en 2003 para aterrizar en Marte y comenzar a atravesar
         el Planeta Rojo en busca de señales de vida pasada. El rover todavía está explorando activamente el terreno marciano, habiendo sobrevivido con creces
@@ -58,7 +59,7 @@
     <!-- Datos Curiosity -->
     <string name="curiosity_name">Curiosity</string>
     <string name="curiosity_landing">Meridiani Planum</string>
-    <string name="curiosity_date">25 de enero de 2004, 05:05 TUC</string>
+    <string name="curiosity_date">25 de enero de 2004</string>
     <string name="curiosity_title">Examinando el cráter Gale</string>
     <string name="curiosity_body">Curiosity explora el cráter Gale y adquiere muestras de roca,
         suelo y aire para análisis a bordo. El rover del tamaño de un automóvil es tan alto como un jugador
@@ -71,7 +72,7 @@
     <!-- Datos Perseverance -->
     <string name="perseverance_name">Perseverance</string>
     <string name="perseverance_landing">Cráter Jezero</string>
-    <string name="perseverance_date">18 de febrero de 2021, 20:56 UTC</string>
+    <string name="perseverance_date">18 de febrero de 2021</string>
     <string name="perseverance_title">Tecnologías para operaciones de superficie</string>
     <string name="perseverance_body">El Perseverance prueba una tecnología para extraer oxígeno de la atmósfera marciana,
         que es 96% de dióxido de carbono. Esta demostración ayuda a los planificadores de misiones a probar formas de utilizar
@@ -81,38 +82,8 @@
         y ayudarán a los futuros exploradores humanos a predecir mejor el clima marciano.</string>
     <!-- Datos Spirit -->
     <string name="spirit_name">Spirit</string>
-    <!-- Settings -->
-    <string name="settings_title">Settings</string>
-    <string name="settings_account">Account Settings</string>
-    <string name="settings_notifications">Notifications</string>
-    <string name="settings_about_us">About us</string>
-    <string name="settings_github">Github</string>
-    <string name="settings_logout">Logout</string>
-    <string name="account_settings_title">Account settings</string>
-    <string name="account_username">Username</string>
-    <string name="account_password">Password</string>
-    <string name="save_account_settings">Save</string>
-    <string name="launch_notification">Launch notifications</string>
-    <string name="news_notification">Latest news notifications</string>
-    <string name="aboutus_name_1">Ionut Alin</string>
-    <string name="aboutus_developer">Developer</string>
-    <string name="aboutus_name_2">Fran Ruiz</string>
-    <string name="aboutus_name_3">Fabiola Decena</string>
-    <string name="aboutus_ux">UX Designer</string>
-    <string name="aboutus_name_4">Pablo Benito</string>
-    <!-- Login Facebook -->
-    <string name="facebook_app_id">242835757644573</string>
-    <string name="fb_login_protocol_scheme">fb242835757644573</string>
-    <string name="email_hint">Email</string>
-    <string name="username_hint">Username</string>
-    <string name="news_menu">News</string>
-    <string name="home_menu">Home</string>
-    <string name="launches_menu">Launches</string>
-    <string name="mars_menu">Mars</string>
-    <string name="satellites_menu">Satellites</string>
-    <string name="settings_menu">Settings</string>
     <string name="spirit_landing">Sleepy Hollow</string>
-    <string name="spirit_date">3 de enero de 2004, 4:35 UTC</string>
+    <string name="spirit_date">3 de enero de 2004</string>
     <string name="spirit_title">Exploración de la Superficie</string>
     <string name="spirit_body">Los rovers Spirit y Opportunity juntos representaron la misión Mars Exploration Rover Mission (MER) de la NASA,
         parte del Programa de Exploración de Marte. Lanzados con un mes de diferencia en 2003, el principal objetivo científico de los rovers gemelos era buscar
@@ -122,6 +93,36 @@
         Spirit y Opportunity fueron enviados a lados opuestos de Marte a lugares que se sospechaba que habían sido afectados por agua líquida en el pasado.
         El plan era que los rovers se movieran de un lugar a otro, realizaran investigaciones geológicas y tomaran fotografías con cámaras montadas en el mástil
         (a unos 5 pies o 1,5 metros del suelo) que proporcionaban vistas estereoscópicas de 360 grados del terreno.</string>
-    <string name="title_activity_maps">Map</string>
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_account">Ajustes de Cuenta</string>
+    <string name="settings_notifications">Notificaciones</string>
+    <string name="settings_about_us">Sobre nosotros</string>
+    <string name="settings_github">Github</string>
+    <string name="settings_logout">Cerrar Sesión</string>
+    <string name="account_settings_title">Ajustes de Cuenta</string>
+    <string name="account_username">Usuario</string>
+    <string name="account_password">Contraseña</string>
+    <string name="save_account_settings">Guardar</string>
+    <string name="launch_notification">Lanzar notificaciones</string>
+    <string name="news_notification">Últimas notificaciones de noticias</string>
+    <string name="aboutus_name_1">Ionut Alin</string>
+    <string name="aboutus_developer">Desarrollador</string>
+    <string name="aboutus_name_2">Fran Ruiz</string>
+    <string name="aboutus_name_3">Fabiola Decena</string>
+    <string name="aboutus_ux">UX Designer</string>
+    <string name="aboutus_name_4">Pablo Benito</string>
+    <!-- Login Facebook -->
+    <string name="facebook_app_id">242835757644573</string>
+    <string name="fb_login_protocol_scheme">fb242835757644573</string>
+    <string name="email_hint">Email</string>
+    <string name="username_hint">Nombre de usuario</string>
+    <string name="news_menu">Noticias</string>
+    <string name="home_menu">Home</string>
+    <string name="launches_menu">Lanzamientos</string>
+    <string name="mars_menu">Marte</string>
+    <string name="satellites_menu">Satelites</string>
+    <string name="settings_menu">Ajustes</string>
+    <string name="title_activity_maps">Mapa</string>
 
 </resources>

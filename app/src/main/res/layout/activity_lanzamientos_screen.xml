@@ -251,7 +251,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_lanzamientos_lateral2"
         app:layout_constraintTop_toTopOf="@+id/guideline_lanzamientos_div1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <ProgressBar
         android:id="@+id/PB_RC_Lanzamientos2"
@@ -263,4 +265,25 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_lanzamientos_lateral1"
         app:layout_constraintStart_toStartOf="@+id/guideline_lanzamientos_lateral2"
         app:layout_constraintTop_toTopOf="@+id/guideline_lanzamientos_div1" />
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blur_card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/blur_bg_lanzamiento"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/IV_Background"
+        app:layout_constraintEnd_toEndOf="@+id/IV_Background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/V_sesac"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </eightbitlab.com.blurview.BlurView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -196,8 +196,7 @@ public class NoticiaScreen extends AppCompatActivity implements HiloPeticionBody
         iv_arrow_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NoticiaScreen.this,HomeScreen.class);
-                startActivity(intent);
+                finish();
             }
         });
 

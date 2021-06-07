@@ -9,15 +9,18 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.tv.TvContract;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerLanzamientos;
 import com.pfc.gagarin.adapter.AdaptadorRecyclerNoticias;
 import com.pfc.gagarin.entidad.Lanzamiento;
@@ -27,6 +30,8 @@ import com.pfc.gagarin.ws_noticias.HiloPeticionNoticias;
 
 import java.util.List;
 
+import eightbitlab.com.blurview.BlurView;
+
 public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticias.InterfazNoticias, HiloPeticionLanzamientos.InterfazLanzamientos {
 
     private TextView verMasNoticias;
@@ -35,9 +40,9 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
     private ImageView iv_menu_home;
     private ImageView iv_x_menu;
 
-    private CardView cardMarte;
-    private CardView cardSatelites;
     private CardView menu_view_home;
+    private BlurView card;
+    private ViewGroup root;
 
     private RecyclerView recyclerNoticias;
     private RecyclerView.LayoutManager gestor2;
@@ -59,8 +64,8 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         PB_noticias = findViewById(R.id.progressBar_noticias);
         PB_lanzamientos = findViewById(R.id.progressBar_lanzamientos);
 
-        cardMarte = findViewById(R.id.CV_Marte);
-        cardSatelites = findViewById(R.id.CV_Satelites);
+        root= findViewById(R.id.root);
+        card = findViewById(R.id.blur_card);
         iv_menu_home = findViewById(R.id.iv_menu_home);
         menu_view_home = findViewById(R.id.menu_view_home);
         iv_x_menu = findViewById(R.id.iv_x_menu);
@@ -70,8 +75,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         iv_menu_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 0, 880);
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 0, 890);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
             }
@@ -79,7 +83,7 @@ public class HomeScreen extends AppCompatActivity implements HiloPeticionNoticia
         iv_x_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 880, 0);
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(menu_view_home, "translationX", 890, 0);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
             }

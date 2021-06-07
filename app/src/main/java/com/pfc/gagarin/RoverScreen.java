@@ -19,6 +19,7 @@ public class RoverScreen extends AppCompatActivity {
     private ViewGroup root;
     private BlurView card, card_curiosity_blur, card_opportunity_blur, card_perseverance_blur, card_spirit_blur;
     private CardView card_spirit, card_perseverance, card_opportunity, card_curiosity;
+    private BlurView card2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +35,28 @@ public class RoverScreen extends AppCompatActivity {
         card_perseverance_blur = findViewById(R.id.blur_card_perseverance);
         card_spirit_blur = findViewById(R.id.blur_card_spirit);
         card_spirit = findViewById(R.id.CV_spirit);
+        card2 = findViewById(R.id.blur_card2);
         card_perseverance = findViewById(R.id.CV_perseverance);
         card_opportunity = findViewById(R.id.CV_opportunity);
         card_curiosity = findViewById(R.id.CV_curiosity) ;
-        //Menu Slide
         //Menu slide
         findViewById(R.id.IMG_sliderMenu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_rovers), "translationX", 0, 880);
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_rovers), "translationX", 0, 890);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
+               // card2.setVisibility(View.VISIBLE);
             }
         });
         findViewById(R.id.iv_x_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_rovers), "translationX", 880, 0);
+                ObjectAnimator objectAnimator= ObjectAnimator.ofFloat(findViewById(R.id.menu_view_rovers), "translationX", 890, 0);
                 objectAnimator.setDuration(1000);
                 objectAnimator.start();
+                //card2.setVisibility(View.INVISIBLE);
             }
         });
 

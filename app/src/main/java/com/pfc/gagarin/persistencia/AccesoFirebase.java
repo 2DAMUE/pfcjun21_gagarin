@@ -6,8 +6,11 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -60,7 +63,6 @@ public class AccesoFirebase {
                     usuariosBBDD.put(userBBDD.getEmail(),userBBDD.getUsername());
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("ERROR", error.getMessage());
@@ -80,6 +82,24 @@ public class AccesoFirebase {
         bd = FirebaseDatabase.getInstance();
         ref = bd.getReference("Chat").child(messageObj.getMessage_id());
         ref.push().setValue(messageObj);
+    }
+
+    public static void cambiarPassword(FirebaseAuth firebaseAuth, String newPass) {
+        FirebaseUser user_firebase = firebaseAuth.getCurrentUser();
+        AuthCredential credential = EmailAuthProvider.getCredential(user_firebase.getEmail(),LoginScreen.user_password);
+        user_firebase.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                user_firebase.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d("pass","Contraseña cambiada");
+                    }
+                });
+            }
+        });
+
+
     }
 
 

@@ -91,11 +91,12 @@ public class LoginScreen extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private CallbackManager callbackManager;
-    private GoogleSignInClient mGoogleSignInClient;
+    public static GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 100;
     private HashMap<String, String> lista_usernames= new HashMap<>();
     public static String username_facebook;
     public static URL profileImg;
+    public static String user_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +146,7 @@ public class LoginScreen extends AppCompatActivity {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                GraphLoginRequest(loginResult.getAccessToken());
+                graphLoginRequest(loginResult.getAccessToken());
                 condicion_facebook = true;
                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -213,6 +214,7 @@ public class LoginScreen extends AppCompatActivity {
                                                     user.setUsername(lista_usernames.get(user.getEmail()));
                                                     Log.d("user",user.getUsername());
                                                 }
+                                                user_password=et_pass.getEditableText().toString();
                                                 Intent intent = new Intent(LoginScreen.this, HomeScreen.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -285,14 +287,13 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
-    private void GraphLoginRequest(AccessToken accessToken) {
+    private void graphLoginRequest(AccessToken accessToken) {
         GraphRequest graphRequest = GraphRequest.newMeRequest(accessToken,
                 new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         try {
                             username_facebook = object.getString("name");
-                            Log.d("USS",profileImg+"");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

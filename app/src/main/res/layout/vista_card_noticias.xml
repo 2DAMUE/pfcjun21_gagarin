@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="230dp"
+    android:background="@android:color/transparent"
     android:layout_height="310dp">
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blur_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +22,9 @@
             android:layout_width="220dp"
             android:layout_height="290dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#001B36"
+            android:backgroundTint="#BA001B36"
             app:cardCornerRadius="25dp"
+            app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +33,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:elevation="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/base_cardview"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.511"

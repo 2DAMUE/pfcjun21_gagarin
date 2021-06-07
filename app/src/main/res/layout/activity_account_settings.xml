@@ -44,7 +44,7 @@
 
 
     <ImageView
-        android:id="@+id/btn_back"
+        android:id="@+id/iv_back2"
         android:layout_width="16dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
@@ -52,28 +52,29 @@
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/chevron_left" />
+        android:src="@drawable/chevron_left" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/first_name_layout"
+        android:id="@+id/username_layout"
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="16dp"
+        app:hintEnabled="false"
         android:textColorHint="@color/super_white"
         app:layout_constraintTop_toBottomOf="@+id/divider3">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/first_name_txti"
+            android:id="@+id/username_txti"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="@string/first_name"
-            android:textColorHint="@color/super_white"
-            android:textColor="@color/white"
-            android:textSize="17sp"
             android:fontFamily="@font/raleway_medium"
-            android:inputType="textPassword"
-            android:password="false" />
+            android:hint="@string/account_username"
+            android:inputType="text"
+            android:password="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/super_white"
+            android:textSize="17sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -86,28 +87,28 @@
         android:background="@color/blackish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/username_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/last_name_layout"
+        android:id="@+id/password_layout"
         style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        app:hintEnabled="false"
         android:layout_marginTop="8dp"
         android:textColorHint="@color/super_white"
         app:layout_constraintTop_toTopOf="@+id/divider4">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/last_name_txti"
+            android:id="@+id/password_txti"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="@string/last_name"
-            android:textColorHint="@color/super_white"
-            android:textColor="@color/white"
-            android:textSize="17sp"
             android:fontFamily="@font/raleway_medium"
+            android:hint="@string/account_password"
             android:inputType="textPassword"
-            android:password="false" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/super_white"
+            android:textSize="17sp" />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -129,10 +130,10 @@
         android:layout_height="56dp"
         android:layout_marginTop="8dp"
         app:boxBackgroundColor="@color/cardview_light_background"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_layout">
+        app:layout_constraintTop_toBottomOf="@+id/password_layout">
 
         <TextView
-            android:id="@+id/settings_github"
+            android:id="@+id/tv_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 import com.pfc.gagarin.HomeScreen;
 import com.pfc.gagarin.NoticiaScreen;
 import com.pfc.gagarin.entidad.Noticia;
@@ -31,13 +32,17 @@ import com.pfc.gagarin.R;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import eightbitlab.com.blurview.BlurView;
+
 public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRecyclerNoticias.ContenedorDeVistas> {
     private List<Noticia> lista_contactos;
     private Context context;
+    private ViewGroup root_home;
 
-    public AdaptadorRecyclerNoticias(List<Noticia> lista_contactos, HomeScreen homeScreen) {
+    public AdaptadorRecyclerNoticias(List<Noticia> lista_contactos, HomeScreen homeScreen, ViewGroup root_home) {
         this.lista_contactos = lista_contactos;
         this.context = homeScreen;
+        this.root_home = root_home;
     }
 
     @NonNull
@@ -49,6 +54,16 @@ public class AdaptadorRecyclerNoticias extends RecyclerView.Adapter<AdaptadorRec
         TextView tv_fecha = vista.findViewById(R.id.TV_fechaNoticia);
         ImageView img_pfp = vista.findViewById(R.id.IV_fotonoticia);
         CardView card = vista.findViewById(R.id.CV_Noticia);
+        BlurView blur_card = vista.findViewById(R.id.blur_card);
+
+        final float radius = 3f;
+        final Drawable windowBackground = parent.getBackground();
+
+        blur_card.setupWith(root_home)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurAlgorithm(new SupportRenderScriptBlur(context))
+                .setBlurRadius(radius)
+                .setHasFixedTransformationMatrix(true);
 
 
         //El lisener no va aqui

@@ -44,7 +44,7 @@
 
 
     <ImageView
-        android:id="@+id/btn_back"
+        android:id="@+id/iv_back3"
         android:layout_width="16dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
@@ -52,7 +52,7 @@
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/chevron_left" />
+        android:src="@drawable/chevron_left" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/first_name_layout"

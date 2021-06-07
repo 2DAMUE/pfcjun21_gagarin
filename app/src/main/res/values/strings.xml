@@ -72,8 +72,8 @@
     <string name="settings_github">Github</string>
     <string name="settings_logout">Logout</string>
     <string name="account_settings_title">Account settings</string>
-    <string name="first_name">First name</string>
-    <string name="last_name">Last name</string>
+    <string name="account_username">Username</string>
+    <string name="account_password">Password</string>
     <string name="save_account_settings">Save</string>
     <string name="launch_notification">Launch notifications</string>
     <string name="news_notification">Latest news notifications</string>
@@ -88,4 +88,10 @@
     <string name="fb_login_protocol_scheme">fb242835757644573</string>
     <string name="email_hint">Email</string>
     <string name="username_hint">Username</string>
+    <string name="news_menu">News</string>
+    <string name="home_menu">Home</string>
+    <string name="launches_menu">Launches</string>
+    <string name="mars_menu">Mars</string>
+    <string name="satellites_menu">Satellites</string>
+    <string name="settings_menu">Settings</string>
 </resources>
